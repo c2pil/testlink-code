@@ -1143,7 +1143,9 @@ td.category {
 	background-color: #edf3f4;
 	color : #000;
 	font-weight: bold;
+	width: 40%;
 }
+
 
 span.glyphicon-chevron-down, span.glyphicon-chevron-up {
 	color: #fff;

@@ -77,7 +77,7 @@
 </style>
 
 {if $control->display_settings}
-  <div id="settings_panel" style="overflow: visible;">
+  <div id="settings_panel">
     <div class="x-panel-header x-unselectable" style="overflow: visible;">
       {$labels.caption_nav_settings}
     </div>
@@ -501,19 +501,28 @@
 {* here the requirement part starts *}
 
 {if $control->display_req_settings}
-  <div id="settings_panel">
-    <div class="x-panel-header x-unselectable">
-      {$labels.caption_nav_settings}
+  <div id="settings_panel" class="widget-body">
+    <div class="widget-header">
+     	<h4 class="widget-title">
+     		<span class="glyphicon glyphicon-wrench"></span>
+     		{$labels.caption_nav_settings}
+     	</h4>
+    
+		<div class="widget-toolbar">
+	    	<a id="settings-toogle" data-toggle="collapse" href="#settings">
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
+	    	</a> 
+	    </div>
     </div>
-
-    <div id="settings" class="x-panel-body exec_additional_info" "style="padding-top: 3px;">
+	
+    <div id="settings" class="widget-main collapse in">
       <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
 
-      <table class="smallGrey" style="width:98%;">
+      <table class="table table-bordered">
 
       {if $control->settings.setting_refresh_tree_on_action}
         <tr>
-            <td>{$labels.do_auto_update}</td>
+            <td class="category">{$labels.do_auto_update}</td>
             <td>
                <input type="hidden" 
                       id="hidden_setting_refresh_tree_on_action"
@@ -549,7 +558,7 @@
     </div>
   </div>
 
-  <div id="filters" class="widget-main collapse in" style="padding-top: 3px; overflow: visible;">
+  <div id="filters" class="widget-main collapse in" >
 
   <table class="table table-bordered">
 

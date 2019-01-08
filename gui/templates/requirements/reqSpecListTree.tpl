@@ -14,14 +14,7 @@ Ext.onReady(function() {
   Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
 
   // collapsible panel for filters and settings
-  var settingsPanel = new Ext.ux.CollapsiblePanel({
-    id: 'tl_exec_filter',
-    applyTo: 'settings_panel'
-  });
-  var filtersPanel = new Ext.ux.CollapsiblePanel({
-    id: 'tl_exec_settings',
-    applyTo: 'filter_panel'
-  });
+
 });
 </script>
 
