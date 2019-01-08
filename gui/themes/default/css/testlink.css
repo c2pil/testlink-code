@@ -9,7 +9,7 @@ Purpose: Default TestLink CSS
 /* ***** GLOBAL HTML ***************************************************************** */
 body, body.testlink {
 	background:  	#EEE!important; 
-	font-family: 	'Trebuchet MS', Arial, Verdana, sans-serif;
+	font-family: 	"Open Sans";
 	font-size: 		small;
 	margin:			0px;
 	padding:		0px;
@@ -1088,6 +1088,7 @@ th.testlink, td.testlink, tr.testlink td {
 }
 
 /* To adjust Bootstrap tables */
+/* I think it's not necesseray. Better view without font-size **/
 .table {
   font-size: 12px;
 }
@@ -1106,6 +1107,46 @@ th.testlink, td.testlink, tr.testlink td {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6;
+}
+
+.widget-header {
+	background-color: #5090C1;
+	background-image: none;
+	color: #fff;
+	position : relative;
+	min-height: 30px;
+	padding-left: 10px;
+}
+
+.widget-header > .widget-title {
+	line-height : 30px;
+	padding: 0;
+	margin: 0;
+	display:inline;
+}
+
+.widget-toolbar {
+	float:right;
+	position : relative;
+	line-height : 29px;
+	padding-right: 5px;
+}
+
+.widget-body {
+	background-color: #fff;
+	font-family: "Open Sans";	box-sizing: border-box;
+	border-color:#5090C1;
+	border:1px solid #CCC;
+}
+
+td.category {
+	background-color: #edf3f4;
+	color : #000;
+	font-weight: bold;
+}
+
+span.glyphicon-chevron-down, span.glyphicon-chevron-up {
+	color: #fff;
 }
 
 /* ----- END ------------------------------------------------------------------------- */

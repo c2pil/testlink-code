@@ -15,6 +15,9 @@
  *
  * @since 1.9.15
  *}
+{include file='bootstrap.inc.tpl'}
+
+
 
 {lang_get var=labels s='caption_nav_settings, caption_nav_filters, platform, test_plan,
                         build,filter_tcID,filter_on,filter_result,status,
@@ -533,18 +536,26 @@
 
 {if $control->display_req_filters}
 
-  <div id="filter_panel">
-  <div class="x-panel-header x-unselectable">
-    {$labels.caption_nav_filters}
+  <div class="widget-body">
+  <div class="widget-header">
+    <h4 class="widget-title">
+    	<span class="glyphicon glyphicon-filter"></span>
+    	{$labels.caption_nav_filters}
+    </h4>
+    <div class="widget-toolbar">
+    	<a id="filter-toogle" data-toggle="collapse" href="#filters">
+    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
+    	</a> 
+    </div>
   </div>
 
-  <div id="filters" class="x-panel-body exec_additional_info" style="padding-top: 3px; overflow: visible;">
+  <div id="filters" class="widget-main collapse in" style="padding-top: 3px; overflow: visible;">
 
-  <table class="smallGrey" style="width:98%;">
+  <table class="table table-bordered">
 
   {if $control->filters.filter_doc_id}
     <tr>
-      <td>{$labels.document_id}</td>
+      <td class="category">{$labels.document_id}</td>
       <td><input type="text" name="filter_doc_id"
                              size="{#REQ_DOCID_SIZE#}"
                              maxlength="{#REQ_DOCID_MAXLEN#}"
@@ -555,7 +566,7 @@
 
   {if $control->filters.filter_title}
     <tr>
-      <td>{$labels.title}</td>
+      <td class="category">{$labels.title}</td>
       <td><input type="text" name="filter_title"
                              size="{#REQ_NAME_SIZE#}"
                              maxlength="{#REQ_NAME_MAXLEN#}"
@@ -566,7 +577,7 @@
   
   {if $control->filters.filter_status}
     <tr>
-      <td>{$labels.status}</td>
+      <td class="category">{$labels.status}</td>
       <td>
          <select class="chosen-select" id="filter_status"
         {if $control->advanced_filter_mode}
@@ -586,7 +597,7 @@
   
   {if $control->filters.filter_type}
     <tr>
-      <td>{$labels.req_type}</td>
+      <td class="category">{$labels.req_type}</td>
       <td>
         <select class="chosen-select" id="filter_type" 
         {if $control->advanced_filter_mode}
@@ -605,7 +616,7 @@
 
   {if $control->filters.filter_spec_type}
     <tr>
-      <td>{$labels.req_spec_type}</td>
+      <td class="category">{$labels.req_spec_type}</td>
       <td>
         <select class="chosen-select" id="filter_spec_type" 
         {if $control->advanced_filter_mode}
@@ -624,7 +635,7 @@
 
   {if $control->filters.filter_coverage}
     <tr>
-      <td>{$labels.req_expected_coverage}</td>
+      <td class="category">{$labels.req_expected_coverage}</td>
       <td><input type="text" name="filter_coverage"
                              size="{#COVERAGE_SIZE#}"
                              maxlength="{#COVERAGE_MAXLEN#}"
@@ -635,7 +646,7 @@
   
   {if $control->filters.filter_relation}
     <tr>
-      <td>{$labels.has_relation_type}</td>
+      <td class="category">{$labels.has_relation_type}</td>
       <td>
         <select class="chosen-select" id="filter_relation"
         {if $control->advanced_filter_mode}
@@ -654,7 +665,7 @@
   
   {if $control->filters.filter_tc_id}
     <tr>
-      <td>{$labels.th_tcid}</td>
+      <td class="category">{$labels.th_tcid}</td>
       <td><input type="text" name="filter_tc_id"
                              size="{#TC_ID_SIZE#}"
                              maxlength="{#TC_ID_MAXLEN#}"
@@ -731,3 +742,4 @@ jQuery(".chosen-select").chosen({ width: "85%" , allow_single_deselect: true});
 jQuery('select[data-cfield="list"]').chosen({ width: "85%" , allow_single_deselect: true});
 });
 </script>
+<script type="text/javascript" src="{$basehref}gui/javascript/filterPanel.js" language="javascript"></script>
