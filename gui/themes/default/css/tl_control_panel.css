@@ -41,6 +41,12 @@ td.category {
 	width: 40%;
 }
 
+.table td input[type="text"] {
+	background: #fff;
+	border-color : #b5b5b5;
+	
+}
+
 span.glyphicon-chevron-down, span.glyphicon-chevron-up {
 	color: #fff;
 }

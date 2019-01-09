@@ -532,6 +532,7 @@
                       value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
 
                <input type="checkbox"
+               		   class="from-check-input"
                        id="cbsetting_refresh_tree_on_action"
                        name="setting_refresh_tree_on_action"
                        {if $control->settings.setting_refresh_tree_on_action.selected} checked {/if}
@@ -568,6 +569,7 @@
     <tr>
       <td class="category">{$labels.document_id}</td>
       <td><input type="text" name="filter_doc_id" class="form-control"
+      						 placeholder="{$labels.document_id}"
                              size="{#REQ_DOCID_SIZE#}"
                              maxlength="{#REQ_DOCID_MAXLEN#}"
                              value="{$control->filters.filter_doc_id.selected|escape}" />
@@ -578,8 +580,9 @@
   {if $control->filters.filter_title}
     <tr>
       <td class="category">{$labels.title}</td>
-      <td><input type="text" name="filter_title"
+      <td><input type="text" name="filter_title" class="form-control"
                              size="{#REQ_NAME_SIZE#}"
+                             placeholder="{$labels.title}"
                              maxlength="{#REQ_NAME_MAXLEN#}"
                              value="{$control->filters.filter_title.selected|escape}" />
       </td>
@@ -590,7 +593,7 @@
     <tr>
       <td class="category">{$labels.status}</td>
       <td>
-         <select class="chosen-select" id="filter_status"
+         <select class="form-control" id="filter_status"
         {if $control->advanced_filter_mode}
                   name="filter_status[]"
                   multiple="multiple"
@@ -610,7 +613,7 @@
     <tr>
       <td class="category">{$labels.req_type}</td>
       <td>
-        <select class="chosen-select" id="filter_type" 
+        <select class="form-control" id="filter_type"  
         {if $control->advanced_filter_mode}
                   name="filter_type[]"
                   multiple="multiple"
@@ -629,7 +632,7 @@
     <tr>
       <td class="category">{$labels.req_spec_type}</td>
       <td>
-        <select class="chosen-select" id="filter_spec_type" 
+        <select class="form-control" id="filter_spec_type" 
         {if $control->advanced_filter_mode}
                   name="filter_spec_type[]"
                   multiple="multiple"
@@ -647,8 +650,9 @@
   {if $control->filters.filter_coverage}
     <tr>
       <td class="category">{$labels.req_expected_coverage}</td>
-      <td><input type="text" name="filter_coverage"
+      <td><input type="text" name="filter_coverage" class="form-control"
                              size="{#COVERAGE_SIZE#}"
+                             placeholder="{$labels.req_expected_coverage}"
                              maxlength="{#COVERAGE_MAXLEN#}"
                              value="{$control->filters.filter_coverage.selected|escape}" />
       </td>
@@ -659,7 +663,7 @@
     <tr>
       <td class="category">{$labels.has_relation_type}</td>
       <td>
-        <select class="chosen-select" id="filter_relation"
+        <select class="form-control" id="filter_relation"
         {if $control->advanced_filter_mode}
                   name="filter_relation[]"
                   multiple="multiple"
@@ -677,8 +681,9 @@
   {if $control->filters.filter_tc_id}
     <tr>
       <td class="category">{$labels.th_tcid}</td>
-      <td><input type="text" name="filter_tc_id"
+      <td><input type="text" name="filter_tc_id" class="form-control"
                              size="{#TC_ID_SIZE#}"
+                             placeholder="{$labels.th_tcid}"
                              maxlength="{#TC_ID_MAXLEN#}"
                              value="{$control->filters.filter_tc_id.selected|escape}" />
       </td>
