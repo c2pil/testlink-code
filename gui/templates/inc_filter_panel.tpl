@@ -17,6 +17,8 @@
  *}
 {include file='bootstrap.inc.tpl'}
 
+<link rel="stylesheet" href="{$basehref}gui/themes/default/css/tl_control_panel.css">
+
 
 
 {lang_get var=labels s='caption_nav_settings, caption_nav_filters, platform, test_plan,
@@ -510,7 +512,7 @@
     
 		<div class="widget-toolbar">
 	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#settings">
-	    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
 	    	</a> 
 	    </div>
     </div>
@@ -553,7 +555,7 @@
     </h4>
     <div class="widget-toolbar">
     	<a id="filter-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
-    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
+    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
     	</a> 
     </div>
   </div>
@@ -565,7 +567,7 @@
   {if $control->filters.filter_doc_id}
     <tr>
       <td class="category">{$labels.document_id}</td>
-      <td><input type="text" name="filter_doc_id"
+      <td><input type="text" name="filter_doc_id" class="form-control"
                              size="{#REQ_DOCID_SIZE#}"
                              maxlength="{#REQ_DOCID_MAXLEN#}"
                              value="{$control->filters.filter_doc_id.selected|escape}" />

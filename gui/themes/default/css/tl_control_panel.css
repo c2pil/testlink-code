@@ -1,0 +1,46 @@
+/* Style for new table filter and widget (see inc_filter_panel.tpl) */
+.widget-header {
+	background-color: #5090C1;
+	background-image: none;
+	color: #fff;
+	position : relative;
+	min-height: 30px;
+	padding-left: 10px;
+}
+
+.widget-header > .widget-title {
+	line-height : 30px;
+	padding: 0;
+	margin: 0;
+	display:inline;
+}
+
+.widget-toolbar {
+	float:right;
+	position : relative;
+	line-height : 29px;
+	padding-right: 5px;
+}
+
+.widget-body {
+	background-color: #fff;
+	font-family: "Open Sans";	
+	border-color:#5090C1;
+	border:1px solid #5090C1;
+	margin: 9px;
+}
+
+.widget-main .table {
+	margin-bottom : 0;
+}
+
+td.category {
+	background-color: #edf3f4;
+	color : #000;
+	font-weight: bold;
+	width: 40%;
+}
+
+span.glyphicon-chevron-down, span.glyphicon-chevron-up {
+	color: #fff;
+}
