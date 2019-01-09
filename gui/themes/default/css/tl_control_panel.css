@@ -54,28 +54,35 @@ td.category {
 	border-bottom : 1px solid #CCC;
 }
 
+.form-validation {
+	margin : 0;
+	padding : 5px;
+	background-color : #EEE;
+	border-top : 1px solid #CCC;
+}
+
 .btn-group-left {
 	float : left;
 	position: relative;
 	vertical-align: middle;
 }
 
-.btn-toolbar input[type="submit"] {
+input[type="submit"] {
 	color : #23527c;
 	margin : 2px;
 }
 
-.btn-toolbar input[type="submit"].btn-white {
+input[type="submit"].btn-white {
 	background-color : #fff;
 	background-image: none;
 }
 
-.btn-toolbar input[type="submit"].btn-round {
+input[type="submit"].btn-round {
 	border-radius: 4px;
 	border-bottom-width : 2px;
 }
 
-.btn-toolbar input[type="submit"].btn-white:hover {
+input[type="submit"].btn-white:hover {
 	background-color : #eaf2f8;
 	border-color: #8aafce;
 	color: #537c9f;
@@ -84,6 +91,10 @@ td.category {
 
 .widget-title span.glyphicon {
 	padding-right : 5px;
+}
+
+input.form-control {
+	margin: 0;
 }
 
 span.glyphicon-chevron-down, span.glyphicon-chevron-up {
