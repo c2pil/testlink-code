@@ -509,7 +509,7 @@
      	</h4>
     
 		<div class="widget-toolbar">
-	    	<a id="settings-toogle" data-toggle="collapse" href="#settings">
+	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#settings">
 	    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
 	    	</a> 
 	    </div>
@@ -552,7 +552,7 @@
     	{$labels.caption_nav_filters}
     </h4>
     <div class="widget-toolbar">
-    	<a id="filter-toogle" data-toggle="collapse" href="#filters">
+    	<a id="filter-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
     		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
     	</a> 
     </div>
