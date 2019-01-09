@@ -57,6 +57,8 @@ function init_args()
 function initializeGui($argsObj)
 {
   $gui = new stdClass();
+  
+  $gui->panel_title = lang_get('th_requirement_feature');
   $gui->tree_title = lang_get('title_navigator'). ' - ' . lang_get('title_req_spec');
   
   $gui->req_spec_manager_url = "lib/requirements/reqSpecView.php";

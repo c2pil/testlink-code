@@ -11,20 +11,33 @@
 
 {lang_get var=labels s='expand_tree, collapse_tree'}
 
-<div class="x-panel-body exec_additional_info" style="padding:3px; padding-left: 9px;border:1px solid #99BBE8;">
 
-<input type="button"
-       value="{$labels.expand_tree}" 
-       id="expand_tree" 
-       name="expand_tree"
-       onclick="tree.expandAll();"
-       style="font-size: 90%;" />
 
-<input type="button"
-       value="{$labels.collapse_tree}"
-       id="collapse_tree"
-       name="collapse_tree"
-       onclick="tree.collapseAll();"
-       style="font-size: 90%;" />
-
+<div class="widget-body">
+	<div class="widget-header">
+	    <h4 class="widget-title">
+	    	<span class="glyphicon glyphicon-folder-open"></span>
+	    	{$gui->tree_title}
+	    </h4>
+	</div>
+	  
+	  <div id="tree" class="widget-main collapse in" >
+	  	<div class="btn-toolbar">
+		  	<div class="btn-group-left">
+		  		<input type="submit" class="btn btn-primary btn-white btn-round"
+			       value="{$labels.expand_tree}" 
+			       id="expand_tree" 
+			       name="expand_tree"
+			       onclick="tree.expandAll();"/>
+			
+				<input type="submit" class="btn btn-primary btn-white btn-round"
+				       value="{$labels.collapse_tree}"
+				       id="collapse_tree"
+				       name="collapse_tree"
+				       onclick="tree.collapseAll();"/>
+		  	</div>
+	  	</div>
+		<div id="tree_div"></div>
+	  </div>
 </div>
+

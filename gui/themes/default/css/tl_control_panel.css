@@ -82,6 +82,10 @@ td.category {
 	background-image: none;
 }
 
+.widget-title span.glyphicon {
+	padding-right : 5px;
+}
+
 span.glyphicon-chevron-down, span.glyphicon-chevron-up {
 	color: #fff;
 }

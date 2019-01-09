@@ -560,41 +560,39 @@
 	    	</a> 
 	    </div>
 	  </div>
-	  
-	  <div class="btn-toolbar">
-	  	<div class="btn-group-left">
-		    <input type="submit" class="btn btn-primary btn-white btn-round"
-		           value="{$labels.btn_apply_filter}"
-		           id="doUpdateTree"
-		           name="doUpdateTree"/>
-		
-		    <input type="submit" class="btn btn-primary btn-white btn-round"
-		           value="{$labels.btn_reset_filters}"
-		           id="doResetTree"
-		           name="btn_reset_filters"/>
-		    
-		    {if $control->filters.filter_custom_fields}
-		      <input type="submit" class="btn btn-primary btn-white btn-round"
-		             value="{$control->filters.filter_custom_fields.btn_label}"
-		             id="doToggleCF" 
-		             name="btn_toggle_cf"/>
-		    {/if}
-		    
-		    {if $control->filter_mode_choice_enabled}
-		      
-		      {if $control->advanced_filter_mode}
-		        <input type="hidden" name="btn_advanced_filters" value="1" />
-		      {/if}
-		      
-		      <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
-		           value="{$control->filter_mode_button_label}"
-		          class="btn btn-primary btn-white btn-round" />
-		        {/if}
-		</div>
-	  </div>
 
 	  <div id="filters" class="widget-main collapse in" >
-		
+		<div class="btn-toolbar">
+		  	<div class="btn-group-left">
+			    <input type="submit" class="btn btn-primary btn-white btn-round"
+			           value="{$labels.btn_apply_filter}"
+			           id="doUpdateTree"
+			           name="doUpdateTree"/>
+			
+			    <input type="submit" class="btn btn-primary btn-white btn-round"
+			           value="{$labels.btn_reset_filters}"
+			           id="doResetTree"
+			           name="btn_reset_filters"/>
+			    
+			    {if $control->filters.filter_custom_fields}
+			      <input type="submit" class="btn btn-primary btn-white btn-round"
+			             value="{$control->filters.filter_custom_fields.btn_label}"
+			             id="doToggleCF" 
+			             name="btn_toggle_cf"/>
+			    {/if}
+			    
+			    {if $control->filter_mode_choice_enabled}
+			      
+			      {if $control->advanced_filter_mode}
+			        <input type="hidden" name="btn_advanced_filters" value="1" />
+			      {/if}
+			      
+			      <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
+			           value="{$control->filter_mode_button_label}"
+			          class="btn btn-primary btn-white btn-round" />
+			        {/if}
+			</div>
+		  </div>
 		  <table class="table table-bordered">
 		
 		  {if $control->filters.filter_doc_id}
@@ -721,12 +719,6 @@
 		      </td>
 		    </tr>
 		  {/if}
-		  
-		  {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
-		    <tr><td>&nbsp;</td></tr>
-		    {$control->filters.filter_custom_fields.items}
-		  {/if}
-		  
 		  </table>
 	  
   	</div> {* filters *}
