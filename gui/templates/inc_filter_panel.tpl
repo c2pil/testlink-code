@@ -549,189 +549,187 @@
 {if $control->display_req_filters}
 
   <div class="widget-body">
-  <div class="widget-header">
-    <h4 class="widget-title">
-    	<span class="glyphicon glyphicon-filter"></span>
-    	{$labels.caption_nav_filters}
-    </h4>
-    <div class="widget-toolbar">
-    	<a id="filter-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
-    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
-    	</a> 
-    </div>
-  </div>
+	  <div class="widget-header">
+	    <h4 class="widget-title">
+	    	<span class="glyphicon glyphicon-filter"></span>
+	    	{$labels.caption_nav_filters}
+	    </h4>
+	    <div class="widget-toolbar">
+	    	<a id="filter-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    	</a> 
+	    </div>
+	  </div>
+	  
+	  <div class="btn-toolbar">
+	  	<div class="btn-group-left">
+		    <input type="submit" class="btn btn-primary btn-white btn-round"
+		           value="{$labels.btn_apply_filter}"
+		           id="doUpdateTree"
+		           name="doUpdateTree"/>
+		
+		    <input type="submit" class="btn btn-primary btn-white btn-round"
+		           value="{$labels.btn_reset_filters}"
+		           id="doResetTree"
+		           name="btn_reset_filters"/>
+		    
+		    {if $control->filters.filter_custom_fields}
+		      <input type="submit" class="btn btn-primary btn-white btn-round"
+		             value="{$control->filters.filter_custom_fields.btn_label}"
+		             id="doToggleCF" 
+		             name="btn_toggle_cf"/>
+		    {/if}
+		    
+		    {if $control->filter_mode_choice_enabled}
+		      
+		      {if $control->advanced_filter_mode}
+		        <input type="hidden" name="btn_advanced_filters" value="1" />
+		      {/if}
+		      
+		      <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
+		           value="{$control->filter_mode_button_label}"
+		          class="btn btn-primary btn-white btn-round" />
+		        {/if}
+		</div>
+	  </div>
 
-  <div id="filters" class="widget-main collapse in" >
-
-  <table class="table table-bordered">
-
-  {if $control->filters.filter_doc_id}
-    <tr>
-      <td class="category">{$labels.document_id}</td>
-      <td><input type="text" name="filter_doc_id" class="form-control"
-      						 placeholder="{$labels.document_id}"
-                             size="{#REQ_DOCID_SIZE#}"
-                             maxlength="{#REQ_DOCID_MAXLEN#}"
-                             value="{$control->filters.filter_doc_id.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-
-  {if $control->filters.filter_title}
-    <tr>
-      <td class="category">{$labels.title}</td>
-      <td><input type="text" name="filter_title" class="form-control"
-                             size="{#REQ_NAME_SIZE#}"
-                             placeholder="{$labels.title}"
-                             maxlength="{#REQ_NAME_MAXLEN#}"
-                             value="{$control->filters.filter_title.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_status}
-    <tr>
-      <td class="category">{$labels.status}</td>
-      <td>
-         <select class="form-control" id="filter_status"
-        {if $control->advanced_filter_mode}
-                  name="filter_status[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-                  name="filter_status">
-        {/if}
-          {html_options options=$control->filters.filter_status.items
-                        selected=$control->filters.filter_status.selected}
-          </select>
-          
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_type}
-    <tr>
-      <td class="category">{$labels.req_type}</td>
-      <td>
-        <select class="form-control" id="filter_type"  
-        {if $control->advanced_filter_mode}
-                  name="filter_type[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-                  name="filter_type">
-        {/if}
-          {html_options options=$control->filters.filter_type.items
-                        selected=$control->filters.filter_type.selected}
-          </select>
-      </td>
-    </tr>
-  {/if}
-
-  {if $control->filters.filter_spec_type}
-    <tr>
-      <td class="category">{$labels.req_spec_type}</td>
-      <td>
-        <select class="form-control" id="filter_spec_type" 
-        {if $control->advanced_filter_mode}
-                  name="filter_spec_type[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-                  name="filter_spec_type">
-        {/if}
-          {html_options options=$control->filters.filter_spec_type.items
-                        selected=$control->filters.filter_spec_type.selected}
-          </select>
-      </td>
-    </tr>
-  {/if}
-
-  {if $control->filters.filter_coverage}
-    <tr>
-      <td class="category">{$labels.req_expected_coverage}</td>
-      <td><input type="text" name="filter_coverage" class="form-control"
-                             size="{#COVERAGE_SIZE#}"
-                             placeholder="{$labels.req_expected_coverage}"
-                             maxlength="{#COVERAGE_MAXLEN#}"
-                             value="{$control->filters.filter_coverage.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_relation}
-    <tr>
-      <td class="category">{$labels.has_relation_type}</td>
-      <td>
-        <select class="form-control" id="filter_relation"
-        {if $control->advanced_filter_mode}
-                  name="filter_relation[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-              name="filter_relation">
-        {/if}
-          {html_options options=$control->filters.filter_relation.items
-                        selected=$control->filters.filter_relation.selected}
-          </select>
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_tc_id}
-    <tr>
-      <td class="category">{$labels.th_tcid}</td>
-      <td><input type="text" name="filter_tc_id" class="form-control"
-                             size="{#TC_ID_SIZE#}"
-                             placeholder="{$labels.th_tcid}"
-                             maxlength="{#TC_ID_MAXLEN#}"
-                             value="{$control->filters.filter_tc_id.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
-    <tr><td>&nbsp;</td></tr>
-    {$control->filters.filter_custom_fields.items}
-  {/if}
-  
-  </table>
-  
-  <div>
-    <input type="submit"
-           value="{$labels.btn_apply_filter}"
-           id="doUpdateTree"
-           name="doUpdateTree"
-           style="font-size: 90%;" />
-
-    <input type="submit"
-           value="{$labels.btn_reset_filters}"
-           id="doResetTree"
-           name="btn_reset_filters"
-           style="font-size: 90%;" />
-    
-    {if $control->filters.filter_custom_fields}
-      <input type="submit"
-             value="{$control->filters.filter_custom_fields.btn_label}"
-             id="doToggleCF"
-             name="btn_toggle_cf"
-             style="font-size: 90%;" />
-    {/if}
-    
-    {if $control->filter_mode_choice_enabled}
-      
-      {if $control->advanced_filter_mode}
-        <input type="hidden" name="btn_advanced_filters" value="1" />
-      {/if}
-      
-      <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
-           value="{$control->filter_mode_button_label}"
-           style="font-size: 90%;"  />
-        {/if}
-
-  </div>
-  
-  </div> {* filters *}
+	  <div id="filters" class="widget-main collapse in" >
+		
+		  <table class="table table-bordered">
+		
+		  {if $control->filters.filter_doc_id}
+		    <tr>
+		      <td class="category">{$labels.document_id}</td>
+		      <td><input type="text" name="filter_doc_id" class="form-control"
+		      						 placeholder="{$labels.document_id}"
+		                             size="{#REQ_DOCID_SIZE#}"
+		                             maxlength="{#REQ_DOCID_MAXLEN#}"
+		                             value="{$control->filters.filter_doc_id.selected|escape}" />
+		      </td>
+		    </tr>
+		  {/if}
+		
+		  {if $control->filters.filter_title}
+		    <tr>
+		      <td class="category">{$labels.title}</td>
+		      <td><input type="text" name="filter_title" class="form-control"
+		                             size="{#REQ_NAME_SIZE#}"
+		                             placeholder="{$labels.title}"
+		                             maxlength="{#REQ_NAME_MAXLEN#}"
+		                             value="{$control->filters.filter_title.selected|escape}" />
+		      </td>
+		    </tr>
+		  {/if}
+		  
+		  {if $control->filters.filter_status}
+		    <tr>
+		      <td class="category">{$labels.status}</td>
+		      <td>
+		         <select class="form-control" id="filter_status"
+		        {if $control->advanced_filter_mode}
+		                  name="filter_status[]"
+		                  multiple="multiple"
+		                  size="{$control->filter_item_quantity}" >
+		        {else}
+		                  name="filter_status">
+		        {/if}
+		          {html_options options=$control->filters.filter_status.items
+		                        selected=$control->filters.filter_status.selected}
+		          </select>
+		          
+		      </td>
+		    </tr>
+		  {/if}
+		  
+		  {if $control->filters.filter_type}
+		    <tr>
+		      <td class="category">{$labels.req_type}</td>
+		      <td>
+		        <select class="form-control" id="filter_type"  
+		        {if $control->advanced_filter_mode}
+		                  name="filter_type[]"
+		                  multiple="multiple"
+		                  size="{$control->filter_item_quantity}" >
+		        {else}
+		                  name="filter_type">
+		        {/if}
+		          {html_options options=$control->filters.filter_type.items
+		                        selected=$control->filters.filter_type.selected}
+		          </select>
+		      </td>
+		    </tr>
+		  {/if}
+		
+		  {if $control->filters.filter_spec_type}
+		    <tr>
+		      <td class="category">{$labels.req_spec_type}</td>
+		      <td>
+		        <select class="form-control" id="filter_spec_type" 
+		        {if $control->advanced_filter_mode}
+		                  name="filter_spec_type[]"
+		                  multiple="multiple"
+		                  size="{$control->filter_item_quantity}" >
+		        {else}
+		                  name="filter_spec_type">
+		        {/if}
+		          {html_options options=$control->filters.filter_spec_type.items
+		                        selected=$control->filters.filter_spec_type.selected}
+		          </select>
+		      </td>
+		    </tr>
+		  {/if}
+		
+		  {if $control->filters.filter_coverage}
+		    <tr>
+		      <td class="category">{$labels.req_expected_coverage}</td>
+		      <td><input type="text" name="filter_coverage" class="form-control"
+		                             size="{#COVERAGE_SIZE#}"
+		                             placeholder="{$labels.req_expected_coverage}"
+		                             maxlength="{#COVERAGE_MAXLEN#}"
+		                             value="{$control->filters.filter_coverage.selected|escape}" />
+		      </td>
+		    </tr>
+		  {/if}
+		  
+		  {if $control->filters.filter_relation}
+		    <tr>
+		      <td class="category">{$labels.has_relation_type}</td>
+		      <td>
+		        <select class="form-control" id="filter_relation"
+		        {if $control->advanced_filter_mode}
+		                  name="filter_relation[]"
+		                  multiple="multiple"
+		                  size="{$control->filter_item_quantity}" >
+		        {else}
+		              name="filter_relation">
+		        {/if}
+		          {html_options options=$control->filters.filter_relation.items
+		                        selected=$control->filters.filter_relation.selected}
+		          </select>
+		      </td>
+		    </tr>
+		  {/if}
+		  
+		  {if $control->filters.filter_tc_id}
+		    <tr>
+		      <td class="category">{$labels.th_tcid}</td>
+		      <td><input type="text" name="filter_tc_id" class="form-control"
+		                             size="{#TC_ID_SIZE#}"
+		                             placeholder="{$labels.th_tcid}"
+		                             maxlength="{#TC_ID_MAXLEN#}"
+		                             value="{$control->filters.filter_tc_id.selected|escape}" />
+		      </td>
+		    </tr>
+		  {/if}
+		  
+		  {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
+		    <tr><td>&nbsp;</td></tr>
+		    {$control->filters.filter_custom_fields.items}
+		  {/if}
+		  
+		  </table>
+	  
+  	</div> {* filters *}
   </div> {* filter_panel *}
 {/if} {* show requirement filters *}
 

@@ -47,6 +47,41 @@ td.category {
 	
 }
 
+.btn-toolbar {
+	margin : 0;
+	padding : 5px;
+	background-color : #EEE;
+	border-bottom : 1px solid #CCC;
+}
+
+.btn-group-left {
+	float : left;
+	position: relative;
+	vertical-align: middle;
+}
+
+.btn-toolbar input[type="submit"] {
+	color : #23527c;
+	margin : 2px;
+}
+
+.btn-toolbar input[type="submit"].btn-white {
+	background-color : #fff;
+	background-image: none;
+}
+
+.btn-toolbar input[type="submit"].btn-round {
+	border-radius: 4px;
+	border-bottom-width : 2px;
+}
+
+.btn-toolbar input[type="submit"].btn-white:hover {
+	background-color : #eaf2f8;
+	border-color: #8aafce;
+	color: #537c9f;
+	background-image: none;
+}
+
 span.glyphicon-chevron-down, span.glyphicon-chevron-up {
 	color: #fff;
 }
