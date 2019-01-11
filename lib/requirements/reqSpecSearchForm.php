@@ -27,7 +27,7 @@ $args = init_args();
 $gui = new stdClass();
 $gui->tcasePrefix = '';
  
-$gui->mainCaption = lang_get('testproject') . " " . $args->tprojectName;
+$gui->mainCaption =lang_get('href_search_req_spec').' ('.lang_get('testproject') . " " . $args->tprojectName.')';
 
 $enabled = 1;
 $no_filters = null;

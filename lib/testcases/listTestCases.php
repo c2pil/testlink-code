@@ -41,7 +41,7 @@ function initializeGui(&$dbHandler, &$control)
 {
   $gui = new stdClass();
   $gui->feature = $control->args->feature;
-  $gui->treeHeader = lang_get('title_navigator'). ' - ' . lang_get('title_test_spec');
+  $gui->treeHeader = lang_get('href_req_assign');
 
   $lblkey = (config_get('testcase_reorder_by') == 'NAME') ? '_alpha' : '_externalid';
   $gui->btn_reorder_testcases = lang_get('btn_reorder_testcases' . $lblkey);
@@ -55,5 +55,6 @@ function initializeGui(&$dbHandler, &$control)
                                            'assignReqs' => false);
 
   $gui->menuUrl = $feature_path[$gui->feature];
+  $gui->tree_title = lang_get('title_navigator'). ' - ' . lang_get('title_test_spec');
   return $gui;
 }

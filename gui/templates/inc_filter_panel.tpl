@@ -79,21 +79,30 @@
 </style>
 
 {if $control->display_settings}
-  <div id="settings_panel">
-    <div class="x-panel-header x-unselectable" style="overflow: visible;">
-      {$labels.caption_nav_settings}
+<div id="settings_panel" class="widget-body">
+    <div class="widget-header">
+     	<h4 class="widget-title">
+     		<span class="glyphicon glyphicon-wrench"></span>
+     		{$labels.caption_nav_settings}
+     	</h4>
+    
+		<div class="widget-toolbar">
+	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#settings">
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    	</a> 
+	    </div>
     </div>
 
-    <div id="settings" class="x-panel-body" style="padding-top: 3px;overflow: visible;">
+    <div id="settings" class="widget-main collapse in">
       <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
 
-      <table class="smallGrey" style="width:98%;overflow: visible;">
+      <table class="table table-bordered">
 
       {if $control->settings.setting_testplan}
         <tr>
-          <td>{$labels.test_plan}</td>
+          <td class="category">{$labels.test_plan}</td>
           <td>
-            <select class="chosen-select" name="setting_testplan" onchange="this.form.submit()">
+            <select class="form-control" name="setting_testplan" onchange="this.form.submit()">
             {html_options options=$control->settings.setting_testplan.items
                           selected=$control->settings.setting_testplan.selected}
             </select>
@@ -105,8 +114,8 @@
         {$platformID=$control->settings.setting_platform.selected}
         <tr>
           <td>{$labels.platform}</td>
-          <td>
-            <select name="setting_platform" class="chosen-select" onchange="this.form.submit()">
+          <td class="category">
+            <select name="setting_platform" class="form-control" onchange="this.form.submit()">
             {html_options options=$control->settings.setting_platform.items
                           selected=$control->settings.setting_platform.selected}
             </select>
@@ -116,9 +125,9 @@
 
       {if $control->settings.setting_build}
         <tr>
-          <td>{$control->settings.setting_build.label}</td>
+          <td class="category">{$control->settings.setting_build.label}</td>
           <td>
-            <select name="setting_build" class="chosen-select" onchange="this.form.submit()">
+            <select name="setting_build" class="form-control" onchange="this.form.submit()">
             {html_options options=$control->settings.setting_build.items
                           selected=$control->settings.setting_build.selected}
             </select>
@@ -128,9 +137,9 @@
 
 	  {if $control->settings.setting_testsgroupby}
 		<tr>
-			<td>{$labels.test_grouped_by}</td>
+			<td class="category">{$labels.test_grouped_by}</td>
 			<td>
-				<select name="setting_testsgroupby" class="chosen-select" onchange="this.form.submit()">
+				<select name="setting_testsgroupby" class="form-control" onchange="this.form.submit()">
 				{html_options options=$control->settings.setting_testsgroupby.items
 							  selected=$control->settings.setting_testsgroupby.selected}
 				 </select>
@@ -140,32 +149,32 @@
 	  
       {if $control->settings.setting_refresh_tree_on_action}
         <tr>
-            <td>{$labels.do_auto_update}</td>
+            <td class="category">{$labels.do_auto_update}</td>
             <td>
                <input type="hidden" 
                       id="hidden_setting_refresh_tree_on_action"
                       name="hidden_setting_refresh_tree_on_action" 
                       value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
 
-               <input type="checkbox"
+               <input type="checkbox" class="from-check-input"
                        id="cbsetting_refresh_tree_on_action"
                        name="setting_refresh_tree_on_action"
                        {if $control->settings.setting_refresh_tree_on_action.selected} checked {/if}
-                       style="font-size: 90%;" onclick="this.form.submit()"/>
+                       onclick="this.form.submit()"/>
             </td>
           </tr>
       {/if}
 	  
 	  {if $control->settings.setting_get_parent_child_relation}
         <tr>
-            <td>{$labels.parent_child_relation}</td>
+            <td class="category">{$labels.parent_child_relation}</td>
             <td>
 				<input type="hidden" 
                       id="hidden_setting_get_parent_child_relation"
                       name="hidden_setting_get_parent_child_relation" 
                       value="{$control->settings.setting_get_parent_child_relation.hidden_setting_get_parent_child_relation}" />
 			
-				<input type="checkbox"
+				<input type="checkbox" class="form-control"
 					   id="cbsetting_get_parent_child_relation"
 					   name="setting_get_parent_child_relation"
 					   {if $control->settings.setting_get_parent_child_relation.selected} checked {/if}
@@ -174,12 +183,9 @@
           </tr>
       {/if}
 
-      {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button}
+      {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button} 
         <tr>
-          <td>&nbsp;</td><td>&nbsp;</td>
-        </tr>   
-        <tr>
-          <td>&nbsp;</td>
+          <td class="category">&nbsp;</td>
           <td>
             {if $control->draw_export_testplan_button}
             <image src="{$tlImages.export}" title="{$labels.btn_export_testplan_tree}"
@@ -213,20 +219,64 @@
 
 {if $control->display_filters}
 
-  <div id="filter_panel">
-    <div class="x-panel-header x-unselectable">
-      {$labels.caption_nav_filters}
+  <div id="filter_panel" class="widget-body">
+  	<div class="widget-header">
+     	<h4 class="widget-title">
+     		<span class="glyphicon glyphicon-wrench"></span>
+     		{$labels.caption_nav_filters}
+     	</h4>
+    
+		<div class="widget-toolbar">
+	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    	</a> 
+	    </div>
     </div>
 
-  <div id="filters" class="x-panel-body exec_additional_info" style="padding-top: 3px;overflow: visible;">
+  <div id="filters" class="widget-main collapse in">
+    <div class="btn-toolbar">
+		<div class="btn-group-left">
+		 	<input type="submit"
+	             value="{$labels.btn_apply_filter}"
+	             id="doUpdateTree"
+	             name="doUpdateTree"
+	             class="btn btn-primary btn-round btn-white" />
+
+		      <input type="submit"
+		             value="{$labels.btn_reset_filters}"
+		             id="doResetTree"
+		             name="btn_reset_filters"
+		             class="btn btn-primary btn-round btn-white"/>
+		      
+		      {if $control->filters.filter_custom_fields}
+		      <input type="submit"
+		             value="{$control->filters.filter_custom_fields.btn_label}"
+		             id="doToggleCF"
+		             name="btn_toggle_cf"
+		             class="btn btn-primary btn-round btn-white" />
+		      {/if}
+		      
+		      {if $control->filter_mode_choice_enabled}
+		      
+		        {if $control->advanced_filter_mode}
+		          <input type="hidden" name="btn_advanced_filters" value="1" />
+		        {/if}
+		      
+		        <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
+		             value="{$control->filter_mode_button_label}"
+		             class="btn btn-primary btn-round btn-white" />
+		          {/if}
+		</div>
+	</div>
     
-    <table class="smallGrey" style="width:98%;">
+    
+    <table class="table table-ordered" >
 
     {if $control->filters.filter_tc_id}
       <tr>
-        <td>{$labels.th_tcid}</td>
-        <td><input type="text" name="filter_tc_id"
-                               size="{#TC_ID_SIZE#}"
+        <td class="category">{$labels.th_tcid}</td>
+        <td><input type="text" name="filter_tc_id" class="form-control"
+                               size="{#TC_ID_SIZE#}" placeholder="{$labels.th_tcid}"
                                maxlength="{#TC_ID_MAXLEN#}"
                                value="{$control->filters.filter_tc_id.selected|escape}" />
         </td>
@@ -235,9 +285,9 @@
 
     {if $control->filters.filter_testcase_name}
       <tr>
-        <td>{$labels.tc_title}</td>
-        <td><input type="text" name="filter_testcase_name"
-                               size="{#TC_TITLE_SIZE#}"
+        <td class="category">{$labels.tc_title}</td>
+        <td><input type="text" name="filter_testcase_name" class="form-control"
+                               size="{#TC_TITLE_SIZE#}" placeholder="{$labels.tc_title}"
                                maxlength="{#TC_TITLE_MAXLEN#}"
                                value="{$control->filters.filter_testcase_name.selected|escape}" />
         </td>
@@ -246,9 +296,9 @@
 
     {if $control->filters.filter_toplevel_testsuite}
       <tr>
-          <td>{$labels.testsuite}</td>
+          <td class="category">{$labels.testsuite}</td>
           <td>
-            <select class="chosen-select" name="filter_toplevel_testsuite">
+            <select class="form-control"  name="filter_toplevel_testsuite">
               {html_options options=$control->filters.filter_toplevel_testsuite.items
                             selected=$control->filters.filter_toplevel_testsuite.selected}
             </select>
@@ -258,42 +308,41 @@
 
     {if $control->filters.filter_keywords}
       <tr>
-        <td>{$labels.keyword}</td>
-        <td><select class="chosen-select" name="filter_keywords[]"
+        <td class="category">{$labels.keyword}</td>
+        <td><select class="form-control" name="filter_keywords[]"
                     title="{$labels.keywords_filter_help}"
                     multiple="multiple"
                     size="{$control->filters.filter_keywords.size}">
             {html_options options=$control->filters.filter_keywords.items
                           selected=$control->filters.filter_keywords.selected}
           </select>
-      <div>
-      {html_radios name='filter_keywords_filter_type'
-                     options=$control->filters.filter_keywords.filter_keywords_filter_type.items
-                     selected=$control->filters.filter_keywords.filter_keywords_filter_type.selected}
-      </div>
-      </td>
+	      <div>
+	      {html_radios name='filter_keywords_filter_type'
+	                     options=$control->filters.filter_keywords.filter_keywords_filter_type.items
+	                     selected=$control->filters.filter_keywords.filter_keywords_filter_type.selected}
+	      </div>
+      	</td>
       </tr>
-      <tr><td>&nbsp;</td></tr>
     {/if}
 
     {* TICKET 4353: added filter for active/inactive test cases *}
     {if isset($control->filters.filter_active_inactive) && $control->filters.filter_active_inactive}
       <tr>
-        <td>{$labels.filter_active_inactive}</td>
-          <td>
-            <select name="filter_active_inactive">
+        <td class="category">{$labels.filter_active_inactive}</td>
+        <td>
+            <select name="filter_active_inactive" class="form-control">
                    {html_options options=$control->filters.filter_active_inactive.items
                    selected=$control->filters.filter_active_inactive.selected}
             </select>
-          </td>
+        </td>
       </tr>
     {/if}
 
     {if $control->filters.filter_workflow_status}
       <tr>
-        <td>{$labels.status}</td>
+        <td class="category">{$labels.status}</td>
         <td>
-          <select class="chosen-select" id="filter_workflow_status" 
+          <select class="form-control" id="filter_workflow_status" 
           {if $control->advanced_filter_mode}
              name="filter_workflow_status[]" multiple="multiple"
              size="{$control->filter_item_quantity}">
@@ -309,9 +358,9 @@
             
     {if $control->filters.filter_importance}
       <tr>
-        <td>{$labels.importance}</td>
+        <td class="category">{$labels.importance}</td>
         <td>
-          <select class="chosen-select" id="filter_importance"
+          <select class="form-control" id="filter_importance"
           {if $control->advanced_filter_mode}
              name="filter_importance[]" multiple="multiple"
              size="{$control->filters.filter_importance.size}">
@@ -327,12 +376,12 @@
             
     {if $control->filters.filter_priority}
       <tr>
-        <td>{$labels.priority}</td>
+        <td class="category">{$labels.priority}</td>
         <td>
-          <select class="chosen-select" name="filter_priority">
-          <option value="">{$control->option_strings.any}</option>
-          {html_options options=$gsmarty_option_importance
-                                  selected=$control->filters.filter_priority.selected}
+          <select class="form-control" name="filter_priority">
+	          <option value="">{$control->option_strings.any}</option>
+	          {html_options options=$gsmarty_option_importance
+	                                  selected=$control->filters.filter_priority.selected}
           </select>
         </td>
       </tr>
@@ -340,23 +389,23 @@
 
     {if $control->filters.filter_execution_type}
       <tr>
-        <td>{$labels.execution_type}</td>
-          <td>
-        <select class="chosen-select" name="filter_execution_type">
-          {html_options options=$control->filters.filter_execution_type.items
-                        selected=$control->filters.filter_execution_type.selected}
-          </select>
+        <td class="category">{$labels.execution_type}</td>
+        <td>
+	        <select class="form-control" name="filter_execution_type">
+	          {html_options options=$control->filters.filter_execution_type.items
+	                        selected=$control->filters.filter_execution_type.selected}
+	          </select>
         </td>
       </tr>
     {/if}
 
     {if $control->filters.filter_assigned_user}
     <tr>
-      <td>{$labels.filter_owner}<img src="{$tlImages.info_small}" title="{$labels.tester_works_with_settings}"></td>
+      <td class="category">{$labels.filter_owner}<img src="{$tlImages.info_small}" title="{$labels.tester_works_with_settings}"></td>
       <td>
 
       {if $control->advanced_filter_mode}
-        <select class="chosen-select" name="filter_assigned_user[]"
+        <select class="form-control" name="filter_assigned_user[]"
                 id="filter_assigned_user"
                 multiple="multiple"
                 size="{$control->filter_item_quantity}" >
@@ -364,7 +413,7 @@
                       selected=$control->filters.filter_assigned_user.selected}
         </select>
         {else}
-        <select class="chosen-select" name="filter_assigned_user" 
+        <select class="form-control" name="filter_assigned_user" 
                 id="filter_assigned_user"
                 onchange="javascript: triggerAssignedBox('filter_assigned_user',
                                                                'filter_assigned_user_include_unassigned',
@@ -377,7 +426,7 @@
 
         <br/>
         <br />
-        <input type="checkbox"
+        <input type="checkbox" class="from-check-input"
                id="filter_assigned_user_include_unassigned"
                name="filter_assigned_user_include_unassigned"
                    value="1"
@@ -389,14 +438,14 @@
       {/if}
 
       </td>
-    </tr>
+     </tr>
       {/if}
 
     {* 20131226 *}
     {if $control->filters.filter_bugs}
       <tr>
-        <td>{$labels.bugs_on_context}</td>
-        <td><input type="text" name="filter_bugs" size="{#BUGS_FILTER_SIZE#}"
+        <td class="category">{$labels.bugs_on_context}</td>
+        <td><input type="text" class="form-control" name="filter_bugs" size="{#BUGS_FILTER_SIZE#}"
                                maxlength="{#BUGS_FILTER_MAXLEN#}"
                                placeholder="{$labels.hint_list_of_bugs}"
                                value="{$control->filters.filter_bugs.selected|escape}" />
@@ -419,9 +468,9 @@
     <tr><td>&nbsp;</td></tr> {* empty row for a little separation *}
 
         <tr>
-        <td>{$labels.filter_result}</td>
+        <td class="category">{$labels.filter_result}</td>
         <td>
-        <select class="chosen-select" id="filter_result_result" 
+        <select class="form-control" id="filter_result_result" 
         {if $control->advanced_filter_mode}
               name="filter_result_result[]" multiple="multiple"
                 size="{$control->filter_item_quantity}">
@@ -435,9 +484,9 @@
       </tr>
 
       <tr>
-        <td>{$labels.filter_on}</td>
+        <td class="category">{$labels.filter_on}</td>
         <td>
-            <select class="chosen-select" name="filter_result_method" id="filter_result_method"
+            <select class="form-control" name="filter_result_method" id="filter_result_method"
                     onchange="javascript: triggerBuildChooser('filter_result_build_row',
                                                             'filter_result_method',
                   {$control->configuration->filter_methods.status_code.specific_build});">
@@ -448,8 +497,8 @@
       </tr>
 
       <tr id="filter_result_build_row">
-        <td>{$labels.build}</td>
-        <td><select class="chosen-select" id="filter_result_build" name="filter_result_build">
+        <td class="category">{$labels.build}</td>
+        <td><select class="form-control" id="filter_result_build" name="filter_result_build">
           {html_options options=$control->filters.filter_result.filter_result_build.items
                         selected=$control->filters.filter_result.filter_result_build.selected}
           </select>
@@ -459,40 +508,6 @@
   {/if}
 
     </table>
-
-    <div>
-      <input type="submit"
-             value="{$labels.btn_apply_filter}"
-             id="doUpdateTree"
-             name="doUpdateTree"
-             style="font-size: 90%;" />
-
-      <input type="submit"
-             value="{$labels.btn_reset_filters}"
-             id="doResetTree"
-             name="btn_reset_filters"
-             style="font-size: 90%;" />
-      
-      {if $control->filters.filter_custom_fields}
-      <input type="submit"
-             value="{$control->filters.filter_custom_fields.btn_label}"
-             id="doToggleCF"
-             name="btn_toggle_cf"
-             style="font-size: 90%;" />
-      {/if}
-      
-      {if $control->filter_mode_choice_enabled}
-      
-        {if $control->advanced_filter_mode}
-          <input type="hidden" name="btn_advanced_filters" value="1" />
-        {/if}
-      
-        <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
-             value="{$control->filter_mode_button_label}"
-             style="font-size: 90%;"  />
-          {/if}
-          
-    </div>
 
   </div> {* filters *}
 
