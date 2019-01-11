@@ -72,7 +72,6 @@ $tplEngine = new TLSmarty();
 $tplEngine->assign('gui', $gui);
 $tplEngine->display('main.tpl');
 
-
 /**
  *
  *
@@ -99,6 +98,7 @@ function initEnv()
                      "tplan_id={$args->tplan_id}&" .
                      "updateMainPage=1" . $sso;
   $gui->logout = 'logout.php?viewer=' . $sso;
+  $gui->menuframe = "lib/general/mainMenu.php";
 
   return array($args,$gui);
 }

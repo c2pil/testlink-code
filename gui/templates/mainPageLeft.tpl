@@ -88,12 +88,11 @@
 
 
 <div class="vertical_menu" style="float: left; margin:0px 10px 10px 0px; width: 320px;">
-
   {if $display_left_block_top}
     {if isset($gui->plugins.EVENT_LEFTMENU_TOP)}
       <div class="list-group" style="{$divStyle}" id="plugin_left_top">
         {foreach from=$gui->plugins.EVENT_LEFTMENU_TOP item=menu_item}
-		  <a href="{$menu_item['href']}" class="list-group-item" style="{$aStyle}">{$menu_item['label']}</a>
+		  <a href="{$menu_item['href']}" class="list-group-item" target="mainframe" style="{$aStyle}">{$menu_item['label']}</a>
           <br/>
         {/foreach}
       </div>
@@ -101,17 +100,18 @@
   {/if}
 
 {if $display_left_block_2}
+
   <div class="list-group" style="{$divStyle}">
     {if $gui->grants.cfield_management == "yes"}
-      <a href="{$cfieldsView}" class="list-group-item" style="{$aStyle}">{$labels.href_cfields_management}</a>
+      <a href="{$cfieldsView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_cfields_management}</a>
     {/if}
 
     {if $gui->grants.issuetracker_management || $gui->grants.issuetracker_view}
-      <a href="{$issueTrackerView}" class="list-group-item" style="{$aStyle}">{$labels.href_issuetracker_management}</a>
+      <a href="{$issueTrackerView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_issuetracker_management}</a>
     {/if}
 
     {if $gui->grants.codetracker_management || $gui->grants.codetracker_view}
-      <a href="{$codeTrackerView}" class="list-group-item" style="{$aStyle}">
+      <a href="{$codeTrackerView}" class="list-group-item" target="mainframe" style="{$aStyle}">
       {$labels.href_codetracker_management}</a>
     {/if}
   </div>
@@ -120,28 +120,28 @@
 {if $display_left_block_1}
   <div class="list-group" style="{$divStyle}">
     {if $gui->grants.project_edit == "yes"}
-      <a href="{$projectView}" class="list-group-item" style="{$aStyle}">
+      <a href="{$projectView}" class="list-group-item" target="mainframe" style="{$aStyle}">
         {$labels.href_tproject_management}</a>
     {/if}
 
     {if $gui->grants.tproject_user_role_assignment == "yes"}
-      <a href="{$usersAssign}{$gui->testprojectID}" class="list-group-item" style="{$aStyle}">{$labels.href_assign_user_roles}</a>
+      <a href="{$usersAssign}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_assign_user_roles}</a>
     {/if}
     
     {if $gui->grants.cfield_management == "yes"}
-      <a href="{$cfAssignment}" class="list-group-item" style="{$aStyle}">{$labels.href_cfields_tproject_assign}</a>
+      <a href="{$cfAssignment}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_cfields_tproject_assign}</a>
     {/if}
     
     {if $gui->grants.keywords_view == "yes"}
-      <a href="{$keywordsAssignment}{$gui->testprojectID}" class="list-group-item" style="{$aStyle}">{$labels.href_keywords_manage}</a>
+      <a href="{$keywordsAssignment}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_keywords_manage}</a>
     {/if}
 
     {if $gui->grants.platform_management || $gui->grants.platform_view}
-      <a href="{$platformsView}" class="list-group-item" style="{$aStyle}">{$labels.href_platform_management}</a>
+      <a href="{$platformsView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_platform_management}</a>
     {/if}
     
     {if $gui->grants.project_inventory_view || $gui->grants.project_inventory_management}
-       <a href="{$inventoryView}" class="list-group-item" style="{$aStyle}">{$labels.href_inventory_management}</a>
+       <a href="{$inventoryView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_inventory_management}</a>
     {/if}
 
 
@@ -151,24 +151,24 @@
 {if $display_left_block_3}
   <div class="list-group" style="{$divStyle}">
        {if $gui->grants.reqs_view == "yes" || $gui->grants.reqs_edit == "yes" }
-          <a href="{$gui->launcher}?feature=reqSpecMgmt" class="list-group-item" style="{$aStyle}">{$labels.href_req_spec}</a>
-          <a href="{$reqOverView}" class="list-group-item" style="{$aStyle}">{$labels.href_req_overview}</a>
-          <a href="{$gui->launcher}?feature=printReqSpec" class="list-group-item" style="{$aStyle}">{$labels.href_print_req}</a>
-          <a href="{$gui->launcher}?feature=searchReq" class="list-group-item" style="{$aStyle}">{$labels.href_search_req}</a>
-          <a href="{$gui->launcher}?feature=searchReqSpec" class="list-group-item" style="{$aStyle}">{$labels.href_search_req_spec}</a>
+          <a href="{$gui->launcher}?feature=reqSpecMgmt" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_spec}</a>
+          <a href="{$reqOverView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_overview}</a>
+          <a href="{$gui->launcher}?feature=printReqSpec" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_print_req}</a>
+          <a href="{$gui->launcher}?feature=searchReq" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_search_req}</a>
+          <a href="{$gui->launcher}?feature=searchReqSpec" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_search_req_spec}</a>
        {/if}
        {if $gui->grants.req_tcase_link_management == "yes"}
-          <a href="{$assignReq}" class="list-group-item" style="{$aStyle}">{$labels.href_req_assign}</a>
+          <a href="{$assignReq}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_assign}</a>
        {/if}
        {if $gui->grants.monitor_req == "yes"}
-          <a href="{$reqMonOverView}{$gui->testprojectID}" class="list-group-item" style="{$aStyle}">{$labels.href_req_monitor_overview}</a>
+          <a href="{$reqMonOverView}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_monitor_overview}</a>
       {/if}
   </div>
 {/if}
 
 {if $display_left_block_4}
     <div class="list-group" style="{$divStyle}">
-      <a href="{$gui->launcher}?feature=editTc" class="list-group-item" style="{$aStyle}">
+      <a href="{$gui->launcher}?feature=editTc" class="list-group-item" target="mainframe" style="{$aStyle}">
         {if $gui->grants.modify_tc eq "yes"}
           {lang_get s='href_edit_tc'}
        {else}
@@ -176,17 +176,17 @@
        {/if}
       </a>
       {if $gui->hasTestCases}
-        <a href="{$tcSearch}{$gui->testprojectID}" class="list-group-item" style="{$aStyle}">{$labels.href_search_tc}</a>
+        <a href="{$tcSearch}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_search_tc}</a>
       {/if}    
       
     {if $gui->hasKeywords}  
       {if $gui->grants.keyword_assignment == "yes"}
-            <a href="{$gui->launcher}?feature=keywordsAssign" class="list-group-item" style="{$aStyle}">{$labels.href_keywords_assign}</a>
+            <a href="{$gui->launcher}?feature=keywordsAssign" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_keywords_assign}</a>
       {/if}
     {/if}
       
      {if $gui->grants.modify_tc eq "yes"}
-       <a href="{$tcCreatedUser}{$gui->testprojectID}" class="list-group-item" style="{$aStyle}">{$labels.link_report_test_cases_created_per_user}</a>
+       <a href="{$tcCreatedUser}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.link_report_test_cases_created_per_user}</a>
      {/if}
     
     </div>
@@ -197,7 +197,7 @@
 	  <br/>
 	  <div class="list-group" style="{$divStyle}" id="plugin_left_bottom">
         {foreach from=$gui->plugins.EVENT_LEFTMENU_BOTTOM item=menu_item}
-		  <a href="{$menu_item['href']}" class="list-group-item" style="{$aStyle}">{$menu_item['label']}</a>
+		  <a href="{$menu_item['href']}" class="list-group-item" target="mainframe" style="{$aStyle}">{$menu_item['label']}</a>
         {/foreach}
       </div>
     {/if}  

@@ -23,7 +23,7 @@ title bar + menu
 <div class="menu_title">
 
   <span class="bold">{$gui->whoami|escape}</span>
-  <span>&nbsp;&nbsp;&nbsp;<a href='lib/usermanagement/userInfo.php' target="mainframe" accesskey="i"
+  <span>&nbsp;&nbsp;&nbsp;<a href='lib/usermanagement/userInfo.php' target="mainMenu" accesskey="i"
           tabindex="6"><img src="{$tlImages.account}" title="{$labels.title_edit_personal_data}"></a>
         <a href="{$gui->logout}" target="_parent" accesskey="q">
         <img src="{$tlImages.logout}" title="{$labels.link_logout}"></a>
@@ -49,7 +49,7 @@ title bar + menu
 
 {if $gui->tprojectID}
   {if $gui->grants->view_testcase_spec == "yes"}
-    <form style="display:inline" target="mainframe" name="searchTC" id="searchTC"
+    <form style="display:inline" target="mainMenu" name="searchTC" id="searchTC"
           action="lib/testcases/archiveData.php" method="get">
     <input style="font-size: 80%; position:relative; top:-1px;" type="text" size="{$gui->searchSize}"
            title="{$labels.search_testcase}" name="targetTestCase" value="{$gui->tcasePrefix}" />
@@ -69,7 +69,7 @@ title bar + menu
   {/if}
 
   {if $gui->grants->view_testcase_spec == "yes"}
-    <form style="display:inline" target="mainframe" name="fullTextSearch" id="fullTextSearch"
+    <form style="display:inline" target="mainMenu" name="fullTextSearch" id="fullTextSearch"
           action="lib/search/searchMgmt.php" method="post">
     <input type="hidden" name="caller" value="navBar">
     <input type="hidden" name="tproject_id" value="{$gui->tproject_id}">
@@ -97,7 +97,7 @@ title bar + menu
   
 {if $gui->updateMainPage == 1}
   <script type="text/javascript">
-  parent.mainframe.location = "{$basehref}lib/general/mainPage.php";
+  parent.mainMenu.location = "{$basehref}lib/general/mainMenu.php";
   </script>
 {/if}
 

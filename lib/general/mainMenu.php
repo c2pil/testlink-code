@@ -3,7 +3,7 @@
  * TestLink Open Source Project - http://testlink.sourceforge.net/ 
  * This script is distributed under the GNU General Public License 2 or later. 
  *
- * @filesource	mainPage.php
+ * @filesource	mainMenu.php
  * 
  * Page has two functions: navigation and select Test Plan
  *
@@ -182,7 +182,7 @@ foreach(array('EVENT_LEFTMENU_TOP',
   }
 }
 
-$tplKey = 'mainPage';
+$tplKey = 'mainMenu';
 $tpl = $tplKey . '.tpl';
 $tplCfg = config_get('tpl');
 if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
