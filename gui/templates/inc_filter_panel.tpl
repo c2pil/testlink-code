@@ -95,6 +95,36 @@
 
     <div id="settings" class="widget-main collapse in">
       <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
+      
+      {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button}
+		  <div class="btn-toolbar">
+			<div class="btn-group-left">
+				{if $control->draw_export_testplan_button}
+					<input type="submit" class="btn btn-primary btn-round btn-white" value="{$labels.btn_export_testplan_tree}" onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
+	                                                           '{$control->settings.setting_testplan.selected}','{$platformID}',
+	                                                           '{$control->settings.setting_build.selected}','tree',
+	                                                           '{$control->form_token}');"/>
+					
+	                                                      
+	            <input type="submit" class="btn btn-primary btn-round btn-white" value="{$labels.btn_export_testplan_tree_for_results}"
+	                   onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
+	                                                           '{$control->settings.setting_testplan.selected}',
+	                                                           '{$platformID}',
+	                                                           '{$control->settings.setting_build.selected}','4results',
+	                                                           '{$control->form_token}');" />
+	
+	            &nbsp;                                               
+	            {/if}
+	            {if $control->draw_import_xml_results_button}
+	            <input type="submit" class="btn btn-primary btn-round btn-white" value="{$labels.import_xml_results}"
+	                   onclick="javascript: openImportResult('import_xml_results',{$session.testprojectID},
+	                                                           {$control->settings.setting_testplan.selected},
+	                                                           {$control->settings.setting_build.selected},{$platformID});" />
+	            {/if}
+				</div>
+			</div>
+		{/if}
+
 
       <table class="table table-bordered">
 
@@ -174,44 +204,15 @@
                       name="hidden_setting_get_parent_child_relation" 
                       value="{$control->settings.setting_get_parent_child_relation.hidden_setting_get_parent_child_relation}" />
 			
-				<input type="checkbox" class="form-control"
+				<input type="checkbox" class="from-check-input"
 					   id="cbsetting_get_parent_child_relation"
 					   name="setting_get_parent_child_relation"
 					   {if $control->settings.setting_get_parent_child_relation.selected} checked {/if}
-					   style="font-size: 90%;" onclick="this.form.submit()"/>
+					   onclick="this.form.submit()"/>
             </td>
           </tr>
       {/if}
 
-      {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button} 
-        <tr>
-          <td class="category">&nbsp;</td>
-          <td>
-            {if $control->draw_export_testplan_button}
-            <image src="{$tlImages.export}" title="{$labels.btn_export_testplan_tree}"
-                   onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
-                                                           '{$control->settings.setting_testplan.selected}','{$platformID}',
-                                                           '{$control->settings.setting_build.selected}','tree',
-                                                           '{$control->form_token}');" />
-            &nbsp;                                               
-            <image src="{$tlImages.export_for_results_import}" title="{$labels.btn_export_testplan_tree_for_results}"
-                   onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
-                                                           '{$control->settings.setting_testplan.selected}',
-                                                           '{$platformID}',
-                                                           '{$control->settings.setting_build.selected}','4results',
-                                                           '{$control->form_token}');" />
-
-            &nbsp;                                               
-            {/if}
-            {if $control->draw_import_xml_results_button}
-            <image src="{$tlImages.import_results}" title="{$labels.import_xml_results}"
-                   onclick="javascript: openImportResult('import_xml_results',{$session.testprojectID},
-                                                           {$control->settings.setting_testplan.selected},
-                                                           {$control->settings.setting_build.selected},{$platformID});" />
-            {/if}
-          </td>
-        </tr>
-      {/if}
       </table>
     </div> {* settings *}
   </div> {* settings_panel *}
@@ -425,14 +426,13 @@
         </select>
 
         <br/>
-        <br />
         <input type="checkbox" class="from-check-input"
                id="filter_assigned_user_include_unassigned"
                name="filter_assigned_user_include_unassigned"
                    value="1"
                    {if $control->filters.filter_assigned_user.filter_assigned_user_include_unassigned}
                       checked="checked"
-                   {/if}
+                   {/if} 
             />
         {$labels.include_unassigned_testcases}
       {/if}
@@ -470,16 +470,16 @@
         <tr>
         <td class="category">{$labels.filter_result}</td>
         <td>
-        <select class="form-control" id="filter_result_result" 
-        {if $control->advanced_filter_mode}
-              name="filter_result_result[]" multiple="multiple"
-                size="{$control->filter_item_quantity}">
-        {else}
-              name="filter_result_result">
-        {/if}
-        {html_options options=$control->filters.filter_result.filter_result_result.items
-                      selected=$control->filters.filter_result.filter_result_result.selected}
-        </select>
+	        <select class="form-control" id="filter_result_result" 
+	        {if $control->advanced_filter_mode}
+	              name="filter_result_result[]" multiple="multiple"
+	                size="{$control->filter_item_quantity}">
+	        {else}
+	              name="filter_result_result">
+	        {/if}
+	        {html_options options=$control->filters.filter_result.filter_result_result.items
+	                      selected=$control->filters.filter_result.filter_result_result.selected}
+	        </select>
         </td>
       </tr>
 

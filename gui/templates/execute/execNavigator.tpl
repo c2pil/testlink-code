@@ -41,12 +41,7 @@ Ext.onReady(function() {
         }
       }]
     });
-  
-  var filtersPanel = new Ext.ux.CollapsiblePanel({
-      id: 'tl_exec_settings',
-      applyTo: 'filter_panel'
-    });
-
+ 
   // CRITIC - this has to be done NOT ALWAYS but according operation
   // Example: after a Test Execution is WRONG
   // Basically this has to be done ONLY if submit has been done on LEFT PANE TREE

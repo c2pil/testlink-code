@@ -85,6 +85,7 @@ function initializeGui(&$dbH,&$control) {
   $dummy = config_get('execution_filter_methods');
   $gui->lastest_exec_method = $dummy['status_code']['latest_execution'];
   $gui->pageTitle = lang_get('href_execute_test');
+  $gui->tree_title = lang_get('title_navigator'). ' - ' . lang_get('title_test_spec');
 
   $grants = checkAccessToExec($dbH,$control);
 
