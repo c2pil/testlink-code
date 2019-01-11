@@ -13,6 +13,8 @@
 require_once('../../config.inc.php');
 require_once("common.php");
 require_once("treeMenu.inc.php");
+
+const KEYWORDS_ASSIGN = "keywordsAssign";
 testlinkInitPage($db);
 
 $templateCfg = templateConfiguration();
@@ -41,20 +43,26 @@ function initializeGui(&$dbHandler, &$control)
 {
   $gui = new stdClass();
   $gui->feature = $control->args->feature;
-  $gui->treeHeader = lang_get('href_req_assign');
+  if (strcmp($gui->feature,KEYWORDS_ASSIGN) == 0) {
+      $gui->treeHeader = lang_get('desc_keyword_assignment');
+  } else {
+      $gui->treeHeader = lang_get('href_req_assign');
+  }
+  
 
   $lblkey = (config_get('testcase_reorder_by') == 'NAME') ? '_alpha' : '_externalid';
   $gui->btn_reorder_testcases = lang_get('btn_reorder_testcases' . $lblkey);
 
   $feature_path = array('edit_tc' => "lib/testcases/archiveData.php",
-                        'keywordsAssign' => "lib/keywords/keywordsAssign.php",
+                        KEYWORDS_ASSIGN => "lib/keywords/keywordsAssign.php",
                         'assignReqs' => "lib/requirements/reqTcAssign.php");
 
   $gui->tree_drag_and_drop_enabled = array('edit_tc' => (has_rights($dbHandler, "mgt_modify_tc") == 'yes'),
-                                           'keywordsAssign' => false,
+                                            KEYWORDS_ASSIGN => false,
                                            'assignReqs' => false);
 
   $gui->menuUrl = $feature_path[$gui->feature];
+
   $gui->tree_title = lang_get('title_navigator'). ' - ' . lang_get('title_test_spec');
   return $gui;
 }
