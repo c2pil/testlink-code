@@ -45,7 +45,7 @@ Form for requirement search.
 				<input type="submit" class="btn btn-primary btn-round btn-white" name="doSearch" value="{$labels.btn_apply_filter}" />
 			</div>
 		</div>
-		<table class="table table-ordered">
+		<table class="table table-bordered">
 			
 			<tr>
 				<td class="category">{$labels.requirement_document_id}</td>
