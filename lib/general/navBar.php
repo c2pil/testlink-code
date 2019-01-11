@@ -8,7 +8,9 @@
  *
  *
 **/
-require_once('../../config.inc.php');
+if(file_exists ('../../config.inc.php')){
+    require_once('../../config.inc.php');
+}
 require_once("common.php");
 testlinkInitPage($db,('initProject' == 'initProject'));
 
@@ -23,7 +25,7 @@ $smarty->display('navBar.tpl');
 /**
  * 
  */
-function getGrants(&$db,&$userObj)
+function getGrantsNavBar(&$db,&$userObj)
 {
   $grants = new stdClass();
   $grants->view_testcase_spec = $userObj->hasRight($db,"mgt_view_tc");
@@ -176,7 +178,7 @@ function initializeGui(&$db,&$args)
     tlSetCookie($ckObj);
   }
 
-  $gui->grants = getGrants($db,$args->user);
+  $gui->grants = getGrantsNavBar($db,$args->user);
   $gui->viewer = $args->viewer;
 
   $gui->plugins = array();

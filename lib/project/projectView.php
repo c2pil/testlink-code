@@ -24,8 +24,8 @@ $templateCfg = templateConfiguration();
 
 $smarty = new TLSmarty();
 $imgSet = $smarty->getImages();
-$args = init_args();
-$gui = initializeGui($db,$args);
+$args = init_args1();
+$gui = initializeGui1($db,$args);
 
 $template2launch = $templateCfg->default_template;
 if(!is_null($gui->tprojects) || $args->doAction=='list')
@@ -69,15 +69,19 @@ if(!is_null($gui->tprojects) || $args->doAction=='list')
   }
 }
 
+
+
 $smarty->assign('gui',$gui);
+
 $smarty->display($templateCfg->template_dir . $template2launch);
 
 
+include('../general/navBar.php');
 /**
  * 
  *
  */
-function init_args()
+function init_args1()
 {
   $_REQUEST = strings_stripSlashes($_REQUEST);
    
@@ -109,7 +113,7 @@ function init_args()
  * 
  *
  */
-function initializeGui(&$dbHandler,&$argsObj)
+function initializeGui1(&$dbHandler,&$argsObj)
 {
   $guiObj = new stdClass();
   $guiObj->doAction = $argsObj->doAction;

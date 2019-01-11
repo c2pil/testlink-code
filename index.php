@@ -68,9 +68,14 @@ if($redir2login)
 // navBar.php is called via main.tpl
 // testlinkInitPage($db,('initProject' == 'initProject'));
 
-$tplEngine = new TLSmarty();
-$tplEngine->assign('gui', $gui);
-$tplEngine->display('main.tpl');
+// $tplEngine = new TLSmarty();
+// $tplEngine->assign('gui', $gui);
+// $tplEngine->display('main.tpl');
+
+include($gui->mainframe);
+
+
+// header("Location: $gui->titleframe");
 
 
 /**

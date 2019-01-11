@@ -14,8 +14,10 @@
  *
  **/
 
-require_once('../../config.inc.php');
-require_once('common.php');
+if(file_exists ('../../config.inc.php')){
+    require_once('../../config.inc.php');
+}
+require_once("common.php");
 
 testlinkInitPage($db,TRUE);
 
@@ -191,7 +193,8 @@ if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
 
 $smarty->assign('gui',$gui);
 $smarty->display($tpl);
-
+// var_dump ($_SERVER);
+include('navBar.php');
 
 /**
  * Get User Documentation 

@@ -15,6 +15,7 @@ title bar + menu
 {include file="inc_head.tpl" openHead="yes"}
 </head>
 <body style="min-width: 800px;">
+<div>
 <div style="float:left; height: 100%;">
   <a href="index.php" target="_parent">
   <img alt="Company logo" title="logo" src="{$smarty.const.TL_THEME_IMG_DIR}{$tlCfg->logo_navbar}" /></a>
@@ -33,7 +34,7 @@ title bar + menu
 <div class="menu_bar" style="margin: 0px 5px 0px 135px;">
 {if $gui->TestProjects != ""}
   <div style="display: inline; float: right;">
-    <form style="display:inline" name="productForm" action="lib/general/navBar.php?viewer={$gui->viewer}" method="get">
+    <form style="display:inline" name="productForm" action="lib/general/mainPage.php?viewer={$gui->viewer}" method="get">
        {$labels.testproject}
       <select style="font-size: 80%;position:relative; top:-1px;" name="testproject" onchange="this.form.submit();">
           {foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
@@ -97,9 +98,9 @@ title bar + menu
   
 {if $gui->updateMainPage == 1}
   <script type="text/javascript">
-  parent.mainframe.location = "{$basehref}lib/general/mainPage.php";
+//   var location = "{$basehref}lib/general/mainPage.php";
   </script>
 {/if}
-
+</div>
 </body>
 </html>
