@@ -56,9 +56,9 @@ function initializeGui(&$dbHandler, &$control, &$assignmentMgr)
   $gui->feature = $control->args->feature;
   $gui->tPlanID = $control->args->testplan_id;
   $gui->title = lang_get('title_test_plan_navigator');
-  $gui->tree_title = lang_get('title_navigator'). ' - ' . lang_get('test_suite');;
   $gui->src_workframe = '';
   $gui->additional_string = '';
+  $gui->tree_title = lang_get('title_navigator');
   
   // configure target URLs and clickable buttons
   switch($control->args->feature) 
@@ -67,11 +67,13 @@ function initializeGui(&$dbHandler, &$control, &$assignmentMgr)
       $gui->menuUrl = "lib/plan/planUpdateTC.php";
       $gui->title_navigator = lang_get('navigator_update_linked_tcversions');
       $control->draw_bulk_update_button = true;
+      $gui->tree_title .= ' - ' . lang_get('display_test_cases');
     break;
     
     case 'test_urgency':
       $gui->title_navigator = lang_get('navigator_test_urgency');
       $gui->menuUrl = "lib/plan/planUrgency.php";
+      $gui->tree_title .= ' - ' . lang_get('test_suite');
     break;
 
     case 'tc_exec_assignment':
@@ -80,6 +82,7 @@ function initializeGui(&$dbHandler, &$control, &$assignmentMgr)
       $build_id = $control->settings['setting_build']['selected'];
       $control->draw_tc_unassign_button = true;
       $control->draw_tc_assignment_bulk_copy_button = true;
+      $gui->tree_title .= ' - ' . lang_get('display_test_cases');
 
     break;
   }

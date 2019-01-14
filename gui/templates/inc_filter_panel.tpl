@@ -55,9 +55,14 @@
 {$platformID=0}
 
 {if $control->draw_bulk_update_button}
-    <input type="button" value="{$labels.btn_bulk_update_to_latest_version}"
-           name="doBulkUpdateToLatest"
-           onclick="update2latest({$gui->tPlanID})" />
+	<div class="btn-toolbar">
+		<div class="btn-group-left">
+		    	
+	    <input type="button" value="{$labels.btn_bulk_update_to_latest_version}"
+	           name="doBulkUpdateToLatest" class="btn btn-primry btn-round btn-white"
+	           onclick="update2latest({$gui->tPlanID})" />
+        </div>
+	</div>
 {/if}
 
 {* hidden feature input (mainly for testcase edit when refreshing frame) *}
