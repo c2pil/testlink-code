@@ -25,22 +25,6 @@ Scope: show test specification tree for Test Plan related features
   Ext.onReady(function() {
     Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
 
-    // Use a collapsible panel for filter settings
-    // and place a help icon in ther header
-    var settingsPanel = new Ext.ux.CollapsiblePanel({
-      id: 'tl_exec_filter',
-      applyTo: 'settings_panel',
-      tools: [{
-        id: 'help',
-        handler: function(event, toolEl, panel) {
-          show_help(help_localized_text);
-        }
-      }]
-    });
-    var filtersPanel = new Ext.ux.CollapsiblePanel({
-      id: 'tl_exec_settings',
-      applyTo: 'filter_panel'
-    });
 
     {if $gui->loadRightPaneAddTC}  
       EP();
@@ -104,7 +88,6 @@ function pre_submit()
 
 {include file='inc_filter_panel.tpl'}
 {include file="tree_control_add_tc_navigator.inc.tpl"}
-<div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>
 
 <script type="text/javascript"></script>
 </body>
