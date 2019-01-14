@@ -741,14 +741,14 @@
 {/if} {* show requirement filters *}
 
 {if $control->draw_tc_unassign_button}
-  <input type="button" style="font-size: 90%;"
+  <input type="button" class="btn btn-primary btn-round btn-white" 
          name="removen_all_tester_assignments"
          value="{$labels.btn_bulk_remove}"
          onclick="javascript:delete_testers_from_build({$control->settings.setting_build.selected});"
   />
 {/if}
 {if $control->draw_tc_assignment_bulk_copy_button}
-  <input type="button" style="font-size: 90%;"
+  <input type="button" class="btn btn-primary btn-round btn-white" 
          name="copy_tester_assignments"
          value="{$labels.btn_bulk_copy}"
          onclick="javascript:copy_tester_assignments_from_build({$control->settings.setting_build.selected});"
