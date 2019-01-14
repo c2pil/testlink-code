@@ -25,9 +25,8 @@ require_once('exec.inc.php');
 testlinkInitPage($db);
 $templateCfg = templateConfiguration();
 
-$assignment_mgr = new assignment_mgr($db);
 $control = new tlTestCaseFilterControl($db, 'plan_mode');
-$gui = initializeGui($db, $control, $assignment_mgr);
+$gui = initializeGui($control);
 $control->build_tree_menu($gui);
 $control->formAction = $_SESSION['basehref'] . "lib/plan/planTCNavigator.php";
 
@@ -41,15 +40,14 @@ $smarty->assign('treeHeader', $gui->title);
 
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
-
 /**
- * @param unknown_type $dbHandler
+ *
  * @param unknown_type $control
  * @return stdClass
  * 
  * @internal revisions:
  */
-function initializeGui(&$dbHandler, &$control, &$assignmentMgr) 
+function initializeGui(&$control) 
 {
 
   $gui = new stdClass();
