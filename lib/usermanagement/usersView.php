@@ -16,6 +16,9 @@
 require_once("../../config.inc.php");            
 require_once('exttable.class.php');
 require_once("users.inc.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
 testlinkInitPage($db,false,false,"checkRights");
 
 $smarty = new TLSmarty();
@@ -57,6 +60,7 @@ $gui->tableSet[] = buildMatrix($gui, $args);
 
 $tplCfg = templateConfiguration();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB2));
 $smarty->display($tplCfg->tpl);
 
 

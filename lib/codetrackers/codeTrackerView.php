@@ -12,6 +12,9 @@
 **/
 require_once(dirname(__FILE__) . "/../../config.inc.php");
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
 
 testlinkInitPage($db,false,false,"checkRights");
 $templateCfg = templateConfiguration();
@@ -30,6 +33,7 @@ if($args->id > 0)
 }
 
 $smarty = new TLSmarty();
+$smarty->assign('print_tabs',print_tabs('codeTrackerView.php', $gui_menu, TAB1));
 $smarty->assign('gui',$gui);
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 

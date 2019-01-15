@@ -3,8 +3,10 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource	issueTrackerView.tpl
 
 *}
-{include file="inc_head.tpl" jsValidate="yes" openHead="yes" enableTableSorting="yes"}
+{include file="inc_head.tpl" enableTableSorting="yes" openHead="yes"}
+{include file="bootstrap.inc.tpl"}
 {include file="inc_del_onclick.tpl"}
+
 
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
@@ -21,6 +23,9 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 var del_action=fRoot+'lib/issuetrackers/issueTrackerEdit.php?doAction=doDelete&id=';
 </script> 
 </head>
+
+{$print_tabs}
+
 <body {$body_onload}>
 <h1 class="title">{$labels.title_issuetracker_mgmt}</h1>
 
@@ -93,4 +98,6 @@ var del_action=fRoot+'lib/issuetrackers/issueTrackerEdit.php?doAction=doDelete&i
 </div>
 
 </body>
+{$bb = $basehref|cat:"third_party/bootstrap/3.3.6"}
+<script src="{$bb}/js/bootstrap.min.js"></script>
 </html>

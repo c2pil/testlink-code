@@ -4,7 +4,8 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 @internal revisions
 *}
-{include file="inc_head.tpl" jsValidate="yes" openHead="yes" enableTableSorting="yes"}
+{include file="inc_head.tpl" enableTableSorting="yes" openHead="yes"}
+{include file="bootstrap.inc.tpl"}
 {include file="inc_del_onclick.tpl"}
 
 
@@ -22,6 +23,8 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
 var del_action=fRoot+'lib/codetrackers/codeTrackerEdit.php?doAction=doDelete&id=';
 </script>
+ 
+{$print_tabs}
  
 </head>
 <body {$body_onload}>
@@ -95,4 +98,6 @@ var del_action=fRoot+'lib/codetrackers/codeTrackerEdit.php?doAction=doDelete&id=
 </div>
 
 </body>
+{$bb = $basehref|cat:"third_party/bootstrap/3.3.6"}
+<script src="{$bb}/js/bootstrap.min.js"></script>
 </html>

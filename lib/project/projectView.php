@@ -18,6 +18,11 @@
 
 require_once('../../config.inc.php');
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -69,6 +74,7 @@ if(!is_null($gui->tprojects) || $args->doAction=='list')
   }
 }
 
+$smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB2));
 $smarty->assign('gui',$gui);
 $smarty->display($templateCfg->template_dir . $template2launch);
 

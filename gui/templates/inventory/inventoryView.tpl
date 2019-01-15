@@ -33,9 +33,12 @@
           confirm, warning, error
           "}
 
+{include file="inc_del_onclick.tpl"}
+
 {include file="inc_head.tpl" openHead="yes"}
 {config_load file="input_dimensions.conf" section="inventory"}
-{include file="inc_del_onclick.tpl"}
+
+{include file="bootstrap.inc.tpl"}
 
   	<style type="text/css">
 		.icon_device_copy {ldelim}background-image:url({$basehref}{$smarty.const.TL_THEME_IMG_DIR}data_copy_16.png) !important;{rdelim}
@@ -417,6 +420,9 @@ Ext.onReady(function(){
 {/literal}</script>
 
 </head>
+
+{$print_tabs}
+
 <body {$body_onload}>
 
 <h1 class="title">{$labels.inventory_title}</h1>

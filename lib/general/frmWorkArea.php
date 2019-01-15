@@ -10,6 +10,10 @@
 **/
 require_once('../../config.inc.php');
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db);
 
 $args = init_args();
@@ -170,19 +174,27 @@ if( intval($args->tproject_id) > 0 || intval($args->tproject_id) > 0)
   $rightPane .= "tproject_id={$args->tproject_id}&tplan_id={$args->tplan_id}";
 }
 
-if(isset($full_screen[$showFeature]))
-{
-  redirect($leftPane);
+if(isset($full_screen[$showFeature])){
+    redirect($leftPane);
 }
-else
-{
-  $smarty->assign('treewidth', TL_FRMWORKAREA_LEFT_FRAME_WIDTH);
-  $smarty->assign('treeframe', $leftPane);
-  $smarty->assign('workframe', $rightPane);
-  $smarty->display('frmInner.tpl');
+else{
+    echo $rightPane;
+    $smarty->assign('treewidth', TL_FRMWORKAREA_LEFT_FRAME_WIDTH);
+    $smarty->assign('treeframe', $leftPane);
+    $smarty->assign('workframe', $rightPane);
+    $smarty->assign('print_tabs', print_tabs($rightPane, $gui_menu, getTab($showFeature), true));
+    $smarty->display('frmInner.tpl');
 }
 
-
+function getTab($showFeature){
+    switch ($showFeature){
+        case 'reqSpecMgmt' :
+            return TAB3;
+        case 'editTc':
+            return TAB4;
+        
+    }
+}
 /** 
  *  validate that some build exists (for Test Plan related features).
  *  If no valid build is found give feedback to user and exit.

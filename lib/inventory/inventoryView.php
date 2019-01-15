@@ -19,6 +19,10 @@
 
 require_once('../../config.inc.php');
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db);
 
 $templateCfg = templateConfiguration();
@@ -28,6 +32,7 @@ $gui->rightView = has_rights($db,"project_inventory_view");
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('inventoryView.php', $gui_menu, TAB2));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 ?>

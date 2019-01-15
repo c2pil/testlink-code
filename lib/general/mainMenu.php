@@ -48,17 +48,17 @@ $tplan2check = null;
 $currentUser = $_SESSION['currentUser'];
 $userID = $currentUser->dbID;
 
-$gui = new stdClass();
-$gui->grants = getGrants($db,$user,$userIsBlindFolded);
-$gui->hasTestCases = false;
+$gui_menu = new stdClass();
+$gui_menu->grants = getGrants($db,$user,$userIsBlindFolded);
+$gui_menu->hasTestCases = false;
 
-if($gui->grants['view_tc']) { 
-	$gui->hasTestCases = $tproject_mgr->count_testcases($testprojectID) > 0 ? 1 : 0;
+if($gui_menu->grants['view_tc']) { 
+	$gui_menu->hasTestCases = $tproject_mgr->count_testcases($testprojectID) > 0 ? 1 : 0;
 }
 
-$gui->hasKeywords = false;
-if($gui->hasTestCases) {
-  $gui->hasKeywords = $tproject_mgr->hasKeywords($testprojectID);
+$gui_menu->hasKeywords = false;
+if($gui_menu->hasTestCases) {
+  $gui_menu->hasKeywords = $tproject_mgr->hasKeywords($testprojectID);
 }  
 
 
@@ -68,7 +68,7 @@ if($gui->hasTestCases) {
  * or is enough just call to getAccessibleTestPlans()
  */
 $filters = array('plan_status' => ACTIVE);
-$gui->num_active_tplans = $tproject_mgr->getActiveTestPlansCount($testprojectID);
+$gui_menu->num_active_tplans = $tproject_mgr->getActiveTestPlansCount($testprojectID);
 
 // get Test Plans available for the user 
 $arrPlans = (array)$currentUser->getAccessibleTestPlans($db,$testprojectID);
@@ -99,7 +99,7 @@ if($testplanID > 0) {
   $arrPlans[$index]['selected']=1;
 }
 
-$gui->testplanRole = null;
+$gui_menu->testplanRole = null;
 if ($testplanID)  {
 
   $rd = null; 
@@ -115,7 +115,7 @@ if ($testplanID)  {
   } 
 
   if( null != $rd ) {
-    $gui->testplanRole = $tlCfg->gui->role_separator_open .$rd . $tlCfg->gui->role_separator_close;
+    $gui_menu->testplanRole = $tlCfg->gui->role_separator_open .$rd . $tlCfg->gui->role_separator_close;
   }
 }
 $rights2check = array('testplan_execute','testplan_create_build',
@@ -132,43 +132,43 @@ $rights2check = array('testplan_execute','testplan_create_build',
                       'testplan_show_testcases_newest_versions');
 
 foreach($rights2check as $key => $the_right) {
-  $gui->grants[$the_right] = $userIsBlindFolded ? 'no' : $currentUser->hasRight($db,$the_right,$testprojectID,$testplanID);
+  $gui_menu->grants[$the_right] = $userIsBlindFolded ? 'no' : $currentUser->hasRight($db,$the_right,$testprojectID,$testplanID);
 }
                          
-$gui->grants['tproject_user_role_assignment'] = "no";
+$gui_menu->grants['tproject_user_role_assignment'] = "no";
 if( $currentUser->hasRight($db,"testproject_user_role_assignment",$testprojectID,-1) == "yes" ||
     $currentUser->hasRight($db,"user_role_assignment",null,-1) == "yes" )
 { 
-    $gui->grants['tproject_user_role_assignment'] = "yes";
+    $gui_menu->grants['tproject_user_role_assignment'] = "yes";
 }
 
 
-$gui->url = array('metrics_dashboard' => 'lib/results/metricsDashboard.php',
+$gui_menu->url = array('metrics_dashboard' => 'lib/results/metricsDashboard.php',
                   'testcase_assignments' => 'lib/testcases/tcAssignedToUser.php');
-$gui->launcher = 'lib/general/frmWorkArea.php';
-$gui->arrPlans = $arrPlans;                   
-$gui->countPlans = count($gui->arrPlans);
+$gui_menu->launcher = 'lib/general/frmWorkArea.php';
+$gui_menu->arrPlans = $arrPlans;                   
+$gui_menu->countPlans = count($gui_menu->arrPlans);
 
 
-$gui->testprojectID = $testprojectID;
-$gui->testplanID = $testplanID;
+$gui_menu->testprojectID = $testprojectID;
+$gui_menu->testplanID = $testplanID;
 
-$gui->docs = config_get('userDocOnDesktop') ? getUserDocumentation() : null;
+$gui_menu->docs = config_get('userDocOnDesktop') ? getUserDocumentation() : null;
 
 $secCfg = config_get('config_check_warning_frequence');
-$gui->securityNotes = '';
+$gui_menu->securityNotes = '';
 if( (strcmp($secCfg, 'ALWAYS') == 0) || 
       (strcmp($secCfg, 'ONCE_FOR_SESSION') == 0 && !isset($_SESSION['getSecurityNotesOnMainPageDone'])) )
 {
   $_SESSION['getSecurityNotesOnMainPageDone'] = 1;
-  $gui->securityNotes = getSecurityNotes($db);
+  $gui_menu->securityNotes = getSecurityNotes($db);
 }  
 
-$gui->opt_requirements = isset($_SESSION['testprojectOptions']->requirementsEnabled) ? 
+$gui_menu->opt_requirements = isset($_SESSION['testprojectOptions']->requirementsEnabled) ? 
                          $_SESSION['testprojectOptions']->requirementsEnabled : null; 
 
 
-$gui->plugins = array();
+$gui_menu->plugins = array();
 foreach(array('EVENT_LEFTMENU_TOP',
               'EVENT_LEFTMENU_BOTTOM',
               'EVENT_RIGHTMENU_TOP',
@@ -178,9 +178,61 @@ foreach(array('EVENT_LEFTMENU_TOP',
   $menu_content = event_signal($menu_item);
   if( !empty($menu_content) )
   {
-    $gui->plugins[$menu_item] = $menu_content;
+    $gui_menu->plugins[$menu_item] = $menu_content;
   }
 }
+
+$basehref = $_SESSION['basehref'];
+
+const TAB1 = 0, TAB2 = 1, TAB3 = 2, TAB4 = 3;
+
+$gui_menu->href = array(
+    "projectView" => "lib/project/projectView.php",
+    "usersAssign" => "lib/usermanagement/usersAssign.php?featureType=testproject&featureID=",
+    "cfAssignment" => "lib/cfields/cfieldsTprojectAssign.php",
+    "keywordsAssignment" => "lib/keywords/keywordsView.php?tproject_id=",
+    "platformsView" => "lib/platforms/platformsView.php",
+    "cfieldsView" => "lib/cfields/cfieldsView.php",
+    "issueTrackerView" => "lib/issuetrackers/issueTrackerView.php",
+    "codeTrackerView" => "lib/codetrackers/codeTrackerView.php",
+    "reqOverView" => "lib/requirements/reqOverview.php",
+    "reqMonOverView" => "lib/requirements/reqMonitorOverview.php?tproject_id=",
+    "tcSearch" => "lib/testcases/tcSearch.php?doAction=userInput&tproject_id=",
+    "tcCreatedUser" => "lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id=",
+    "assignReq" => "lib/general/frmWorkArea.php?feature=assignReqs",
+    "inventoryView" => "lib/inventory/inventoryView.php"
+);
+
+$gui_menu->tabsList = array(
+    array(
+        array(hasGrant($gui_menu->grants['cfield_management']), $basehref.$gui_menu->href["cfieldsView"], lang_get('href_cfields_management')),
+        array(hasGrant($gui_menu->grants['issuetracker_management']) || hasGrant($gui_menu->grants['issuetracker_view']), $basehref.$gui_menu->href["issueTrackerView"], lang_get('href_issuetracker_management')),
+        array(hasGrant($gui_menu->grants['codetracker_management']) || hasGrant($gui_menu->grants['codetracker_view']), $basehref.$gui_menu->href["codeTrackerView"], lang_get('href_codetracker_management'))
+    ),
+    array(
+        array(hasGrant($gui_menu->grants['project_edit']), $basehref.$gui_menu->href["projectView"], lang_get('href_tproject_management')),
+        array(hasGrant($gui_menu->grants['tproject_user_role_assignment']), $basehref.$gui_menu->href["usersAssign"].$gui_menu->testprojectID, lang_get('href_assign_user_roles')),
+        array(hasGrant($gui_menu->grants['cfield_management']), $basehref.$gui_menu->href["cfAssignment"], lang_get('href_cfields_tproject_assign')),
+        array(hasGrant($gui_menu->grants['keywords_view']), $basehref.$gui_menu->href["keywordsAssignment"].$gui_menu->testprojectID, lang_get('href_keywords_manage')),
+        array(hasGrant($gui_menu->grants['platform_management']) || hasGrant($gui_menu->grants['platform_view']), $basehref.$gui_menu->href["platformsView"], lang_get('href_platform_management')),
+        array(hasGrant($gui_menu->grants['project_inventory_view']) || hasGrant($gui_menu->grants['project_inventory_management']), $basehref.$gui_menu->href["inventoryView"], lang_get('href_inventory_management'))
+    ),
+    array(
+        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=reqSpecMgmt", lang_get('href_req_spec')),
+        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->href["reqOverView"], lang_get('href_req_overview')),
+        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=printReqSpec", lang_get('href_print_req')),
+        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=searchReq", lang_get('href_search_req')),
+        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=searchReqSpec", lang_get('href_search_req_spec')),
+        array(hasGrant($gui_menu->grants['req_tcase_link_management']), $basehref.$gui_menu->href["assignReq"], lang_get('href_req_assign')),
+        array(hasGrant($gui_menu->grants['monitor_req']), $basehref.$gui_menu->href["reqMonOverView"].$gui_menu->testprojectID, lang_get('href_req_monitor_overview'))
+    ),
+    array(
+        array(hasGrant($gui_menu->grants['view_tc']), $basehref.$gui_menu->launcher."?feature=editTc", hasGrant($gui_menu->grants['modify_tc'])?lang_get('href_edit_tc'):lang_get('href_browse_tc'), "lib/testcases/archiveData.php?edit=testproject&id=1"),
+        array(hasGrant($gui_menu->hasTestCases), $basehref.$gui_menu->href["tcSearch"].$gui_menu->testprojectID, lang_get('href_search_tc')),
+        array(hasGrant($gui_menu->hasKeywords) && hasGrant($gui_menu->grants['keyword_assignment']), $basehref.$gui_menu->launcher."?feature=keywordsAssign", lang_get('href_keywords_assign')),
+        array(hasGrant($gui_menu->grants['modify_tc']), $basehref.$gui_menu->href["tcCreatedUser"].$gui_menu->testprojectID, lang_get('link_report_test_cases_created_per_user'))
+    )
+);
 
 $tplKey = 'mainMenu';
 $tpl = $tplKey . '.tpl';
@@ -188,10 +240,42 @@ $tplCfg = config_get('tpl');
 if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
   $tpl = $tplCfg->$tplKey;
 } 
-
-$smarty->assign('gui',$gui);
+$smarty->assign('gui',$gui_menu);
 $smarty->display($tpl);
 
+/**
+ * Print the navigation tabs
+ */
+function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
+//     echo $gui_menu->grants.modify_tc;
+//     echo $active_page;
+    $s = "";
+    $s .= '<ul class="nav nav-tabs padding-18">';
+        foreach( $gui_menu->tabsList[$tab_number] as $tab ) {
+            if(tab[0]){
+                if($is_frame){
+                    //                 echo $tab[3];
+                    $t_active = ($tab[3] === $active_page) ? 'active' : '';
+                }else{
+                    $t_active =  strpos($tab[1], $active_page) ? 'active' : '';
+                }
+                $s .= '<li class="' . $t_active .  '">';
+                $s .= '<a href="'. $tab[1] .'">' . $tab[2] . '</a>';
+                $s .= '</li>';
+            }
+        }
+    $s .=  '</ul>';
+    return $s;
+}
+
+/**
+ * Return true if user has right
+ * @param string $grant
+ * @return boolean
+ */
+function hasGrant($grant){
+    return ($grant === "yes");
+}
 
 /**
  * Get User Documentation 

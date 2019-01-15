@@ -8,6 +8,10 @@
 **/
 require_once(dirname(__FILE__) . "/../../config.inc.php");
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -56,6 +60,7 @@ $gui = initializeGui($args,$cfield_mgr);
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('cfieldsTprojectAssign.php', $gui_menu, TAB2));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

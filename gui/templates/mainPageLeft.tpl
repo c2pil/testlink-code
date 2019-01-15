@@ -19,45 +19,8 @@
    href_codetracker_management,href_reqmgrsystem_management,href_req_monitor_overview'}
 
 {* Show / Hide section logic *}
-{$display_left_block_1=false}
-{$display_left_block_2=false}
-{$display_left_block_3=false}
-{$display_left_block_4=false}
-{$display_left_block_5=$tlCfg->userDocOnDesktop}
 {$display_left_block_top = false}
 {$display_left_block_bottom = false}
-
-{if $gui->testprojectID && 
-   ($gui->grants.project_edit == "yes" || 
-    $gui->grants.tproject_user_role_assignment == "yes" ||
-    $gui->grants.cfield_management == "yes" || 
-    $gui->grants.platform_management == "yes" || 
-    $gui->grants.keywords_view == "yes")}
-    
-    {$display_left_block_1=true}
-{/if}
-
-{if $gui->testprojectID && 
-   ($gui->grants.cfield_management || 
-    $gui->grants.cfield_assignment || 
-    $gui->grants.issuetracker_management ||
-    $gui->grants.codetracker_management || 
-    $gui->grants.issuetracker_view || 
-    $gui->grants.codetracker_view)}
-   {$display_left_block_2=true}
-{/if}
-
-{if $gui->testprojectID && $gui->opt_requirements == TRUE && 
-    ($gui->grants.reqs_view == "yes" || $gui->grants.reqs_edit == "yes" || $gui->grants.monitor_req == "yes" || $gui->grants.req_tcase_link_management == "yes")}
-    {$display_left_block_3=true}
-{/if}
-
-{if $gui->testprojectID && $gui->grants.view_tc == "yes"}
-    {$display_left_block_4=true}
-{/if}
-
-{$display_left_block_top=false}
-{$display_left_block_bottom=false}
 
 {if isset($gui->plugins.EVENT_LEFTMENU_TOP) &&  $gui->plugins.EVENT_LEFTMENU_TOP}
   {$display_left_block_top=true}
@@ -66,27 +29,106 @@
   {$display_left_block_bottom=true}
 {/if}
 
-
-
 {$divStyle="width:300px;padding: 0px 0px 0px 10px;"}
 {$aStyle="padding: 3px 15px;font-size:16px"}
 
-{$projectView="lib/project/projectView.php"}
-{$usersAssign="lib/usermanagement/usersAssign.php?featureType=testproject&featureID="}
-{$cfAssignment="lib/cfields/cfieldsTprojectAssign.php"}
-{$keywordsAssignment="lib/keywords/keywordsView.php?tproject_id="}
-{$platformsView="lib/platforms/platformsView.php"}
-{$cfieldsView="lib/cfields/cfieldsView.php"}
-{$issueTrackerView="lib/issuetrackers/issueTrackerView.php"}
-{$codeTrackerView="lib/codetrackers/codeTrackerView.php"}
-{$reqOverView="lib/requirements/reqOverview.php"}
-{$reqMonOverView="lib/requirements/reqMonitorOverview.php?tproject_id="}
-{$tcSearch="lib/testcases/tcSearch.php?doAction=userInput&tproject_id="}
-{$tcCreatedUser="lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id="}
-{$assignReq="lib/general/frmWorkArea.php?feature=assignReqs"}
-{$inventoryView="lib/inventory/inventoryView.php"}
+<div class="sidebar compact">
+	<ul class="nav nav-list">	
+		{if $gui->testprojectID}
+		
+            <!-- BUTTON N°1 -->
+			{$href=""}
+    		{if $gui->grants.cfield_management eq "yes"}
+          		{$href=$gui->href['cfieldsView']}
+            {elseif $gui->grants.issuetracker_management eq "yes" || $gui->grants.issuetracker_view eq "yes"}
+          		{$href=$gui->href['issueTrackerView']}
+            {elseif $gui->grants.codetracker_management eq "yes" || $gui->grants.codetracker_view eq "yes"}
+          		{$href=$gui->href['codeTrackerView']}
+            {/if}
+            {if $href neq ""}
+        <!-- 	rajouter le system active  -->
+        		<li class=""> 
+                	<a href="{$href}" target="mainframe">
+                    	<i class="menu-icon fa fa-dashboard"></i>
+                    	<span class="menu-text">{$labels.system_config}</span>
+                	</a>
+                	<b class="arrow"></b>
+            	</li>
+        	{/if}    	
+    	
+    		<!-- BUTTON N°2 -->
+			{$href=""}
+    		{if $gui->grants.project_edit eq "yes"}
+          		{$href=$gui->href['projectView']}
+            {elseif $gui->grants.tproject_user_role_assignment eq "yes"}
+          		{$href=$gui->href['usersAssign']|cat:$gui->testprojectID}
+            {elseif $gui->grants.cfield_management eq "yes"}
+          		{$href=$gui->href['cfAssignment']}
+            {elseif $gui->grants.keywords_view eq "yes"}
+          		{$href=$gui->href['keywordsAssignment']|cat:$gui->testprojectID}
+            {elseif $gui->grants.platform_management eq "yes" || $gui->grants.platform_view eq "yes"}
+          		{$href=$gui->href['platformsView']}
+            {elseif $gui->grants.project_inventory_view eq "yes" || $gui->grants.project_inventory_management eq "yes"}
+          		{$href=$gui->href['inventoryView']}
+            {/if}
+            {if $href neq ""}
+        <!-- 	rajouter le system active  -->
+        		<li> 
+                	<a href="{$href}" target="mainframe">
+                    	<i class="menu-icon fa fa-dashboard"></i>
+                    	<span class="menu-text">{$labels.title_product_mgmt}</span>
+                	</a>
+                	<b class="arrow"></b>
+            	</li>
+        	{/if}
+        	
+        	<!-- BUTTON N°3 -->
+        	{$href=""}
+    		{if $gui->grants.reqs_view eq "yes" || $gui->grants.reqs_edit eq "yes"}
+          		{$href=$gui->launcher|cat:"?feature=reqSpecMgmt"}
+            {elseif $gui->grants.req_tcase_link_management eq "yes"}
+          		{$href=$gui->href['assignReq']}
+            {elseif $gui->grants.monitor_req eq "yes"}
+          		{$href=$gui->href['reqMonOverView']|cat:$gui->testprojectID}
+            {/if}
+            {if $href neq ""}
+        <!-- 	rajouter le system active  -->
+        		<li> 
+                	<a href="{$href}" target="mainframe">
+                    	<i class="menu-icon fa fa-dashboard"></i>
+                    	<span class="menu-text">{$labels.title_requirements}</span>
+                	</a>
+                	<b class="arrow"></b>
+            	</li>
+        	{/if}
+        	
+        	<!-- BUTTON N°4 -->
+        	{$href=""}
+    		{if $gui->grants.view_tc eq "yes"}
+          		{$href=$gui->launcher|cat:"?feature=editTc"}
+            {elseif $gui->hasTestCases eq "yes"}
+          		{$href=$gui->href['tcSearch']|cat:$gui->testprojectID}
+            {elseif $gui->hasKeywords eq "yes" && $gui->grants.keyword_assignment eq "yes"}
+          		{$href=$gui->launcher|cat:"?feature=keywordsAssign"}
+            {elseif $gui->grants.modify_tc eq "yes"}
+          		{$href=$gui->href['tcCreatedUser']|cat:$gui->testprojectID}
+            {/if}
+            {if $href neq ""}
+        <!-- 	rajouter le system active  -->
+        		<li> 
+                	<a href="{$href}" target="mainframe">
+                    	<i class="menu-icon fa fa-dashboard"></i>
+                    	<span class="menu-text">{$labels.title_test_spec}</span>
+                	</a>
+                	<b class="arrow"></b>
+            	</li>
+        	{/if}
+        	
+    	{/if}	
+	</ul>
+</div>
 
-
+{* PLUGIN MANAGEMENT *}
 <div class="vertical_menu" style="float: left; margin:0px 10px 10px 0px; width: 320px;">
   {if $display_left_block_top}
     {if isset($gui->plugins.EVENT_LEFTMENU_TOP)}
@@ -99,99 +141,6 @@
     {/if}
   {/if}
 
-{if $display_left_block_2}
-
-  <div class="list-group" style="{$divStyle}">
-    {if $gui->grants.cfield_management == "yes"}
-      <a href="{$cfieldsView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_cfields_management}</a>
-    {/if}
-
-    {if $gui->grants.issuetracker_management || $gui->grants.issuetracker_view}
-      <a href="{$issueTrackerView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_issuetracker_management}</a>
-    {/if}
-
-    {if $gui->grants.codetracker_management || $gui->grants.codetracker_view}
-      <a href="{$codeTrackerView}" class="list-group-item" target="mainframe" style="{$aStyle}">
-      {$labels.href_codetracker_management}</a>
-    {/if}
-  </div>
-{/if}
-
-{if $display_left_block_1}
-  <div class="list-group" style="{$divStyle}">
-    {if $gui->grants.project_edit == "yes"}
-      <a href="{$projectView}" class="list-group-item" target="mainframe" style="{$aStyle}">
-        {$labels.href_tproject_management}</a>
-    {/if}
-
-    {if $gui->grants.tproject_user_role_assignment == "yes"}
-      <a href="{$usersAssign}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_assign_user_roles}</a>
-    {/if}
-    
-    {if $gui->grants.cfield_management == "yes"}
-      <a href="{$cfAssignment}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_cfields_tproject_assign}</a>
-    {/if}
-    
-    {if $gui->grants.keywords_view == "yes"}
-      <a href="{$keywordsAssignment}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_keywords_manage}</a>
-    {/if}
-
-    {if $gui->grants.platform_management || $gui->grants.platform_view}
-      <a href="{$platformsView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_platform_management}</a>
-    {/if}
-    
-    {if $gui->grants.project_inventory_view || $gui->grants.project_inventory_management}
-       <a href="{$inventoryView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_inventory_management}</a>
-    {/if}
-
-
-  </div>
-{/if}
-
-{if $display_left_block_3}
-  <div class="list-group" style="{$divStyle}">
-       {if $gui->grants.reqs_view == "yes" || $gui->grants.reqs_edit == "yes" }
-          <a href="{$gui->launcher}?feature=reqSpecMgmt" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_spec}</a>
-          <a href="{$reqOverView}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_overview}</a>
-          <a href="{$gui->launcher}?feature=printReqSpec" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_print_req}</a>
-          <a href="{$gui->launcher}?feature=searchReq" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_search_req}</a>
-          <a href="{$gui->launcher}?feature=searchReqSpec" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_search_req_spec}</a>
-       {/if}
-       {if $gui->grants.req_tcase_link_management == "yes"}
-          <a href="{$assignReq}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_assign}</a>
-       {/if}
-       {if $gui->grants.monitor_req == "yes"}
-          <a href="{$reqMonOverView}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_req_monitor_overview}</a>
-      {/if}
-  </div>
-{/if}
-
-{if $display_left_block_4}
-    <div class="list-group" style="{$divStyle}">
-      <a href="{$gui->launcher}?feature=editTc" class="list-group-item" target="mainframe" style="{$aStyle}">
-        {if $gui->grants.modify_tc eq "yes"}
-          {lang_get s='href_edit_tc'}
-       {else}
-          {lang_get s='href_browse_tc'}
-       {/if}
-      </a>
-      {if $gui->hasTestCases}
-        <a href="{$tcSearch}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_search_tc}</a>
-      {/if}    
-      
-    {if $gui->hasKeywords}  
-      {if $gui->grants.keyword_assignment == "yes"}
-            <a href="{$gui->launcher}?feature=keywordsAssign" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.href_keywords_assign}</a>
-      {/if}
-    {/if}
-      
-     {if $gui->grants.modify_tc eq "yes"}
-       <a href="{$tcCreatedUser}{$gui->testprojectID}" class="list-group-item" target="mainframe" style="{$aStyle}">{$labels.link_report_test_cases_created_per_user}</a>
-     {/if}
-    
-    </div>
-{/if}
-
   {if $display_left_block_bottom}
     {if isset($gui->plugins.EVENT_LEFTMENU_BOTTOM)}
 	  <br/>
@@ -202,5 +151,4 @@
       </div>
     {/if}  
   {/if}
-  
 </div>

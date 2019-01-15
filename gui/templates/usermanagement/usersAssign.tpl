@@ -76,6 +76,9 @@ function toggleRowByClass(oid,className,displayCheckOn,displayCheckOff,displayVa
 {/if}
 
 </head>
+
+{$print_tabs}
+
 <body>
 
 <h1 class="title">{$gui->main_title}</h1>

@@ -28,6 +28,9 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {include file="bootstrap.inc.tpl"}
 
 </head>
+
+{$print_tabs}
+
 <body class="testlink">
 <h1 class="title">{$labels.title_cfields_mgmt}</h1>
 

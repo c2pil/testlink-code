@@ -8,6 +8,9 @@
 **/
 require_once(dirname(__FILE__) . "/../../config.inc.php");
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
 
 testlinkInitPage($db,false,false,"checkRights");
 $gui = new stdClass();
@@ -21,6 +24,7 @@ $gui->cf_types = $cfield_mgr->get_available_types();
 $gui->drawControlsOnTop = (null != $gui->cf_map && count($gui->cf_map) > 10); 
 
 $smarty = new TLSmarty();
+$smarty->assign('print_tabs',print_tabs('cfieldsView.php', $gui_menu, TAB1));
 $smarty->assign('gui',$gui);
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 

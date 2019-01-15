@@ -9,6 +9,7 @@ users overview
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="bootstrap.inc.tpl"}
 
 <script type="text/javascript">
 var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
@@ -19,7 +20,6 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
   {if $smarty.foreach.initializer.first}
     {$matrix->renderCommonGlobals()}
     {if $matrix instanceof tlExtTable}
-        {include file="inc_ext_js.tpl" bResetEXTCss=1}
         {include file="inc_ext_table.tpl"}
     {/if}
   {/if}
@@ -40,8 +40,9 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
 {rdelim}
 </style>
 
-{include file="bootstrap.inc.tpl"}
 </head>
+
+{$print_tabs}
 
 {$userActionMgr="lib/usermanagement/usersEdit.php"}
 {$createUserAction="$userActionMgr?doAction=create"}

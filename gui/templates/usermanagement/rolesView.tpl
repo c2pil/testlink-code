@@ -31,6 +31,8 @@ Purpose: smarty template - View defined roles
 </style> 
 </head>
 
+{$print_tabs}
+
 <body {$body_onload}>
 <h1 class="title">{$gui->main_title}</h1>
 

@@ -11,6 +11,7 @@ Purpose: smarty template - View all platforms
 *}
 {include file="inc_head.tpl" jsValidate="yes" openHead="yes" enableTableSorting="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="bootstrap.inc.tpl"}
 
 {lang_get var='labels'
           s='th_notes,th_platform,th_delete,btn_import,btn_export,
@@ -35,6 +36,9 @@ Purpose: smarty template - View all platforms
 </script>
  
 </head>
+
+{$print_tabs}
+
 <body {$body_onload}>
 {assign var="cfg_section" value=$smarty.template|basename|replace:".tpl":"" }
 {config_load file="input_dimensions.conf" section=$cfg_section}
