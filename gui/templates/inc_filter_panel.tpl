@@ -462,16 +462,12 @@
     {* custom fields are placed here *}
 
     {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
-      <tr><td>&nbsp;</td></tr>
       {$control->filters.filter_custom_fields.items}
     {/if}
 
 
   {* result filtering parts *}
   {if $control->filters.filter_result}
-
-    <tr><td>&nbsp;</td></tr> {* empty row for a little separation *}
-
         <tr>
         <td class="category">{$labels.filter_result}</td>
         <td>
