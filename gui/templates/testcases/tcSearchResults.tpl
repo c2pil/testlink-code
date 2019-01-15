@@ -3,7 +3,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 tcSearchResults.tpl
 *}
 
-{include file="inc_head.tpl" openHead='yes'}
+{include file="inc_head.tpl" openHead='yes' prototypeJs="false"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
@@ -21,7 +21,6 @@ tcSearchResults.tpl
 </head>
 
 <body>
-<h1 class="title">{$gui->pageTitle}</h1>
 
 {include file="testcases/tcSearchGUI.inc.tpl"}
 
@@ -43,4 +42,15 @@ tcSearchResults.tpl
 {/if}    
 </div>
 </body>
+<script>
+jQuery(document).ready(function() {
+	
+	jQuery('.myDatepicker').datepicker({
+		autoclose : true,
+		orientation: "auto top",
+		todayBtn : "linked"
+	});
+});
+
+</script>
 </html>

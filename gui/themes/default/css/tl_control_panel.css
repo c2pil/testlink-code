@@ -41,6 +41,12 @@ td.category {
 	width: 40%;
 }
 
+td.small-category {
+	background-color: #edf3f4;
+	color : #000;
+	font-weight: bold;
+}
+
 .table td input[type="text"] {
 	background: #fff;
 	border-color : #b5b5b5;
