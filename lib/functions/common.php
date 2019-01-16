@@ -355,7 +355,7 @@ function initTopMenu(&$db)
 
         if( $addItem )
         {
-          $_SESSION['testprojectTopMenu'] .= "<a href='{$element['url']}' " .
+          $_SESSION['testprojectTopMenu'] .= "<li><span class='navButton'><a href='{$element['url']}' " .
           "target='{$element['target']}' accesskey='{$element['shortcut']}'" .
           "tabindex=''" . $idx++ . "''>";
 
@@ -369,11 +369,11 @@ function initTopMenu(&$db)
            $_SESSION['testprojectTopMenu'] .= lang_get($element['label']); 
           }  
 
-          $_SESSION['testprojectTopMenu'] .= "</a>&nbsp;&nbsp;&nbsp;";
+          $_SESSION['testprojectTopMenu'] .= "</a></span></li>";
         }
       }
     }
-    $_SESSION['testprojectTopMenu'] .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+   // $_SESSION['testprojectTopMenu'] .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   }
 }
 
