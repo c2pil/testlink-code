@@ -178,7 +178,6 @@ if(isset($full_screen[$showFeature])){
     redirect($leftPane);
 }
 else{
-    echo $rightPane;
     $smarty->assign('treewidth', TL_FRMWORKAREA_LEFT_FRAME_WIDTH);
     $smarty->assign('treeframe', $leftPane);
     $smarty->assign('workframe', $rightPane);
@@ -186,13 +185,24 @@ else{
     $smarty->display('frmInner.tpl');
 }
 
-function getTab($showFeature){
-    switch ($showFeature){
-        case 'reqSpecMgmt' :
+/**
+ * Get the tab related to the feature
+ * @param string $feature
+ * @return number
+ */
+function getTab($feature){
+    switch ($feature){
+        case 'reqSpecMgmt':
+        case 'printReqSpec':
+        case 'searchReq':
+        case 'searchReqSpec':
+        case 'assignReqs':
             return TAB3;
         case 'editTc':
+        case 'keywordsAssign':
             return TAB4;
-        
+        default:
+            return -1;
     }
 }
 /** 

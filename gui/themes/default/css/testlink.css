@@ -7,14 +7,28 @@ Purpose: Default TestLink CSS
 */
 
 /* ***** GLOBAL HTML ***************************************************************** */
+html{
+	height: 100%
+}
 body, body.testlink {
-	background:  	#EEE!important; 
+	background-color: white !important;
 	font-family: 	'Trebuchet MS', Arial, Verdana, sans-serif;
 	font-size: 		small;
 	margin:			0px;
 	padding:		0px;
+	height:100%;
+	overflow:hidden;
 }
 
+.mainPage {
+	border: none;
+	height: 100%;
+	width: calc(100% - 150px);
+}
+
+.sidebar.compact {
+	width:150px !important;
+}
 /** 
 use together with #header-wrap, to create a section on top of body
 that remain always visible while rest of body content scrolls,
@@ -112,7 +126,6 @@ div.menu_bar {
 }
 
 select.menu_combo {
-	background: 	#EEE;
 	border-style:	none;
 	font-size:	 	smaller;
 	font-weight:    bold;
@@ -144,7 +157,6 @@ present on page (example grid())
 On chrome seems not work
 */
 #header-wrap {
-	background:		#eee;
 	border-bottom:	1px solid #000;
 	height: 100px;
 	position: fixed;
@@ -186,7 +198,6 @@ span.form_label {
 
 /* for tree menu */
 div.tree {
-	background: 	#EEE;
 	padding: 		3px;
 	border: 		1px solid #808080;
 	margin:			3px;
@@ -198,7 +209,6 @@ div.groupBtn {
 }
 
 div.vertical_menu {
-	background: 	#EEE;
 	font-size:      90%;
 	margin: 		3px;
 	padding: 		2px;
@@ -438,7 +448,6 @@ span.unselected a, span.unselected a:visited {
 
 /* ***** Common ********************* */
 table.common {
-	background:     #EEE;
 	border: 		1px solid black;
 	margin-bottom:	20px;
 	min-width:		50%;
@@ -479,7 +488,6 @@ table.common caption, table.smallGrey caption {
 
 /* ***** Simple Table (often used to show data) ***************** */
 table.simple, table.simple_tableruler {
-	background:     #EEE;
 	border: 		thin solid black;
 	font-size:		90%;
 	margin:			5px;
@@ -503,7 +511,6 @@ table.tableruler tbody tr:hover{
 
 /* Used for filters and options settings */
 table.smallGrey {
-	background:     #EEE;
 	border: 		1px solid black;
 	font-size:		smaller;
 	margin-bottom:	10px;
@@ -519,7 +526,6 @@ table.invisible {
 }
 
 table.mainTable{
-	background: 	#EEE;
 	border: 		1px double black;
 	min-width:		200px;
 }
@@ -533,7 +539,6 @@ table.mainTable th {
 }
 
 table.link_and_exec {
-	background:     #EEE;
 	border: 		1px solid black;
 	margin-bottom:	10px;
 	margin-right:	0px;
@@ -545,7 +550,6 @@ table.link_and_exec th {
 
 /* *****  Table Execution History ********* */
 table.exec_history {
-	background:     #EEE;
 	border: 		thin solid black;
 	font-size:		90%;
 	margin:			20px;

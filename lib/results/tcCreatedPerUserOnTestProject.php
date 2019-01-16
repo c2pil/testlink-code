@@ -26,6 +26,9 @@ require_once("common.php");
 require_once('users.inc.php');
 require_once('displayMgr.php');
 require_once('exttable.class.php');
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
 
 $smarty = new TLSmarty();
 $imgSet = $smarty->getImages();
@@ -35,6 +38,7 @@ $gui = initializeGui($db,$args,$imgSet);
 $tpl = $templateCfg->default_template;
 
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('tcCreatedPerUserOnTestProject.php', $gui_menu, TAB4));
 $smarty->display($templateCfg->template_dir . $tpl);
 
 /**

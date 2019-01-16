@@ -14,11 +14,10 @@
     	<title>TestLink {$tlVersion|escape}</title>
     	<meta name="description" content="TestLink - {$gui->title|default:'Main page'}" />
     	<link rel="icon" href="{$basehref}{$smarty.const.TL_THEME_IMG_DIR}favicon.ico" type="image/x-icon" />
-    	<link rel="stylesheet" type="text/css" href="{$basehref}gui/themes/default/css/homepage.css">
+    	<link rel="stylesheet" type="text/css" href="{$basehref}gui/themes/default/css/frame.css">
     </head>
     <body>
         <iframe src="{$gui->titleframe}" name="titlebar" class="navBar" ></iframe>
         <iframe src="{$gui->menuframe}" name="mainMenu" class="mainMenu" ></iframe>
-        <iframe src="" name="mainframe" class="mainPage" ></iframe>
     </body>
 </html>

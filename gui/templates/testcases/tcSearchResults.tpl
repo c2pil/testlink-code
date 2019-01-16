@@ -5,6 +5,7 @@ tcSearchResults.tpl
 
 {include file="inc_head.tpl" openHead='yes'}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
+{include file="bootstrap.inc.tpl"}
 
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {$tableID="$matrix->tableID"}
@@ -21,6 +22,9 @@ tcSearchResults.tpl
 </head>
 
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$gui->pageTitle}</h1>
 
 {include file="testcases/tcSearchGUI.inc.tpl"}

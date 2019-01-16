@@ -29,9 +29,10 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 </head>
 
+<body class="testlink">
+
 {$print_tabs}
 
-<body class="testlink">
 <h1 class="title">{$labels.title_cfields_mgmt}</h1>
 
 <div class="page-content">

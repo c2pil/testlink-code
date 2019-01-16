@@ -32,7 +32,6 @@
 }
 .DHTMLSuite_contextMenu .DHTMLSuite_item_mouseover{
 	border:1px solid #000;
-	background-color:#EEE;
 	padding:0px;	/* Padding + border of this element should be equal to padding of li element (see above ) */
 }
 .DHTMLSuite_contextMenu ul{

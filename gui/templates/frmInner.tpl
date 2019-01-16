@@ -15,14 +15,14 @@
     	<base href="{$basehref}" />
     	<title>TestLink Inner Frame</title>
     	<style media="all" type="text/css">@import "{$css}";</style>
-    	<link rel="stylesheet" type="text/css" href="{$basehref}gui/themes/default/css/homepage.css">
+    	<link rel="stylesheet" type="text/css" href="{$basehref}gui/themes/default/css/frame.css">
     	<script type="text/javascript" src="{$basehref}third_party/jquery/{$smarty.const.TL_JQUERY}" language="javascript"></script>
     	<script type="text/javascript" src="{$basehref}third_party/chosen/chosen.jquery.js"></script>
     	{include file="bootstrap.inc.tpl"}
     </head>
     <body>
     	{$print_tabs}
-        <iframe src="{$treeframe}" name="treeframe"></iframe>
-        <iframe src="{$workframe}" name="workframe"></iframe>
+        <iframe src="{$treeframe}" name="treeframe" class="treeframe"></iframe>
+        <iframe src="{$workframe}" name="workframe" class="workframe"></iframe>
     </body>
 </html>

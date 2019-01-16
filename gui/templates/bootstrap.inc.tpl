@@ -6,8 +6,8 @@
 
 {$ace = $basehref|cat:"third_party/ace"}
 
-<link rel="stylesheet" href="{$ace}/ace-skins.min.css" >
 <link rel="stylesheet" href="{$ace}/ace.min.css">
+<link rel="stylesheet" href="{$ace}/ace-skins.min.css" >
 
 {$fa = $basehref|cat:"third_party/font-awesome"}
 

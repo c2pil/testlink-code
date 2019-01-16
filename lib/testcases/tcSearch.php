@@ -17,6 +17,9 @@
 require_once("../../config.inc.php");
 require_once("common.php");
 require_once('exttable.class.php');
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
 testlinkInitPage($db);
 
 $templateCfg = templateConfiguration();
@@ -289,6 +292,7 @@ if (!is_null($table))
 
 
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('tcSearch.php', $gui_menu, TAB4));
 $smarty->display($templateCfg->template_dir . $tpl);
 
 /**

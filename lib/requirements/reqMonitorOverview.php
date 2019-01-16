@@ -16,6 +16,10 @@ require_once("../../config.inc.php");
 require_once("common.php");
 require_once('exttable.class.php');
 require_once('requirements.inc.php');
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -155,6 +159,7 @@ if(count($gui->reqIDSet) > 0)
 
 
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('reqMonitorOverview.php', $gui_menu, TAB3));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

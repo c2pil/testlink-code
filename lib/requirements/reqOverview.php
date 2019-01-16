@@ -18,6 +18,10 @@
 require_once("../../config.inc.php");
 require_once("common.php");
 require_once('exttable.class.php');
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $cfield_mgr = new cfield_mgr($db);
@@ -286,6 +290,7 @@ if(count($gui->reqIDs) > 0)  {
 
 
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('reqOverview.php', $gui_menu, TAB3));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

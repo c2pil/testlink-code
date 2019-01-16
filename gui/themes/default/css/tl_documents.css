@@ -95,7 +95,6 @@ table.req {
 
 table.tc th, table.req th, table.req_spec th {
 	font-weight:    	bold;
-	background:     	#EEE;
 	text-align:			left;
 }
 
@@ -147,6 +146,5 @@ table.cf, table.cf td {
 
 td.labelHolder {
 	font-weight:    	bold;
-	background:     	#EEE;
 	text-align:			left;
 }
