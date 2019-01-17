@@ -438,7 +438,7 @@ abstract class tlFilterControl extends tlObjectWithDB
         // don't show textarea inputs here, they are too large for filterpanel
         if ($verbose_type != 'text area') 
         {
-          $cf_html_code .= '<tr class="cfRow"><td>' . htmlspecialchars($label) . '</td><td>' .
+          $cf_html_code .= '<tr><td class="category">' . htmlspecialchars($label) . '</td><td>' .
                            $this->cfield_mgr->string_custom_field_input($cf,$cfInputOpt) .
                            '</td></tr>';
         }
