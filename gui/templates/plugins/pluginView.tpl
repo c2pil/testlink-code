@@ -14,6 +14,7 @@ Purpose: smarty template - Manage plugins
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes" enableTableSorting="yes"}
 {include file="bootstrap.inc.tpl"}
 {include file="inc_ext_js.tpl"}
+{include file="bootstrap.inc.tpl"}
 
 {lang_get s='confirm_install_header' var="install_header"}
 {lang_get s='confirm_install_text' var="install_text"}
@@ -23,6 +24,8 @@ Purpose: smarty template - Manage plugins
 </head>
 
 <body {$body_onload}>
+
+{$print_tabs}
 
 {include file="inc_update.tpl"}
 

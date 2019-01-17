@@ -1441,7 +1441,7 @@ $TLS_product = "Projet";
 $TLS_search_testcase = "Recherche de fiche de test par ID";
 $TLS_title_edit_personal_data = "Mon compte";
 $TLS_title_admin = "Utilisateurs et Roles";
-$TLS_title_events = "Evènements";
+$TLS_title_events = "Evénements";
 $TLS_title_execute = "Exécutions des fiches de test";
 $TLS_title_results = "Rapports et métriques";
 $TLS_title_specification = "Fiches de tests";
@@ -2302,6 +2302,7 @@ $TLS_testplan_role = "Rôle de campagne de test";
 $TLS_title_test_case_suite = "Contenu de la campagne de test";
 $TLS_title_test_execution = "Exécution des fiches de tests";
 $TLS_title_test_plan_mgmt = "Campagne de test";
+$TLS_admin_button = "Administration";
 
 
 // ----- gui/templates/metricsDashboard.tpl -----

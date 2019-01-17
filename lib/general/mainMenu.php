@@ -129,7 +129,9 @@ $rights2check = array('testplan_execute','testplan_create_build',
                       'testplan_add_remove_platforms',
                       'testplan_update_linked_testcase_versions',
                       'testplan_set_urgent_testcases',
-                      'testplan_show_testcases_newest_versions');
+                      'testplan_show_testcases_newest_versions',
+                      'events_mgt','mgt_view_events','mgt_plugins'
+);
 
 foreach($rights2check as $key => $the_right) {
   $gui_menu->grants[$the_right] = $userIsBlindFolded ? 'no' : $currentUser->hasRight($db,$the_right,$testprojectID,$testplanID);
@@ -184,7 +186,7 @@ foreach(array('EVENT_LEFTMENU_TOP',
 
 $basehref = $_SESSION['basehref'];
 
-const TAB1=0, TAB2=1, TAB3=2, TAB4=3, TAB5=4, TAB6=5, TAB7=6;
+const TAB_ADMIN=0, TAB1=1, TAB2=2, TAB3=3, TAB4=4, TAB5=5, TAB6=6, TAB7=7;
 
 $gui_menu->href = array(
     "projectView" => "lib/project/projectView.php",
@@ -218,7 +220,9 @@ $gui_menu->href = array(
     "tc_exec_assignment" => "lib/general/staticPage.php?key=tc_exec_assignment",
     "test_urgency" => "lib/general/staticPage.php?key=test_urgency",
     "planUpdateTC" => "lib/general/staticPage.php?key=planUpdateTC",
-    "newest_tcversions" => "newest_tcversions.php"
+    "newest_tcversions" => "newest_tcversions.php",
+    "eventviewer" => "lib/events/eventviewer.php",
+    "pluginView" => "lib/plugins/pluginView.php"
 );
 
 /**
@@ -234,6 +238,10 @@ $gui_menu->href = array(
  * tabsList[TABx][3] ~ href work area (optional) 
  */
 $gui_menu->tabsList = array(
+    array(
+        array(hasGrant($gui_menu->grants['events_mgt']) && hasGrant($gui_menu->grants['mgt_view_events']), $basehref.$gui_menu->href["eventviewer"], lang_get('title_events')),
+        array(hasGrant($gui_menu->grants['mgt_plugins']), $basehref.$gui_menu->href["pluginView"], lang_get('title_plugins'))
+    ),
     array(
         array(hasGrant($gui_menu->grants['cfield_management']), $basehref.$gui_menu->href["cfieldsView"], lang_get('href_cfields_management')),
         array(hasGrant($gui_menu->grants['issuetracker_management']) || hasGrant($gui_menu->grants['issuetracker_view']), $basehref.$gui_menu->href["issueTrackerView"], lang_get('href_issuetracker_management')),

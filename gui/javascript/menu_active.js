@@ -13,7 +13,7 @@
  *
  */
 
-const BUTTON_NUMBER = 7;
+const BUTTON_NUMBER = 8;
 
 function activeButton(button_id){
 	for(let i=1; i<=BUTTON_NUMBER; i++){

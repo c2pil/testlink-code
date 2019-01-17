@@ -16,6 +16,10 @@ require_once('common.php');
 require_once('users.inc.php');
 require_once('exttable.class.php');
 require_once("plugin_api.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $smarty = new TLSmarty();
@@ -57,6 +61,7 @@ $gui->available_plugins = get_all_available_plugins($gui->installed_plugins);
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
 $smarty->assign('user_feedback', $feedback);
+$smarty->assign('print_tabs',print_tabs('pluginView.php', $gui_menu, TAB_ADMIN));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 
