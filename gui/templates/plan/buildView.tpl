@@ -30,6 +30,7 @@ Purpose: smarty template - Show existing builds
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes" enableTableSorting="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="bootstrap.inc.tpl"}
 
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
@@ -38,6 +39,8 @@ var del_action=fRoot+'{$deleteAction}';
 </head>
 
 <body {$body_onload}>
+
+{$print_tabs}
 
 <h1 class="title">{$labels.title_build_2}{$smarty.const.TITLE_SEP_TYPE3}{$labels.test_plan}{$smarty.const.TITLE_SEP}{$gui->tplan_name|escape}</h1>
 

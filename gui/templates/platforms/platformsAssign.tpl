@@ -13,6 +13,7 @@ Purpose: smarty template - assign platforms to testplans
 
 {include file="inc_head.tpl" openHead='yes'}
 {include file="inc_ext_js.tpl"}
+{include file="bootstrap.inc.tpl"}
 <script language="JavaScript" src="gui/javascript/OptionTransfer.js" type="text/javascript"></script>
 <script language="JavaScript" src="gui/javascript/expandAndCollapseFunctions.js" type="text/javascript"></script>
 
@@ -68,6 +69,8 @@ Purpose: smarty template - assign platforms to testplans
 </head>
 
 <body {if $gui->can_do} onLoad="{$opt_cfg->js_ot_name}.init(document.forms[0])" {/if}>
+
+{$print_tabs}
 
 <div class="workBack">
 	<h1 class="title">{$gui->mainTitle}</h1>

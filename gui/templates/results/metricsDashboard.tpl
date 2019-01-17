@@ -9,6 +9,7 @@ Testlink Open Source Project - http://testlink.sourceforge.net/
              info_metrics_dashboard,test_plan_progress,project_progress, info_metrics_dashboard_progress"}
 
 {include file="inc_head.tpl" openHead='yes'}
+{include file="bootstrap.inc.tpl"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {if $smarty.foreach.initializer.first}
@@ -38,6 +39,9 @@ Ext.onReady(function() {ldelim}
 </head>
 
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$labels.testproject} {$smarty.const.TITLE_SEP} {$gui->tproject_name|escape}</h1>
 <div class="workBack">
 {$tlImages.toggle_direct_link} &nbsp;&nbsp;

@@ -184,7 +184,7 @@ foreach(array('EVENT_LEFTMENU_TOP',
 
 $basehref = $_SESSION['basehref'];
 
-const TAB1 = 0, TAB2 = 1, TAB3 = 2, TAB4 = 3;
+const TAB1=0, TAB2=1, TAB3=2, TAB4=3, TAB5=4, TAB6=5, TAB7=6;
 
 $gui_menu->href = array(
     "projectView" => "lib/project/projectView.php",
@@ -201,21 +201,38 @@ $gui_menu->href = array(
     "tcCreatedUser" => "lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id=",
     "assignReq" => "lib/general/frmWorkArea.php?feature=assignReqs",
     "inventoryView" => "lib/inventory/inventoryView.php",
-    
-    "projectReq" => "lib/project/project_req_spec_mgmt.php?id=1",
+    "projectReq" => "lib/project/project_req_spec_mgmt.php?id=",
     "printReqSpec" => "lib/general/staticPage.php?key=printReqSpec",
     "searchReq" => "lib/general/staticPage.php?key=searchReq",
     "searchReqSpec" => "lib/general/staticPage.php?key=searchReqSpec",
     "assignReqs" => "lib/general/staticPage.php?key=assignReqs",
-    "archiveData" => "lib/testcases/archiveData.php?edit=testproject&id=1",
+    "archiveData" => "lib/testcases/archiveData.php?edit=testproject&id=",
     "keywordsAssign" => "lib/general/staticPage.php?key=keywordsAssign",
-    
     "planView" => "lib/plan/planView.php",
     "buildView" => "lib/plan/buildView.php?tplan_id=",
     "mileView" => "lib/plan/planMilestonesView.php",
-    "platformAssign" => "lib/platforms/platformsAssign.php?tplan_id="
+    "platformAssign" => "lib/platforms/platformsAssign.php?tplan_id=",
+    "execDashboard" => "lib/execute/execDashboard.php?id=",
+    "showMetrics" => "lib/general/staticPage.php?key=showMetrics",
+    "printDocOptions" => "lib/results/printDocOptions.php?activity=addTC",
+    "tc_exec_assignment" => "lib/general/staticPage.php?key=tc_exec_assignment",
+    "test_urgency" => "lib/general/staticPage.php?key=test_urgency",
+    "planUpdateTC" => "lib/general/staticPage.php?key=planUpdateTC",
+    "newest_tcversions" => "newest_tcversions.php"
 );
 
+/**
+ * Tab structure 
+ * 
+ * tabsList[TAB1] ~ button 1
+ * tabsList[TAB2] ~ button 2
+ * ...
+ * 
+ * tabsList[TABx][0] ~ rights
+ * tabsList[TABx][1] ~ href
+ * tabsList[TABx][2] ~ label
+ * tabsList[TABx][3] ~ href work area (optional) 
+ */
 $gui_menu->tabsList = array(
     array(
         array(hasGrant($gui_menu->grants['cfield_management']), $basehref.$gui_menu->href["cfieldsView"], lang_get('href_cfields_management')),
@@ -231,7 +248,7 @@ $gui_menu->tabsList = array(
         array(hasGrant($gui_menu->grants['project_inventory_view']) || hasGrant($gui_menu->grants['project_inventory_management']), $basehref.$gui_menu->href["inventoryView"], lang_get('href_inventory_management'))
     ),
     array(
-        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=reqSpecMgmt", lang_get('href_req_spec'), $gui_menu->href["projectReq"]),
+        array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=reqSpecMgmt", lang_get('href_req_spec'), $gui_menu->href["projectReq"].$gui_menu->testprojectID),
         array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->href["reqOverView"], lang_get('href_req_overview')),
         array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=printReqSpec", lang_get('href_print_req'), $gui_menu->href["printReqSpec"]),
         array(hasGrant($gui_menu->grants['reqs_view']) || hasGrant($gui_menu->grants['reqs_edit']), $basehref.$gui_menu->launcher."?feature=searchReq", lang_get('href_search_req'), $gui_menu->href["searchReq"]),
@@ -240,40 +257,37 @@ $gui_menu->tabsList = array(
         array(hasGrant($gui_menu->grants['monitor_req']), $basehref.$gui_menu->href["reqMonOverView"].$gui_menu->testprojectID, lang_get('href_req_monitor_overview'))
     ),
     array(
-        array(hasGrant($gui_menu->grants['view_tc']), $basehref.$gui_menu->launcher."?feature=editTc", hasGrant($gui_menu->grants['modify_tc'])?lang_get('href_edit_tc'):lang_get('href_browse_tc'), $gui_menu->href["archiveData"]),
-        array(hasGrant($gui_menu->hasTestCases), $basehref.$gui_menu->href["tcSearch"].$gui_menu->testprojectID, lang_get('href_search_tc')),
-        array(hasGrant($gui_menu->hasKeywords) && hasGrant($gui_menu->grants['keyword_assignment']), $basehref.$gui_menu->launcher."?feature=keywordsAssign", lang_get('href_keywords_assign'), $gui_menu->href["keywordsAssign"]),
+        array(hasGrant($gui_menu->grants['view_tc']), $basehref.$gui_menu->launcher."?feature=editTc", hasGrant($gui_menu->grants['modify_tc'])?lang_get('href_edit_tc'):lang_get('href_browse_tc'), $gui_menu->href["archiveData"].$gui_menu->testprojectID),
+        array($gui_menu->hasTestCases, $basehref.$gui_menu->href["tcSearch"].$gui_menu->testprojectID, lang_get('href_search_tc')),
+        array($gui_menu->hasKeywords && hasGrant($gui_menu->grants['keyword_assignment']), $basehref.$gui_menu->launcher."?feature=keywordsAssign", lang_get('href_keywords_assign'), $gui_menu->href["keywordsAssign"]),
         array(hasGrant($gui_menu->grants['modify_tc']), $basehref.$gui_menu->href["tcCreatedUser"].$gui_menu->testprojectID, lang_get('link_report_test_cases_created_per_user'))
+    ),
+    array(
+        array(hasGrant($gui_menu->grants['mgt_testplan_create']), $basehref.$gui_menu->href["planView"], lang_get('href_plan_management')),
+        array(hasGrant($gui_menu->grants['testplan_create_build']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["buildView"].$gui_menu->testplanID, lang_get('href_build_new')),
+        array((hasGrant($gui_menu->grants['mgt_testplan_create']) || hasGrant($gui_menu->grants['testplan_create_build'])) && hasGrant($gui_menu->grants['testplan_milestone_overview']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["mileView"], lang_get('href_plan_mstones'))   
     )
 );
 
 if($gui_menu->countPlans > 0){
-    
-    if(hasGrant($gui_menu->grants.testplan_planning)){
+    $gui_menu->tabsList[] = array(
+        array(hasGrant($gui_menu->grants['testplan_execute']), $gui_menu->launcher."?feature=executeTest", lang_get('href_execute_test'), $gui_menu->href["execDashboard"].$gui_menu->testprojectID),
+        array(hasGrant($gui_menu->grants['exec_ro_access']), $gui_menu->launcher."?feature=executeTest", lang_get('href_exec_ro_access'), $gui_menu->href["execDashboard"].$gui_menu->testprojectID),
+        array(hasGrant($gui_menu->grants['testplan_execute']) || hasGrant($gui_menu->grants['exec_ro_access']), $gui_menu->url['testcase_assignments'], lang_get('href_my_testcase_assignments')),
+        array(hasGrant($gui_menu->grants['testplan_metrics']), $gui_menu->launcher."?feature=showMetrics", lang_get('href_rep_and_metrics'), $gui_menu->href["showMetrics"]),
+        array(hasGrant($gui_menu->grants['testplan_metrics']), $gui_menu->url['metrics_dashboard'], lang_get('href_metrics_dashboard'))
+    );
+    if(hasGrant($gui_menu->grants['testplan_planning'])){
         $gui_menu->tabsList[] = array(
-            array(hasGrant($gui_menu->grants['cfield_management']), $basehref.$gui_menu->href["cfieldsView"], lang_get('href_cfields_management')),
-            array(hasGrant($gui_menu->grants['issuetracker_management']) || hasGrant($gui_menu->grants['issuetracker_view']), $basehref.$gui_menu->href["issueTrackerView"], lang_get('href_issuetracker_management')),
-            array(hasGrant($gui_menu->grants['codetracker_management']) || hasGrant($gui_menu->grants['codetracker_view']), $basehref.$gui_menu->href["codeTrackerView"], lang_get('href_codetracker_management'))
+            array(hasGrant($gui_menu->grants["testplan_add_remove_platforms"]), $gui_menu->href["platformAssign"].$gui_menu->testplanID, lang_get('href_platform_assign')),
+            array(true, $gui_menu->launcher."?feature=planAddTC", lang_get('href_add_remove_test_cases'), $gui_menu->href["printDocOptions"]),
+            array(true, $gui_menu->launcher."?feature=tc_exec_assignment", lang_get('href_tc_exec_assignment'), $gui_menu->href["tc_exec_assignment"]),
+            array($_SESSION['testprojectOptions']->testPriorityEnabled && hasGrant($gui_menu->grants["testplan_set_urgent_testcases"]), $gui_menu->launcher."?feature=test_urgency", lang_get('href_plan_assign_urgency'), $gui_menu->href["test_urgency"]),
+            array(hasGrant($gui_menu->grants['testplan_update_linked_testcase_versions']), $gui_menu->launcher."?feature=planUpdateTC", lang_get('href_update_tplan'), $gui_menu->href["planUpdateTC"]),
+            array(hasGrant($gui_menu->grants['testplan_show_testcases_newest_versions']), $gui_menu->launcher."?feature=newest_tcversions",  lang_get('href_newest_tcversions'), $gui_menu->href["newest_tcversions"])
         );
     }
 }
-
-// $gui->grants.mgt_testplan_create == "yes"} {$planView} href_plan_management}
-// $gui->grants.testplan_create_build == "yes" and $gui->countPlans > 0}{$buildView}{$gui->testplanID}" href_build_new}
-// ($gui->grants.mgt_testplan_create == "yes" || $gui->grants.testplan_create_build == "yes") && $gui->grants.testplan_milestone_overview == "yes" && $gui->countPlans > 0} {$mileView} href_plan_mstones}
-
-// $gui->grants.testplan_execute == "yes" {$gui->launcher}?feature=executeTest href_execute_test
-// $gui->grants.exec_ro_access == "yes" {$gui->launcher}?feature=executeTest href_exec_ro_access
-// $gui->grants.testplan_execute == "yes" || $gui->grants.exec_ro_access == "yes" {$gui->url.testcase_assignments} href_my_testcase_assignments
-// $gui->grants.testplan_metrics == "yes" {$gui->launcher}?feature=showMetrics href_rep_and_metrics
-// $gui->grants.testplan_metrics == "yes" {$gui->url.metrics_dashboard} href_metrics_dashboard
-
-// $gui->grants.testplan_add_remove_platforms == "yes" {$platformAssign}{$gui->testplanID} href_platform_assign
-// {$gui->launcher}?feature=planAddTC href_add_remove_test_cases
-// {$gui->launcher}?feature=tc_exec_assignment href_tc_exec_assignment
-// $session['testprojectOptions']->testPriorityEnabled && $gui->grants.testplan_set_urgent_testcases == "yes" {$gui->launcher}?feature=test_urgency href_plan_assign_urgency
-// $gui->grants.testplan_update_linked_testcase_versions == "yes" {$gui->launcher}?feature=planUpdateTC href_update_tplan
-// $gui->grants.testplan_show_testcases_newest_versions == "yes" {$gui->launcher}?feature=newest_tcversions href_newest_tcversions
 
 $tplKey = 'mainMenu';
 $tpl = $tplKey . '.tpl';
@@ -294,9 +308,8 @@ function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
     $s = "";
     $s .= '<ul class="nav nav-tabs padding-18">';
         foreach( $gui_menu->tabsList[$tab_number] as $tab ) {
-            if(tab[0]){
-                if($is_frame){
-                    //                 echo $tab[3];
+            if($tab[0]){
+                if($is_frame && $tab[3]){
                     $t_active = ($tab[3] === $active_page) ? 'active' : '';
                 }else{
                     $t_active =  strpos($tab[1], $active_page) ? 'active' : '';

@@ -20,11 +20,11 @@ iframe {
 }
 
 .treeframe {
-	width:30%;
+	width: calc(99% - 70%);
 	height:100%;
 }
 
 .workframe {
-	width:68%;
+	width: calc(100% - 30%);
 	height:100%;
 }

@@ -8,6 +8,9 @@
  */         
 require('../../config.inc.php');
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
 
 testlinkInitPage($db,false,false,"checkRights");
 
@@ -74,6 +77,7 @@ foreach($tplans as $key => $value)
 
 $smarty = new TLSmarty();
 $smarty->assign('gui', $gui);
+$smarty->assign('print_tabs',print_tabs('newest_tcversions.php', $gui_menu, TAB7, true));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

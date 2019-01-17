@@ -10,6 +10,10 @@
  */
 require_once('../../config.inc.php');
 require_once("common.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -81,6 +85,7 @@ if($args->tproject_id)
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('planView.php', $gui_menu, TAB5));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

@@ -8,6 +8,7 @@ rev:
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_jsCheckboxes.tpl"}
+{include file="bootstrap.inc.tpl"}
 
 {lang_get var='labels' 
           s='testproject,test_plan,th_id,th_test_case,title_newest_tcversions,
@@ -15,6 +16,8 @@ rev:
 
 </head>
 <body>
+
+{$print_tabs}
 
 <h1 class="title"> {$labels.title_newest_tcversions} 
 	{include file="inc_help.tpl" helptopic="hlp_planTcModified" show_help_icon=true}

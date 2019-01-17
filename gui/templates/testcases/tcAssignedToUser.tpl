@@ -6,6 +6,7 @@ rev:
 *}
 
 {include file="inc_head.tpl" openHead='yes'}
+{include file="bootstrap.inc.tpl"}
 
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {assign var="tableID" value="table_$idx"}
@@ -25,6 +26,9 @@ rev:
              high_priority,medium_priority,low_priority,build,testsuite,generated_by_TestLink_on,show_closed_builds_btn'}
 
 <body onUnload="storeWindowSize('AssignmentOverview')">
+
+{$print_tabs}
+
 <h1 class="title">{$gui->pageTitle}</h1>
 <div class="workBack">
 
