@@ -596,7 +596,7 @@ $tlCfg->api->id_format = "[ID: %s ]";
 
 /** Company logo (used by navigation bar and login page page) */
 $tlCfg->logo_login = 'tl-logo-transparent-25.png';
-$tlCfg->logo_navbar = 'tl-logo-transparent-12.5.png';
+$tlCfg->logo_navbar = 'tl-solo-logo-transparent-25.png';
 
 /** Height of the navbar always displayed  */
 $tlCfg->navbar_height = 70;
