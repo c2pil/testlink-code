@@ -1,0 +1,24 @@
+/*
+TestLink Open Source Project - http://testlink.sourceforge.net/
+@filesource testlink.css
+
+Purpose: Default TestLink NavBar CSS
+
+*/
+.navbar-brand img {
+	height : 32px;
+	width : 37px;
+}
+
+.navbar-buttons {
+	float : right;
+}
+
+li span.info {
+	color : #fff;
+	padding-left: 4px;
+}
+
+ul.nav li .navButton {
+	padding : 5px;
+}
