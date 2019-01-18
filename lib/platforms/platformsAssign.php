@@ -18,6 +18,10 @@
 require_once("../../config.inc.php");
 require_once("common.php");
 require_once("opt_transfer.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -94,7 +98,7 @@ item_opt_transf_cfg($opt_cfg, null);
 
 $smarty->assign('gui', $gui);
 $smarty->assign('opt_cfg', $opt_cfg);
-
+$smarty->assign('print_tabs',print_tabs('platformsAssign.php', $gui_menu, TAB7));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 /**

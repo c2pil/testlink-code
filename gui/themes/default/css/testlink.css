@@ -40,13 +40,13 @@ body, body.testlink {
 	margin:			0px;
 	padding:		0px;
 	height:100%;
-	overflow:hidden;
 }
 
 .mainPage {
 	border: none;
-	height: 100%;
+	height:calc(99% - 80px);
 	width: calc(100% - 150px);
+	padding-left: 2px;
 }
 
 .sidebar.compact {

@@ -12,6 +12,10 @@ require_once("../../config.inc.php");
 require_once("common.php");
 require_once("users.inc.php");
 require_once('exttable.class.php');
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 $date_format_cfg = config_get('date_format');
 
@@ -75,6 +79,7 @@ else
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('eventviewer.php', $gui_menu, TAB_ADMIN));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 /**

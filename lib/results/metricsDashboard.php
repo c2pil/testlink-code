@@ -13,6 +13,10 @@
 require('../../config.inc.php');
 require_once('common.php');
 require_once('exttable.class.php');
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 $templateCfg = templateConfiguration();
 
 list($args,$gui) = initEnv($db);
@@ -131,6 +135,7 @@ if(count($gui->tplan_metrics) > 0)
 
 $smarty = new TLSmarty;
 $smarty->assign('gui', $gui);
+$smarty->assign('print_tabs',print_tabs('metricsDashboard.php', $gui_menu, TAB6));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

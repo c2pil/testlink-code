@@ -2340,6 +2340,7 @@ $TLS_testplan_role = "Test Plan role ";
 $TLS_title_test_case_suite = "Test Plan contents";
 $TLS_title_test_execution = "Test Execution";
 $TLS_title_test_plan_mgmt = "Test Plan";
+$TLS_admin_button = "Administration";
 
 
 // ----- gui/templates/metricsDashboard.tpl -----

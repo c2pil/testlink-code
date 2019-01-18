@@ -201,6 +201,15 @@ function getTab($feature){
         case 'editTc':
         case 'keywordsAssign':
             return TAB4;
+        case 'executeTest':
+        case 'showMetrics':
+            return TAB6;
+        case 'planAddTC':
+        case 'tc_exec_assignment':
+        case 'test_urgency':
+        case 'planUpdateTC':
+        case 'newest_tcversions':
+            return TAB7;
         default:
             return -1;
     }

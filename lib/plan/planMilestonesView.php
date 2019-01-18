@@ -19,6 +19,10 @@
 require_once("../../config.inc.php");
 require_once("common.php");
 require_once("testplan.class.php");
+ob_start();
+require_once( '../general/mainMenu.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -27,6 +31,7 @@ $gui = initialize_gui($db,$args);
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('planMilestonesView.php', $gui_menu, TAB5));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

@@ -33,7 +33,7 @@
     href_plan_management,
     href_build_new,href_plan_mstones,href_plan_define_priority,
     href_metrics_dashboard,href_add_remove_test_cases,
-    href_exec_ro_access'}
+    href_exec_ro_access,admin_button'}
              
 
 {* Show / Hide section logic *}
@@ -58,8 +58,40 @@
         {if $gui->securityNotes}
     		{include file="inc_msg_from_array.tpl" array_of_msg=$gui->securityNotes arg_css_class="warning"}
         {/if}
-    	<ul class="nav nav-list">	
+    	<ul class="nav nav-list">
+			{* PLUGIN MANAGEMENT *}
+            {if $display_left_block_top}
+                {if isset($gui->plugins.EVENT_LEFTMENU_TOP)}
+                    {foreach from=$gui->plugins.EVENT_LEFTMENU_TOP item=menu_item}
+                    	<li id="button" onClick="activeButton(id)"> 
+                        	<a href="{$menu_item['href']}" target="mainframe">
+                        		<i class="menu-icon fa fa-dashboard"></i>
+                        		<span class="menu-text">{$menu_item['label']}</span>
+                        	</a>
+                    		<b class="arrow"></b>
+                		</li>
+                    {/foreach}
+                {/if}
+                <br/>
+            {/if}	
     		{if $gui->testprojectID}
+    		
+    			<!-- BUTTON ADMIN -->
+    			{$href=""}
+        		{if $gui->grants.events_mgt eq "yes" && $gui->grants.mgt_view_events eq "yes"}
+              		{$href=$gui->href['eventviewer']}
+                {elseif $gui->grants.mgt_plugins eq "yes"}
+              		{$href=$gui->href['pluginView']}
+                {/if}
+                {if $href neq ""}
+            		<li id="button_8" onClick="activeButton(id)"> 
+                    	<a href="{$href}" target="mainframe">
+                        	<i class="menu-icon fa fa-dashboard"></i>
+                        	<span class="menu-text">{$labels.admin_button}</span>
+                    	</a>
+                    	<b class="arrow"></b>
+                	</li>
+            	{/if}
     		
                 <!-- BUTTON N°1 -->
     			{$href=""}
@@ -209,36 +241,25 @@
                 	{/if} 	
         		{/if}
         	{/if}
-    	</ul>
-    </div>
-    
-    {* PLUGIN MANAGEMENT *}
-    {if $display_left_block_top || $display_left_block_bottom}
-        <div class="vertical_menu" style="float: left; margin:0px 10px 10px 0px; width: 320px;">
-          {if $display_left_block_top}
-            {if isset($gui->plugins.EVENT_LEFTMENU_TOP)}
-              <div class="list-group" style="{$divStyle}" id="plugin_left_top">
-                {foreach from=$gui->plugins.EVENT_LEFTMENU_TOP item=menu_item}
-        		  <a href="{$menu_item['href']}" class="list-group-item" target="mainframe" style="{$aStyle}">{$menu_item['label']}</a>
-                  <br/>
-                {/foreach}
-              </div>
+        	
+        	{* PLUGIN MANAGEMENT *} 
+            {if $display_left_block_bottom}
+                {if isset($gui->plugins.EVENT_LEFTMENU_BOTTOM)}
+					<br/>
+                    {foreach from=$gui->plugins.EVENT_LEFTMENU_BOTTOM item=menu_item}
+						<li id="button" onClick="activeButton(id)"> 
+                        	<a href="{$menu_item['href']}" target="mainframe">
+                        		<i class="menu-icon fa fa-dashboard"></i>
+                        		<span class="menu-text">{$menu_item['label']}</span>
+                        	</a>
+                    		<b class="arrow"></b>
+                		</li>
+                    {/foreach}
+                {/if}  
             {/if}
-          {/if}
-        
-          {if $display_left_block_bottom}
-            {if isset($gui->plugins.EVENT_LEFTMENU_BOTTOM)}
-        	  <br/>
-        	  <div class="list-group" style="{$divStyle}" id="plugin_left_bottom">
-                {foreach from=$gui->plugins.EVENT_LEFTMENU_BOTTOM item=menu_item}
-        		  <a href="{$menu_item['href']}" class="list-group-item" target="mainframe" style="{$aStyle}">{$menu_item['label']}</a>
-                {/foreach}
-              </div>
-            {/if}  
-          {/if}
         </div>
-    {/if}
-    
+    	</ul>
+    </div>  
 <!--     {lang_get var="lbl_f" s="poweredBy,system_descr"} -->
 <!--     <strong>{$lbl_f.poweredBy|escape} <a href="{$tlCfg->testlinkdotorg}" title="{$lbl_f.system_descr|escape}">TestLink {$tlVersion|escape}</a></strong> -->
    	<iframe src="" name="mainframe" class="mainPage" ></iframe>
