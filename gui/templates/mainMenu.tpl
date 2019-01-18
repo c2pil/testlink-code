@@ -54,7 +54,7 @@
 </head>
 
 <body class="testlink skin-3">
-    <div class="sidebar compact">
+    <div id="sidebar" class="sidebar compact">
         {if $gui->securityNotes}
     		{include file="inc_msg_from_array.tpl" array_of_msg=$gui->securityNotes arg_css_class="warning"}
         {/if}
@@ -63,7 +63,7 @@
             {if $display_left_block_top}
                 {if isset($gui->plugins.EVENT_LEFTMENU_TOP)}
                     {foreach from=$gui->plugins.EVENT_LEFTMENU_TOP item=menu_item}
-                    	<li id="button" onClick="activeButton(id)"> 
+                    	<li id="button_plugin_top" onClick="activeButton(id)"> 
                         	<a href="{$menu_item['href']}" target="mainframe">
                         		<i class="menu-icon fa fa-dashboard"></i>
                         		<span class="menu-text">{$menu_item['label']}</span>
@@ -84,7 +84,7 @@
               		{$href=$gui->href['pluginView']}
                 {/if}
                 {if $href neq ""}
-            		<li id="button_8" onClick="activeButton(id)"> 
+            		<li id="button_admin" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text">{$labels.admin_button}</span>
@@ -93,7 +93,7 @@
                 	</li>
             	{/if}
     		
-                <!-- BUTTON N°1 -->
+                <!-- BUTTON SYSTEM -->
     			{$href=""}
         		{if $gui->grants.cfield_management eq "yes"}
               		{$href=$gui->href['cfieldsView']}
@@ -103,7 +103,7 @@
               		{$href=$gui->href['codeTrackerView']}
                 {/if}
                 {if $href neq ""}
-            		<li id="button_1" onClick="activeButton(id)"> 
+            		<li id="button_system" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text">{$labels.system_config}</span>
@@ -112,7 +112,7 @@
                 	</li>
             	{/if}    	
         	
-        		<!-- BUTTON N°2 -->
+        		<!-- BUTTON PROJECTS -->
     			{$href=""}
         		{if $gui->grants.project_edit eq "yes"}
               		{$href=$gui->href['projectView']}
@@ -128,7 +128,7 @@
               		{$href=$gui->href['inventoryView']}
                 {/if}
                 {if $href neq ""}
-            		<li id="button_2" onClick="activeButton(id)"> 
+            		<li id="button_projects" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text">{$labels.title_product_mgmt}</span>
@@ -137,7 +137,7 @@
                 	</li>
             	{/if}
             	
-            	<!-- BUTTON N°3 -->
+            	<!-- BUTTON REQ -->
             	{$href=""}
         		{if $gui->grants.reqs_view eq "yes" || $gui->grants.reqs_edit eq "yes"}
               		{$href=$gui->launcher|cat:"?feature=reqSpecMgmt"}
@@ -147,7 +147,7 @@
               		{$href=$gui->href['reqMonOverView']|cat:$gui->testprojectID}
                 {/if}
                 {if $href neq ""}
-            		<li id="button_3" onClick="activeButton(id)"> 
+            		<li id="button_req" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text">{$labels.title_requirements}</span>
@@ -156,7 +156,7 @@
                 	</li>
             	{/if}
             	
-            	<!-- BUTTON N°4 -->
+            	<!-- BUTTON TC -->
             	{$href=""}
         		{if $gui->grants.view_tc eq "yes"}
               		{$href=$gui->launcher|cat:"?feature=editTc"}
@@ -168,7 +168,7 @@
               		{$href=$gui->href['tcCreatedUser']|cat:$gui->testprojectID}
                 {/if}
                 {if $href neq ""}
-            		<li id="button_4" onClick="activeButton(id)"> 
+            		<li id="button_tc" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text">{$labels.title_test_spec}</span>
@@ -181,7 +181,7 @@
         	
         	<br>
         	
-        	<!-- BUTTON N°5 -->
+        	<!-- BUTTON PLAN -->
         	{$href=""}
         	{if $gui->grants.mgt_testplan_create eq "yes"}
           		{$href=$gui->href['planView']}
@@ -191,7 +191,7 @@
           		{$href=$gui->href['mileView']}
             {/if}
             {if $href neq ""}
-        		<li id="button_5" onClick="activeButton(id)"> 
+        		<li id="button_plan" onClick="activeButton(id)"> 
                 	<a href="{$href}" target="mainframe">
                     	<i class="menu-icon fa fa-dashboard"></i>
                     	<span class="menu-text">{$labels.title_test_plan_mgmt}</span>
@@ -202,7 +202,7 @@
         	
         	{if $gui->countPlans}
         	
-            	<!-- BUTTON N°6 -->
+            	<!-- BUTTON EXEC -->
             	{$href=""}
             	{if $gui->grants.testplan_execute eq "yes" || $gui->grants.exec_ro_access eq "yes"}
               		{$href=$gui->launcher|cat:"?feature=executeTest"}
@@ -212,7 +212,7 @@
               		{$href=$gui->launcher|cat:"?feature=showMetrics"}
                 {/if}
                 {if $href neq ""}
-            		<li id="button_6" onClick="activeButton(id)"> 
+            		<li id="button_exec" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text">{$labels.title_test_execution}</span>
@@ -223,7 +223,7 @@
             	
             	{if $gui->grants.testplan_planning eq "yes"}
             	
-                	<!-- BUTTON N°7 -->
+                	<!-- BUTTON PLAN CONTENT -->
                 	{$href=""}
                 	{if $gui->grants.testplan_add_remove_platforms eq "yes"}
                   		{$href=$gui->href['platformAssign']|cat:$gui->testplanID}
@@ -231,7 +231,7 @@
                   		{$href=$gui->launcher|cat:"?feature=planAddTC"}
                     {/if}
                     {if $href neq ""}
-                		<li id="button_7" onClick="activeButton(id)"> 
+                		<li id="button_plan_content" onClick="activeButton(id)"> 
                         	<a href="{$href}" target="mainframe">
                             	<i class="menu-icon fa fa-dashboard"></i>
                             	<span class="menu-text">{$labels.title_test_case_suite}</span>
@@ -247,7 +247,7 @@
                 {if isset($gui->plugins.EVENT_LEFTMENU_BOTTOM)}
 					<br/>
                     {foreach from=$gui->plugins.EVENT_LEFTMENU_BOTTOM item=menu_item}
-						<li id="button" onClick="activeButton(id)"> 
+						<li id="button_plugin_bottom" onClick="activeButton(id)"> 
                         	<a href="{$menu_item['href']}" target="mainframe">
                         		<i class="menu-icon fa fa-dashboard"></i>
                         		<span class="menu-text">{$menu_item['label']}</span>

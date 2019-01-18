@@ -60,7 +60,7 @@ $gui = initializeGui($args,$cfield_mgr);
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('cfieldsTprojectAssign.php', $gui_menu, TAB2));
+$smarty->assign('print_tabs',print_tabs('cfieldsTprojectAssign.php', $gui_menu, TAB_PROJECTS));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

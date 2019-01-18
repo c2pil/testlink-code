@@ -38,7 +38,7 @@ $gui = initializeGui($db,$args,$imgSet);
 $tpl = $templateCfg->default_template;
 
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('tcCreatedPerUserOnTestProject.php', $gui_menu, TAB4));
+$smarty->assign('print_tabs',print_tabs('tcCreatedPerUserOnTestProject.php', $gui_menu, TAB_TC));
 $smarty->display($templateCfg->template_dir . $tpl);
 
 /**

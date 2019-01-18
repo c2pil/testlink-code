@@ -13,11 +13,11 @@
  *
  */
 
-const BUTTON_NUMBER = 8;
+var sidebar = document.getElementById("sidebar").getElementsByTagName("li");
 
 function activeButton(button_id){
-	for(let i=1; i<=BUTTON_NUMBER; i++){
-		document.getElementById('button_'+i).setAttribute("class", "");
-	}
+	for(var i=0; i<sidebar.length; i++){
+		sidebar[i].setAttribute("class", "");
+	}	
 	document.getElementById(button_id).setAttribute("class", "active");
 }

@@ -85,7 +85,7 @@ if($args->tproject_id)
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('planView.php', $gui_menu, TAB5));
+$smarty->assign('print_tabs',print_tabs('planView.php', $gui_menu, TAB_PLAN));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

@@ -77,7 +77,7 @@ foreach($tplans as $key => $value)
 
 $smarty = new TLSmarty();
 $smarty->assign('gui', $gui);
-$smarty->assign('print_tabs',print_tabs('newest_tcversions.php', $gui_menu, TAB7, true));
+$smarty->assign('print_tabs',print_tabs('newest_tcversions.php', $gui_menu, TAB_PLAN_CONTENT, true));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

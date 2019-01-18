@@ -98,7 +98,7 @@ item_opt_transf_cfg($opt_cfg, null);
 
 $smarty->assign('gui', $gui);
 $smarty->assign('opt_cfg', $opt_cfg);
-$smarty->assign('print_tabs',print_tabs('platformsAssign.php', $gui_menu, TAB7));
+$smarty->assign('print_tabs',print_tabs('platformsAssign.php', $gui_menu, TAB_PLAN_CONTENT));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 /**

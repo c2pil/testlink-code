@@ -197,19 +197,19 @@ function getTab($feature){
         case 'searchReq':
         case 'searchReqSpec':
         case 'assignReqs':
-            return TAB3;
+            return TAB_REQ;
         case 'editTc':
         case 'keywordsAssign':
-            return TAB4;
+            return TAB_TC;
         case 'executeTest':
         case 'showMetrics':
-            return TAB6;
+            return TAB_EXEC;
         case 'planAddTC':
         case 'tc_exec_assignment':
         case 'test_urgency':
         case 'planUpdateTC':
         case 'newest_tcversions':
-            return TAB7;
+            return TAB_PLAN_CONTENT;
         default:
             return -1;
     }

@@ -74,7 +74,7 @@ if(!is_null($gui->tprojects) || $args->doAction=='list')
   }
 }
 
-$smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB2));
+$smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB_PROJECTS));
 $smarty->assign('gui',$gui);
 $smarty->display($templateCfg->template_dir . $template2launch);
 

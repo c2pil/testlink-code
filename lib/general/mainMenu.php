@@ -186,7 +186,15 @@ foreach(array('EVENT_LEFTMENU_TOP',
 
 $basehref = $_SESSION['basehref'];
 
-const TAB_ADMIN=0, TAB1=1, TAB2=2, TAB3=3, TAB4=4, TAB5=5, TAB6=6, TAB7=7;
+//Tab order in main menu
+const TAB_ADMIN=0, 
+TAB_SYSTEM=1, 
+TAB_PROJECTS=2, 
+TAB_REQ=3, 
+TAB_TC=4, 
+TAB_PLAN=5, 
+TAB_EXEC=6,
+TAB_PLAN_CONTENT=7;
 
 $gui_menu->href = array(
     "projectView" => "lib/project/projectView.php",
@@ -228,14 +236,14 @@ $gui_menu->href = array(
 /**
  * Tab structure 
  * 
- * tabsList[TAB1] ~ button 1
- * tabsList[TAB2] ~ button 2
+ * tabsList[TAB_ADMIN] ~ button Administration
+ * tabsList[TAB_SYSTEM] ~ button System
  * ...
  * 
- * tabsList[TABx][0] ~ rights
- * tabsList[TABx][1] ~ href
- * tabsList[TABx][2] ~ label
- * tabsList[TABx][3] ~ href work area (optional) 
+ * tabsList[TAB_xxx][0] ~ rights
+ * tabsList[TAB_xxx][1] ~ href
+ * tabsList[TAB_xxx][2] ~ label
+ * tabsList[TAB_xxx][3] ~ href work area (optional) 
  */
 $gui_menu->tabsList = array(
     array(
@@ -304,10 +312,18 @@ if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
   $tpl = $tplCfg->$tplKey;
 } 
 $smarty->assign('gui',$gui_menu);
+//$smarty->assign('is_sidebar_collapsed',is_collapsed('sidebar'));
 $smarty->display($tpl);
 
 /**
+ * 
  * Print the navigation tabs
+ *
+ * @param string $active_page
+ * @param object $gui_menu
+ * @param int $tab_number
+ * @param boolean $is_frame
+ * @return string The navigation tab
  */
 function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
     if($tab_number === -1){

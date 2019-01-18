@@ -290,7 +290,7 @@ if(count($gui->reqIDs) > 0)  {
 
 
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('reqOverview.php', $gui_menu, TAB3));
+$smarty->assign('print_tabs',print_tabs('reqOverview.php', $gui_menu, TAB_REQ));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 
