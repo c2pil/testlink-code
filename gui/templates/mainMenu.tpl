@@ -55,39 +55,6 @@
 
 <body class="testlink skin-3">
     <div class="sidebar compact">
-    	{if $gui->num_active_tplans > 0}
-    		<div class="" style="padding: 3px 15px;">
-                {lang_get s='help' var='common_prefix'}
-                {lang_get s='test_plan' var="xx_alt"}
-                {$text_hint="$common_prefix: $xx_alt"}
-                {include file="inc_help.tpl" helptopic="hlp_testPlan" show_help_icon=true 
-                      inc_help_alt="$text_hint" inc_help_title="$text_hint"  
-                      inc_help_style="float: right;vertical-align: top;"}
-    
-            	<form name="testplanForm" action="lib/general/mainMenu.php">
-            		{if $gui->countPlans > 0}
-<!--                  		{*{$labels.current_test_plan}*}:<br/> -->
-            	     	<select class="chosen-select" name="testplan" onchange="this.form.submit();">
-            	     	{section name=tPlan loop=$gui->arrPlans}
-             				<option value="{$gui->arrPlans[tPlan].id}"
-            		     		        {if $gui->arrPlans[tPlan].selected} selected="selected" {/if}
-            		     		        title="{$gui->arrPlans[tPlan].name|escape}">
-            		     		        {$gui->arrPlans[tPlan].name|escape}
-                 			</option>
-            	     	{/section}
-            	     	</select>
-                        {if $gui->countPlans == 1}
-                        	<input type="button" onclick="this.form.submit();" value="{$labels.ok}"/>
-                        {/if}
-                        {if $gui->testplanRole neq null}
-                        	<br />{$labels.testplan_role} {$gui->testplanRole|escape}
-                        {/if}
-                    {else}
-                    	{if $gui->num_active_tplans > 0}{$labels.msg_no_rights_for_tp}{/if}
-                    {/if}
-            	</form>
-    		</div>
-    	{/if}
         {if $gui->securityNotes}
     		{include file="inc_msg_from_array.tpl" array_of_msg=$gui->securityNotes arg_css_class="warning"}
         {/if}

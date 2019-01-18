@@ -145,8 +145,7 @@ if( $currentUser->hasRight($db,"testproject_user_role_assignment",$testprojectID
 
 $gui_menu->url = array('metrics_dashboard' => 'lib/results/metricsDashboard.php',
                   'testcase_assignments' => 'lib/testcases/tcAssignedToUser.php');
-$gui_menu->launcher = 'lib/general/frmWorkArea.php';
-$gui_menu->arrPlans = $arrPlans;                   
+$gui_menu->launcher = 'lib/general/frmWorkArea.php';            
 $gui_menu->countPlans = count($gui_menu->arrPlans);
 
 

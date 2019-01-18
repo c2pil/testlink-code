@@ -98,7 +98,7 @@ function initializeGui(&$db,&$args)
                'field_set' => $guiCfg->tprojects_combo_format,
                'order_by' => $guiCfg->tprojects_combo_order_by);
 
-  $gui->TestProjects = $tproject_mgr->get_accessible_for_user($args->user->dbID,$opx);
+  $gui->TestProjects = $tproject_mgr->get_accessible_for_user($args->user->dbID,$opx);  
 
   $gui->TestProjectCount = sizeof($gui->TestProjects);
   if($gui->TestProjectCount == 0)
@@ -119,6 +119,8 @@ function initializeGui(&$db,&$args)
   if($gui->tproject_id) {
     $testPlanSet = (array)$args->user->getAccessibleTestPlans($db,$gui->tproject_id);
     $gui->TestPlanCount = sizeof($testPlanSet);
+    $gui->num_active_tplans = $tproject_mgr->getActiveTestPlansCount($gui->tproject_id);
+  
 
     $tplanID = isset($_SESSION['testplanID']) ? intval($_SESSION['testplanID']) : null;
     if( !is_null($tplanID) ) {
@@ -145,7 +147,9 @@ function initializeGui(&$db,&$args)
       } 
       $testPlanSet[$index]['selected']=1;
     }
+    $gui->arrPlans = $testPlanSet;
   } 
+  
 
   if ($gui->tproject_id && isset($args->user->tprojectRoles[$gui->tproject_id])) {
     // test project specific role applied
@@ -159,7 +163,7 @@ function initializeGui(&$db,&$args)
                  $guiCfg->role_separator_open . 
                  $testprojectRole . $guiCfg->role_separator_close;
                    
-
+  $gui->menuframe = "lib/general/mainMenu.php";
   // only when the user has changed project using the combo the _GET has this key.
   // Use this clue to launch a refresh of other frames present on the screen
   // using the onload HTML body attribute
