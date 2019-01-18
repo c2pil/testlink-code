@@ -6,7 +6,7 @@ title bar + menu
 @filesource navBar.tpl
 *}
 {lang_get var="labels"
-          s="title_events,event_viewer,home,testproject,title_specification,title_execute,
+          s="current_test_plan,title_events,event_viewer,home,testproject,title_specification,title_execute,
              title_edit_personal_data,th_tcid,link_logout,title_admin,
              search_testcase,title_results,title_user_mgmt,full_text_search"}
 {$cfg_section=$smarty.template|replace:".tpl":""}
@@ -36,19 +36,48 @@ title bar + menu
 			<ul class="nav ace-nav">
 				{$session.testprojectTopMenu}
 				<li id="dropdown_projet" class="grey">
-					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">{$labels.testproject}<i class="ace-icon fa fa-angle-down bigger-110"></i></a>
+					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+						{$labels.testproject} {$gui->TestProjects[$gui->tproject_id]}
+						<i class="ace-icon fa fa-angle-down bigger-110"></i>
+					</a>
 						
-						<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu" style="z-index:100000; position:absolute">
-							<li>
-							<a href="lib/general/navBar.php?viewer={$gui->viewer}&testproject=">test</a>
-							</li>
-							<li>
-							<a class="active" href="lib/general/navBar.php?viewer={$gui->viewer}&testproject=">coucou</a>
-							</li>
-						</ul>
-					  					 
-				    
+					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
+						{foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
+					        	<li>
+									<a {if $tproject_id == $gui->tprojectID} class="active" {/if}
+										href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
+										{$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
+									</a>
+								</li>
+						{/foreach}
+					</ul>
 				</li>
+
+				{if $gui->num_active_tplans > 0}
+    				<li id="dropdown_plans" class="grey">
+    					{if $gui->TestPlanCount > 0}
+    					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+							{$labels.current_test_plan} {$gui->planSelectName}
+							<i class="ace-icon fa fa-angle-down bigger-110"></i>
+						</a>
+    				
+    					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
+    						{foreach key=index item=tPlans from=$gui->arrPlans}
+					        	<li>
+									<a {if $tPlans.selected} class="active" {/if}
+										href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
+								</li>
+							{/foreach}
+							{if $gui->testplanRole neq null}
+		                    	{$labels.testplan_role} {$gui->testplanRole|escape}
+		                    {/if}
+    					</ul>
+    					{else}
+		                	{if $gui->num_active_tplans > 0}{$labels.msg_no_rights_for_tp}{/if}
+    					{/if}		            	
+	            	</li>
+			    {/if}
+
 				<li>
 					<span class="info">{$gui->whoami|escape}</span>
 					<span class="navButton">
@@ -79,8 +108,9 @@ title bar + menu
 
 {if $gui->updateMainPage == 1}
   <script type="text/javascript">
-  window.mainMenu.location.reload();
-  window.mainframe.location.reload();
+  	  
+	  //window.mainMenu.location.reload();
+	  //window.mainframe.location.reload();
   </script>
 {/if}
 

@@ -10,7 +10,6 @@ Purpose: Default TestLink CSS
 html, body {
 	height:100%;
 	width:100%;
-	overflow:hidden;
 	margin: 0px;
 } 
 
@@ -24,13 +23,12 @@ iframe {
 }
 
 .treeframe {
-	width:30%;
-	height:100%;
+	width: calc(99% - 70%);
+	height: 100%;
 }
-
 .workframe {
-	width:68%;
-	height:100%;
+	width: calc(100% - 30%);
+	height: 100%;
 }
 
 body, body.testlink {

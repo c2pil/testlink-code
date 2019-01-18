@@ -12,6 +12,13 @@ require_once('../../config.inc.php');
 require_once("common.php");
 testlinkInitPage($db,('initProject' == 'initProject'));
 
+$testplanID = 0;
+if( isset($_REQUEST['testplan']) ) {
+    $testplanID = intval($_REQUEST['testplan']);
+    $_SESSION['testplanID'] = $testplanID;
+}
+
+
 $args = init_args($db);
 $gui = initializeGui($db,$args);
 
@@ -99,7 +106,6 @@ function initializeGui(&$db,&$args)
                'order_by' => $guiCfg->tprojects_combo_order_by);
 
   $gui->TestProjects = $tproject_mgr->get_accessible_for_user($args->user->dbID,$opx);  
-
   $gui->TestProjectCount = sizeof($gui->TestProjects);
   if($gui->TestProjectCount == 0)
   {
@@ -145,9 +151,11 @@ function initializeGui(&$db,&$args)
         $tplanID = $testPlanSet[0]['id'];
         setSessionTestPlan($testPlanSet[0]);      
       } 
+      
       $testPlanSet[$index]['selected']=1;
     }
     $gui->arrPlans = $testPlanSet;
+    $gui->planSelectName =   $testPlanSet[$index]["name"];
   } 
   
 

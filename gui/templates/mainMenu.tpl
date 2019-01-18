@@ -75,9 +75,10 @@
                 <br/>
             {/if}	
     		{if $gui->testprojectID}
-    		
+    		 
     			<!-- BUTTON ADMIN -->
     			{$href=""}
+    			
         		{if $gui->grants.events_mgt eq "yes" && $gui->grants.mgt_view_events eq "yes"}
               		{$href=$gui->href['eventviewer']}
                 {elseif $gui->grants.mgt_plugins eq "yes"}
