@@ -150,7 +150,7 @@ $gui->hintImg = '<img src="' . $imgSet['heads_up'] . '" title="' .
                 lang_get('system_design_blocks_global_admin_change') . '" >';
 
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB2));
+$smarty->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB_PROJECTS));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

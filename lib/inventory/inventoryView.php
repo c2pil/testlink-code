@@ -32,7 +32,7 @@ $gui->rightView = has_rights($db,"project_inventory_view");
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('inventoryView.php', $gui_menu, TAB2));
+$smarty->assign('print_tabs',print_tabs('inventoryView.php', $gui_menu, TAB_PROJECTS));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 ?>

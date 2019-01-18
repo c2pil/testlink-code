@@ -72,7 +72,7 @@ $gui->roles = tlRole::getAll($db,null,null,null,tlRole::TLOBJ_O_GET_DETAIL_MINIM
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
 $smarty->assign('sqlResult',$userFeedback);
-$smarty->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB2));
+$smarty->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB_PROJECTS));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 /**

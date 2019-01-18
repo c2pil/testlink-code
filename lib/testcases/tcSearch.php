@@ -292,7 +292,7 @@ if (!is_null($table))
 
 
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('tcSearch.php', $gui_menu, TAB4));
+$smarty->assign('print_tabs',print_tabs('tcSearch.php', $gui_menu, TAB_TC));
 $smarty->display($templateCfg->template_dir . $tpl);
 
 /**

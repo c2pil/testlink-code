@@ -135,7 +135,7 @@ if(count($gui->tplan_metrics) > 0)
 
 $smarty = new TLSmarty;
 $smarty->assign('gui', $gui);
-$smarty->assign('print_tabs',print_tabs('metricsDashboard.php', $gui_menu, TAB6));
+$smarty->assign('print_tabs',print_tabs('metricsDashboard.php', $gui_menu, TAB_EXEC));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

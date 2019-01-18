@@ -27,14 +27,15 @@ $testprojectID = isset($_SESSION['testprojectID']) ? intval($_SESSION['testproje
 
 $testplanID = isset($_SESSION['testplanID']) ? intval($_SESSION['testplanID']) : 0;
 
+
 $accessibleItems = $tproject_mgr->get_accessible_for_user($user->dbID,array('output' => 'map_name_with_inactive_mark'));
 $tprojectQty = $tproject_mgr->getItemCount();
 $userIsBlindFolded = (is_null($accessibleItems) || count($accessibleItems) == 0) && $tprojectQty > 0;
 
-if($userIsBlindFolded) {
-  $testprojectID = $testplanID = 0;
-  $_SESSION['testprojectTopMenu'] = '';
-}
+// if($userIsBlindFolded) {
+//   $testprojectID = $testplanID = 0;
+//   $_SESSION['testprojectTopMenu'] = '';
+// }
 
 $tplan2check = null;
 $currentUser = $_SESSION['currentUser'];
@@ -113,8 +114,8 @@ if( $currentUser->hasRight($db,"testproject_user_role_assignment",$testprojectID
 
 $gui_menu->url = array('metrics_dashboard' => 'lib/results/metricsDashboard.php',
                   'testcase_assignments' => 'lib/testcases/tcAssignedToUser.php');
-$gui_menu->launcher = 'lib/general/frmWorkArea.php';               
-$gui_menu->countPlans = count($gui_menu->arrPlans);
+$gui_menu->launcher = 'lib/general/frmWorkArea.php';
+$gui_menu->countPlans = count($arrPlans);
 
 
 $gui_menu->testprojectID = $testprojectID;
@@ -151,7 +152,15 @@ foreach(array('EVENT_LEFTMENU_TOP',
 
 $basehref = $_SESSION['basehref'];
 
-const TAB1 = 0, TAB2 = 1, TAB3 = 2, TAB4 = 3;
+//Tab order in main menu
+const TAB_ADMIN=0, 
+TAB_SYSTEM=1, 
+TAB_PROJECTS=2, 
+TAB_REQ=3, 
+TAB_TC=4, 
+TAB_PLAN=5, 
+TAB_EXEC=6,
+TAB_PLAN_CONTENT=7;
 
 $gui_menu->href = array(
     "projectView" => "lib/project/projectView.php",
@@ -191,16 +200,16 @@ $gui_menu->href = array(
 );
 
 /**
- * Tab structure
- *
- * tabsList[TAB1] ~ button 1
- * tabsList[TAB2] ~ button 2
+ * Tab structure 
+ * 
+ * tabsList[TAB_ADMIN] ~ button Administration
+ * tabsList[TAB_SYSTEM] ~ button System
  * ...
- *
- * tabsList[TABx][0] ~ rights
- * tabsList[TABx][1] ~ href
- * tabsList[TABx][2] ~ label
- * tabsList[TABx][3] ~ href work area (optional)
+ * 
+ * tabsList[TAB_xxx][0] ~ rights
+ * tabsList[TAB_xxx][1] ~ href
+ * tabsList[TAB_xxx][2] ~ label
+ * tabsList[TAB_xxx][3] ~ href work area (optional) 
  */
 $gui_menu->tabsList = array(
     array(
@@ -271,7 +280,14 @@ $smarty->assign('gui',$gui_menu);
 $smarty->display($tpl);
 
 /**
+ * 
  * Print the navigation tabs
+ *
+ * @param string $active_page
+ * @param object $gui_menu
+ * @param int $tab_number
+ * @param boolean $is_frame
+ * @return string The navigation tab
  */
 function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
     if($tab_number === -1){

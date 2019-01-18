@@ -216,7 +216,7 @@ if( $doIt )
 }
 
 $smarty->assign('gui',$gui);
-$smarty->assign('print_tabs',print_tabs('tcAssignedToUser.php', $gui_menu, TAB6));
+$smarty->assign('print_tabs',print_tabs('tcAssignedToUser.php', $gui_menu, TAB_EXEC));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 
