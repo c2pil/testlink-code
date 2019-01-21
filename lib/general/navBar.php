@@ -22,6 +22,7 @@ if( isset($_REQUEST['testplan']) ) {
 $args = init_args($db);
 $gui = initializeGui($db,$args);
 
+
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
 $smarty->display('navBar.tpl');

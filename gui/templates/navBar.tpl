@@ -43,9 +43,8 @@ title bar + menu
 						
 					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
 						{foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
-					        	<li>
-									<a {if $tproject_id == $gui->tprojectID} class="active" {/if}
-										href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
+					        	<li {if $tproject_id == $gui->tprojectID} class="active" {/if}>
+									<a href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
 										{$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
 									</a>
 								</li>
@@ -63,9 +62,8 @@ title bar + menu
     				
     					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
     						{foreach key=index item=tPlans from=$gui->arrPlans}
-					        	<li>
-									<a {if $tPlans.selected} class="active" {/if}
-										href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
+					        	<li {if $tPlans.selected} class="active" {/if}>
+									<a href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
 								</li>
 							{/foreach}
 							{if $gui->testplanRole neq null}
@@ -79,7 +77,7 @@ title bar + menu
 			    {/if}
 
 				<li>
-					<span class="info">{$gui->whoami|escape}</span>
+					<span class="info">{$gui->whoami|escape} : {$titi}</span>
 					<span class="navButton">
 						<a href='lib/usermanagement/userInfo.php' target="mainframe">
 							<img src="{$tlImages.account}" title="{$labels.title_edit_personal_data}"/>
