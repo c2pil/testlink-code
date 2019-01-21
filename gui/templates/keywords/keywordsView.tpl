@@ -91,19 +91,19 @@ var del_action = fRoot+'lib/keywords/keywordsEdit.php?tproject_id={$gui->tprojec
         	<input type="hidden" name="doAction" value="" />
         	<input type="hidden" name="tproject_id" value="{$gui->tproject_id}" />
             {if $gui->canManage != ""}
-                <input class="btn btn-primary" type="submit" id="create_keyword" name="create_keyword" value="{$labels.btn_create_keyword}" onclick="doAction.value='create'"/>
+                <input class="btn btn-primary btn-white btn-round" type="submit" id="create_keyword" name="create_keyword" value="{$labels.btn_create_keyword}" onclick="doAction.value='create'"/>
             {/if}
     		{if $gui->keywords != '' && $gui->canAssign!=''}
-        		<input class="btn btn-primary" type="button" id="keyword_assign" name="keyword_assign" 
+        		<input class="btn btn-primary btn-white btn-round" type="button" id="keyword_assign" name="keyword_assign" 
             			value="{$labels.menu_assign_kw_to_tc}" 
               			onclick="location.href=fRoot+'lib/general/frmWorkArea.php?feature=keywordsAssign';"/>
     		{/if}    
             {if $gui->canManage != ""}
-				<input class="btn btn-primary" type="button" name="do_import" value="{$labels.btn_import}" 
+				<input class="btn btn-primary btn-white btn-round" type="button" name="do_import" value="{$labels.btn_import}" 
                 onclick="location='{$basehref}/lib/keywords/keywordsImport.php?tproject_id={$gui->tproject_id}'" />
             {/if}
   			{if $gui->keywords != ''}
-  				<input class="btn btn-primary" type="button" name="do_export" value="{$labels.btn_export}" 
+  				<input class="btn btn-primary btn-white btn-round" type="button" name="do_export" value="{$labels.btn_export}" 
         		onclick="location='{$basehref}/lib/keywords/keywordsExport.php?doAction=export&tproject_id={$gui->tproject_id}'" />
   			{/if}
 		</form>

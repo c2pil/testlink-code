@@ -90,7 +90,7 @@ function refreshAndClose(tcase_id,callback) {
     {if $gui->showCloseButton}
     	<form name="closeMeTop">
     		<div class="groupBtn">
-    			<input class="btn btn-primary" type="button" value="{$labels.btn_close}" onclick="refreshAndClose({$gui->tcase_id},'{$gui->callback}');" />
+    			<input class="btn btn-primary btn-white btn-round" type="button" value="{$labels.btn_close}" onclick="refreshAndClose({$gui->tcase_id},'{$gui->callback}');" />
     		</div>
     	</form>
     {/if}
@@ -158,7 +158,7 @@ function refreshAndClose(tcase_id,callback) {
 
     	{if $smarty.section.row.total > 0 && $reqLinkingEnabled}
         	<div class="groupBtn">
-        		<input class="btn btn-primary" type="submit" name="unassign" value="{$labels.btn_unassign}"
+        		<input class="btn btn-primary btn-white btn-round" type="submit" name="unassign" value="{$labels.btn_unassign}"
         		       onclick="return check_action_precondition('reqList','unassign');"/>
         	</div>
     	{/if}
@@ -214,7 +214,7 @@ function refreshAndClose(tcase_id,callback) {
   				</table>
 	  		</div>
           	<div class="groupBtn">
-          		<input class="btn btn-primary" type="submit" name="assign" value="{$labels.btn_assign}" onclick="return check_action_precondition('reqList2','assign');"/>
+          		<input class="btn btn-primary btn-white btn-round" type="submit" name="assign" value="{$labels.btn_assign}" onclick="return check_action_precondition('reqList2','assign');"/>
           	</div>
 		</form>
 	</div>
@@ -223,7 +223,7 @@ function refreshAndClose(tcase_id,callback) {
 {if $gui->showCloseButton}
 	<form name="closeMe">
 		<div class="groupBtn">
-			<input class="btn btn-primary" type="button" value="{$labels.btn_close}" onclick="refreshAndClose({$gui->tcase_id},'{$gui->callback}');" />
+			<input class="btn btn-primary btn-white btn-round" type="button" value="{$labels.btn_close}" onclick="refreshAndClose({$gui->tcase_id},'{$gui->callback}');" />
 		</div>
 	</form>
 {/if}

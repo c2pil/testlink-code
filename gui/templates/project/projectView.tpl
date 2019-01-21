@@ -62,15 +62,15 @@ var del_action=fRoot+'{$deleteAction}';
         <input type="text" id="name" name="name" value="{$gui->name}"  
                size="{#TESTPROJECT_NAME_SIZE#}" maxlength="{#TESTPROJECT_NAME_MAXLEN#}"
                placeholder="{$labels.hint_like_search_on_name}" required/>
-        <input class="btn btn-primary" type="submit" id="search" name="search" value="{$labels.btn_search_filter}" title="{$labels.hint_like_search_on_name}" />
+        <input class="btn btn-primary btn-white btn-round" type="submit" id="search" name="search" value="{$labels.btn_search_filter}" title="{$labels.hint_like_search_on_name}" />
       </form>
       <form method="post" action="{$searchAction}" style="display:inline;">
-        <input class="btn btn-primary" type="submit" name="resetFilter" value="{$labels.btn_reset_filter}" />
+        <input class="btn btn-primary btn-white btn-round" type="submit" name="resetFilter" value="{$labels.btn_reset_filter}" />
       </form>
       &nbsp;&nbsp;&nbsp;
       {if $gui->canManage}
       <form method="post" action="{$createAction}" style="display:inline;">
-        <input class="btn btn-primary" type="submit" id="create" name="create" value="{$labels.btn_create}" />
+        <input class="btn btn-primary btn-white btn-round" type="submit" id="create" name="create" value="{$labels.btn_create}" />
       </form>
       {/if}
     </div>

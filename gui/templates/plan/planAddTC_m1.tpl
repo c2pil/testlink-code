@@ -170,20 +170,20 @@ Ext.onReady(function(){
 				{/if}
 				{$labels.for}
 				{if $gui->full_control}
-				<button onclick="cs_all_checkbox_in_div_with_platform('addTcForm', '{$add_cb}', Ext.get('select_platform').getValue()); return false" class="btn btn-primary">{$labels.adding_tc}</button>
+				<button onclick="cs_all_checkbox_in_div_with_platform('addTcForm', '{$add_cb}', Ext.get('select_platform').getValue()); return false" class="btn btn-primary btn-white btn-round">{$labels.adding_tc}</button>
 				{/if}
-				<button onclick="cs_all_checkbox_in_div_with_platform('addTcForm', '{$rm_cb}', Ext.get('select_platform').getValue()); return false" class="btn btn-primary">{$labels.removal_tc}</button>
+				<button onclick="cs_all_checkbox_in_div_with_platform('addTcForm', '{$rm_cb}', Ext.get('select_platform').getValue()); return false" class="btn btn-primary btn-white btn-round">{$labels.removal_tc}</button>
 			</div>
 	  	  	<input type="hidden" name="doAction" id="doAction" value="default" />
-	  	  	<input type="submit" name="doAddRemove" value="{$gui->buttonValue}" onclick="doAction.value=this.name" class="btn btn-primary"/>
+	  	  	<input type="submit" name="doAddRemove" value="{$gui->buttonValue}" onclick="doAction.value=this.name" class="btn btn-primary btn-white btn-round"/>
 	  	  	{if $gui->full_control eq 1}
-	  	  	  <input type="submit" name="doReorder" value="{$labels.btn_save_exec_order}" onclick="doAction.value=this.name" class="btn btn-primary"/>
+	  	  	  <input type="submit" name="doReorder" value="{$labels.btn_save_exec_order}" onclick="doAction.value=this.name" class="btn btn-primary btn-white btn-round"/>
         
 	  	  		{if $gui->drawSaveCFieldsButton}
-	  	  		  <input type="submit" name="doSaveCustomFields" value="{$labels.btn_save_custom_fields}" onclick="doAction.value=this.name" class="btn btn-primary"/>
+	  	  		  <input type="submit" name="doSaveCustomFields" value="{$labels.btn_save_custom_fields}" onclick="doAction.value=this.name" class="btn btn-primary btn-white btn-round"/>
 	  	  		{/if}
 	  	  		{if $gui->drawSavePlatformsButton}
-	  	  		  <input type="submit" name="doSavePlatforms" value="{$labels.btn_save_platform}" onclick="doAction.value=this.name" class="btn btn-primary"/>
+	  	  		  <input type="submit" name="doSavePlatforms" value="{$labels.btn_save_platform}" onclick="doAction.value=this.name" class="btn btn-primary btn-white btn-round"/>
 	  	  		{/if}
 	  	  	{/if}
 	  	  </div>

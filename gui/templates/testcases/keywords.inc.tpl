@@ -81,7 +81,7 @@ var pF_remove_keyword = remove_keyword;
             			<select id="free_keywords" name="free_keywords[]" data-placeholder="{$kw_labels.select_keywords}" class="chosen-add-keywords" multiple="multiple">
               				{html_options options = $gui->currentVersionFreeKeywords}
             			</select>
-            			<input type="submit" value="{$kw_labels.btn_add}" onclick="doAction.value='addKeyword'" class="btn btn-primary">
+            			<input type="submit" value="{$kw_labels.btn_add}" onclick="doAction.value='addKeyword'" class="btn btn-primary btn-white btn-round">
           			</td>  
     
           			<script>

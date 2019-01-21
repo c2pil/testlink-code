@@ -384,14 +384,14 @@ function launchInsertStep(step_id)
 
 {if $edit_enabled && $args_frozen_version=="no"}
 <div>
-	<input type="submit" name="create_step" onclick="doAction.value='createStep';{$gui->submitCode}" value="{$tcView_viewer_labels.btn_create_step}" class="btn btn-primary"/>
+	<input type="submit" name="create_step" onclick="doAction.value='createStep';{$gui->submitCode}" value="{$tcView_viewer_labels.btn_create_step}" class="btn btn-primary btn-white btn-round"/>
 	{if $args_testcase.steps != ''}
 		<input type="submit" name="resequence_steps" id="resequence_steps" onclick="doAction.value='doResequenceSteps';{$gui->submitCode}" 
-				value="{$tcView_viewer_labels.btn_resequence_steps}" class="btn btn-primary"/>
+				value="{$tcView_viewer_labels.btn_resequence_steps}" class="btn btn-primary btn-white btn-round"/>
 	{/if}
 	<span class="order_info" style='display:none'>
 		<input type="submit" name="renumber_step" onclick="doAction.value='doReorderSteps';{$gui->submitCode};javascript: return validateStepsReorder('step_number{$args_testcase.id}');"
-				value="{$tcView_viewer_labels.btn_reorder_steps}" class="btn btn-primary"/>
+				value="{$tcView_viewer_labels.btn_reorder_steps}" class="btn btn-primary btn-white btn-round"/>
 	</span>
 </div>
 {/if}

@@ -23,9 +23,9 @@ Smarty template - manage test case urgency
 	<div class="groupBtn">
 		<form method="post" action="{$ownURL}" id="set_urgency">
 			<span>{$labels.label_set_urgency_ts}
-                <input type="submit" name="high_urgency" value="{$labels.urgency_high}" class="btn btn-primary"/>
-                <input type="submit" name="medium_urgency" value="{$labels.urgency_medium}" class="btn btn-primary"/>
-                <input type="submit" name="low_urgency" value="{$labels.urgency_low}" class="btn btn-primary"/>
+                <input type="submit" name="high_urgency" value="{$labels.urgency_high}" class="btn btn-primary btn-white btn-round"/>
+                <input type="submit" name="medium_urgency" value="{$labels.urgency_medium}" class="btn btn-primary btn-white btn-round"/>
+                <input type="submit" name="low_urgency" value="{$labels.urgency_low}" class="btn btn-primary btn-white btn-round"/>
                 <input type="hidden" name="tplan_id" value="{$gui->tplan_id}" />
                 <input type="hidden" name="id" value="{$gui->node_id}" />
                 <input type="hidden" name="form_token" id="form_token" value="{$gui->formToken}" />
@@ -102,7 +102,7 @@ Smarty template - manage test case urgency
 			</tbody>
 		</table>
         <div class="groupBtn">
-        	<input type="submit" value="{$labels.btn_set_urgency_tc}" class="btn btn-primary"/>
+        	<input type="submit" value="{$labels.btn_set_urgency_tc}" class="btn btn-primary btn-white btn-round"/>
         </div>
     </form>
 	<p class="text-border">{$labels.urgency_description}</p>

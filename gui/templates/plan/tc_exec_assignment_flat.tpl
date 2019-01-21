@@ -130,7 +130,7 @@ function setComboIfCbx(oid,combo_id_prefix,oid4value)
 			{else}
 			<input type="hidden" id="select_platform" value="0">
 			{/if}
-			<button class="btn btn-primary" onclick="cs_all_checkbox_in_div_with_platform('tc_exec_assignment_cb', '{$add_cb}', Ext.get('select_platform').getValue()); return false">{$labels.check_uncheck_all_tc}</button>
+			<button class="btn btn-primary btn-white btn-round" onclick="cs_all_checkbox_in_div_with_platform('tc_exec_assignment_cb', '{$add_cb}', Ext.get('select_platform').getValue()); return false">{$labels.check_uncheck_all_tc}</button>
 		</div>
     <br>
 
@@ -142,13 +142,13 @@ function setComboIfCbx(oid,combo_id_prefix,oid4value)
               name="bulk_tester_div[]" id="bulk_tester_div" >
 				{html_options options=$gui->testers selected=0}
 			</select>
-			<input type='button' class="btn btn-primary" name='bulk_user_assignment' id='bulk_user_assignment'
+			<input type='button' class="btn btn-primary btn-white btn-round" name='bulk_user_assignment' id='bulk_user_assignment'
 				onclick='if(check_action_precondition("tc_exec_assignment","default")) setComboIfCbx("tc_exec_assignment_cb","tester_for_tcid_", "bulk_tester_div")'
 				value="{$labels.btn_apply_assign}" />
-			<input type="submit" class="btn btn-primary" name="doActionButton" id="doActionButton" value="{$labels.btn_save_assign}" />
+			<input type="submit" class="btn btn-primary btn-white btn-round" name="doActionButton" id="doActionButton" value="{$labels.btn_save_assign}" />
       <input type="hidden" name="doAction" id="doAction" value='std' />
 
-      <input type='button' class="btn btn-primary" name='bulk_user_remove' id='bulk_user_remove'
+      <input type='button' class="btn btn-primary btn-white btn-round" name='bulk_user_remove' id='bulk_user_remove'
         onclick='if(check_action_precondition("tc_exec_assignment","default"))
                  { doAction.value="doBulkUserRemove"; tc_exec_assignment.submit(); }'
         value="{$labels.btn_remove_assignments}" />
@@ -164,8 +164,8 @@ function setComboIfCbx(oid,combo_id_prefix,oid4value)
     <br>
 
     <div>
-      <input type="submit" class="btn btn-primary" name="doRemoveAll" id="doRemoveAll" value="{$labels.btn_remove_all_users}" />
-      <input type="button" class="btn btn-primary" name="linkByMail" id="linkByMail" onclick="doAction.value='linkByMail';tc_exec_assignment.submit();" value="{$labels.btn_send_link}" />
+      <input type="submit" class="btn btn-primary btn-white btn-round" name="doRemoveAll" id="doRemoveAll" value="{$labels.btn_remove_all_users}" />
+      <input type="button" class="btn btn-primary btn-white btn-round" name="linkByMail" id="linkByMail" onclick="doAction.value='linkByMail';tc_exec_assignment.submit();" value="{$labels.btn_send_link}" />
       <input type="hidden" name="targetFeatureBulk" id="targetFeatureBulk" value="0"/>
       <input type="hidden" name="targetUserBulk" id="targetUserBulk" value="0"/>
 

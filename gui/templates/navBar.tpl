@@ -14,7 +14,7 @@ title bar + menu
 
 
 
-{include file="inc_head.tpl" openHead="yes"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="false"}
 <base href="{$basehref}"/>
 {include file="bootstrap.inc.tpl"}
 

@@ -55,8 +55,6 @@ editorType: used to understand if code for tinymce need to be loaded
 		language="javascript"></script>
 	{/if}
 
-
-  	
 	<script type="text/javascript" src="{$basehref}third_party/jquery/{$smarty.const.TL_JQUERY}"></script>
 	{if !$prototypeJs}
 		<link rel="stylesheet" href="{$basehref}third_party/chosen/chosen.css">
@@ -66,7 +64,7 @@ editorType: used to understand if code for tinymce need to be loaded
 	<link rel="stylesheet" href="{$basehref}third_party/chosen/chosen.css">
 	<script type="text/javascript" src="{$basehref}third_party/chosen/chosen.jquery.js"></script>
 	<script type="text/javascript" language="javascript">
-	//<!--
+
 	var fRoot = '{$basehref}';
 	var menuUrl = '{$menuUrl}';
 	var args  = '{$args}';

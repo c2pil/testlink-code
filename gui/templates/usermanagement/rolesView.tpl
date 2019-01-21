@@ -121,7 +121,7 @@ Purpose: smarty template - View defined roles
 {if $draw_create_btn}
   <div class="groupBtn">
     <form method="post" action="{$createRoleAction}" name="launch_create">
-      <input class="btn btn-primary" type="submit" name="doCreate"  value="{$labels.btn_create}" />
+      <input class="btn btn-primary btn-white btn-round" type="submit" name="doCreate"  value="{$labels.btn_create}" />
     </form>
   </div>
 {/if}

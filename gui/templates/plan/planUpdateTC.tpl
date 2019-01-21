@@ -188,7 +188,7 @@ function validateForm(f)
     		</tbody>
     	</table>
     {/if}
-    <input type="submit" id="update_btn" name="update_btn" value='{$labels.btn_update_testplan_tcversions}' class="btn btn-primary" />
+    <input type="submit" id="update_btn" name="update_btn" value='{$labels.btn_update_testplan_tcversions}' class="btn btn-primary btn-white btn-round" />
     <input type="hidden" name="doAction" id="doAction" value="{$gui->buttonAction}" />  
 </form>
 {else}

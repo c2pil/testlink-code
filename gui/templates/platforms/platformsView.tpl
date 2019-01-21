@@ -96,14 +96,14 @@ Purpose: smarty template - View all platforms
    		<form style="float:left" name="platform_view" id="platform_view" method="post" action="lib/platforms/platformsEdit.php">
 	  		<input type="hidden" name="doAction" value="" />
 		  	{if $gui->canManage ne ""}
-		    	<input class="btn btn-primary" type="submit" id="create_platform" name="create_platform" value="{$labels.btn_create_platform}" onclick="doAction.value='create'"/>
+		    	<input class="btn btn-primary btn-white btn-round" type="submit" id="create_platform" name="create_platform" value="{$labels.btn_create_platform}" onclick="doAction.value='create'"/>
 			  {/if}	
 		</form>
      	<form name="platformsExport" id="platformsExport" method="post" action="lib/platforms/platformsExport.php">
      		<input type="hidden" name="goback_url" value="{$basehref|escape}{$viewAction|escape}"/>
-			<input class="btn btn-primary" type="submit" name="export_platforms" id="export_platforms" style="margin-left: 3px;" value="{$labels.btn_export}" />
+			<input class="btn btn-primary btn-white btn-round" type="submit" name="export_platforms" id="export_platforms" style="margin-left: 3px;" value="{$labels.btn_export}" />
 		  	{if $gui->canManage ne ""}       
-		  		<input class="btn btn-primary" type="button" name="import_platforms" id="import_platforms" onclick="location='{$importAction}'" value="{$labels.btn_import}" />
+		  		<input class="btn btn-primary btn-white btn-round" type="button" name="import_platforms" id="import_platforms" onclick="location='{$importAction}'" value="{$labels.btn_import}" />
        	  	{/if}
 	  	</form>
     </div>

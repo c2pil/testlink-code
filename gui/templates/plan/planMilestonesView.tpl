@@ -135,7 +135,7 @@ var del_action=fRoot+'{$deleteAction}';
 
     <div class="groupBtn">
     	<form method="post" action="{$createAction}{$gui->tplan_id}">
-    		<input class="btn btn-primary" type="submit" name="create_milestone" value="{$labels.btn_new_milestone}" />
+    		<input class="btn btn-primary btn-white btn-round" type="submit" name="create_milestone" value="{$labels.btn_new_milestone}" />
     	</form>
     </div>
 </div>

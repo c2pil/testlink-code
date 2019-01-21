@@ -68,6 +68,5 @@ Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
 <h1 class="title">{$gui->treeHeader}</h1>
 {include file='inc_filter_panel.tpl'}
 {include file="inc_tree_control.tpl"}
-<div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>
 </body>
 </html>

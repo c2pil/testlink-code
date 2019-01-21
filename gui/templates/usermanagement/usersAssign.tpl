@@ -133,7 +133,7 @@ during refresh feature, and then we have a bad refresh on page getting a bug.
 		    	</td>
 			<td>
           {* 
-					<input type="button" value="{$labels.btn_change}" onclick="changeFeature('{$gui->featureType}');" class="btn btn-primary"/>
+					<input type="button" value="{$labels.btn_change}" onclick="changeFeature('{$gui->featureType}');" class="btn btn-primary btn-white btn-round"/>
           *}
 		  </td>
 			</tr>
@@ -150,7 +150,7 @@ during refresh feature, and then we have a bad refresh on page getting a bug.
       </td>
       <td>
       &nbsp;
-	<input type="button" value="{$labels.btn_do}" onclick="javascript:set_combo_group('usersRoleTable','userRole_', document.getElementById('allUsersRole').value);" class="btn btn-primary"/>
+	<input type="button" value="{$labels.btn_do}" onclick="javascript:set_combo_group('usersRoleTable','userRole_', document.getElementById('allUsersRole').value);" class="btn btn-primary btn-white btn-round"/>
 	</td>
 		</tr>
 
@@ -237,7 +237,7 @@ during refresh feature, and then we have a bad refresh on page getting a bug.
     	{if $tlCfg->demoMode}
 			{$labels.warn_demo}
 		{else}	
-    		<input class="btn btn-primary" type="submit" name="do_update" value="{$labels.btn_upd_user_data}" />
+    		<input class="btn btn-primary btn-white btn-round" type="submit" name="do_update" value="{$labels.btn_upd_user_data}" />
 		{/if}
 	</div>
   </form>

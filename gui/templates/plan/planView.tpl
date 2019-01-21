@@ -182,7 +182,7 @@ var del_action=fRoot+'{$deleteAction}';
  {if $gui->grants->testplan_create && $gui->tproject_id > 0}
  <div class="groupBtn">
     <form method="post" action="{$createAction}" name="bottomCreateForm">
-      <input class="btn btn-primary" type="submit" name="create_testplan" value="{$labels.btn_testplan_create}" />
+      <input class="btn btn-primary btn-white btn-round" type="submit" name="create_testplan" value="{$labels.btn_testplan_create}" />
     </form>
   </div>
  {/if}

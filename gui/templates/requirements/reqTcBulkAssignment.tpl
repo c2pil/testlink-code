@@ -114,7 +114,7 @@ function check_action_precondition(form_id,action){
           		{if $smarty.section.row.total > 0}
       			<div class="groupBtn">
           	  		<input type="hidden" name="doAction" id="doAction" value="bulkassign" />
-          			<input class="btn btn-primary" type="submit" name="actionButton" value="{$labels.btn_assign}" onclick="return check_action_precondition('reqList');"/>
+          			<input class="btn btn-primary btn-white btn-round" type="submit" name="actionButton" value="{$labels.btn_assign}" onclick="return check_action_precondition('reqList');"/>
           		</div>
           		{/if}
           	</form>

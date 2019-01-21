@@ -50,7 +50,7 @@ var del_action=fRoot+'{$deleteAction}';
 	{if count($gui->buildSet) > $tlCfg->gui->buildView->itemQtyForTopButton}
 	<div class="groupBtn">
   		<form method="post" action="{$createAction}" id="create_build_top">
-    		<input class="btn btn-primary" type="submit" name="create_build_top" value="{$labels.btn_build_create}" />
+    		<input class="btn btn-primary btn-white btn-round" type="submit" name="create_build_top" value="{$labels.btn_build_create}" />
   		</form>
 	</div>
 	{/if}
@@ -128,7 +128,7 @@ var del_action=fRoot+'{$deleteAction}';
 	</div>
 	<div class="groupBtn">
   		<form method="post" action="{$createAction}" id="create_build_bottom">
-    		<input class="btn btn-primary" type="submit" name="create_build_bottom" value="{$labels.btn_build_create}" />
+    		<input class="btn btn-primary btn-white btn-round" type="submit" name="create_build_bottom" value="{$labels.btn_build_create}" />
  		 </form>
 	</div>
 	<p class="text-border">{$labels.builds_description}</p>

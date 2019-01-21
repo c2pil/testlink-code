@@ -41,7 +41,7 @@ iframe {
 }
 .treeframe {
 	width:calc(99% - 70%);
-	height:100%;
+	height:calc(100% - 35px);
 	float:left;
 }
 .workframe {
@@ -63,6 +63,12 @@ span.menu-text-hidden{
 div.white-space{
 	height:20px;
 	background-color:whitesmoke;
+}
+table.table{
+	margin:0px;
+}
+ul.nav.nav-tabs.padding-18{
+	padding-top:5px;
 }
 /** 
 use together with #header-wrap, to create a section on top of body
