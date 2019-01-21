@@ -20,7 +20,7 @@
 	    </h4>
 	</div>
 	  
-	  <div id="tree" class="widget-main collapse in" >
+	  <div id="tree" class="collapse in" >
 	  	<div class="btn-toolbar">
 		  	<div class="btn-group-left">
 		  		<input type="submit" value="{$labels.expand_tree}" id="expand_tree" name="expand_tree" 

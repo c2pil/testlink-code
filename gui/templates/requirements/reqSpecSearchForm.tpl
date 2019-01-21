@@ -32,7 +32,7 @@ Form for searching through requirement specifications.
 	</div>
 	
 	
-	<div id="filters" class="widget-main collapse in" >
+	<div id="filters" class="collapse in" >
 		<div class="btn-toolbar">
 		  	<div class="btn-group-left">
 				<input type="submit" class="btn btn-primary btn-round btn-white" name="doSearch" value="{$labels.btn_find}" />

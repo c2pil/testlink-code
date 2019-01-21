@@ -21,7 +21,7 @@
 	    </h4>
 	</div>
 	  
-	  <div id="tree" class="widget-main collapse in" >
+	  <div id="tree" class="collapse in" >
 	  	<div class="btn-toolbar">
 		  	<div class="btn-group-left">
 		  		<input type="submit" class="btn btn-primary btn-white btn-round"
