@@ -84,7 +84,7 @@
                 {if $href neq ""}
             		<li id="button_admin" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
-                        	<i class="menu-icon fa fa-dashboard"></i>
+                        	<i class="menu-icon fa fa-gears"></i>
                         	<span class="menu-text-shown">{$labels.admin_button}</span>
                     	</a>
                     	<b class="arrow"></b>
@@ -128,7 +128,7 @@
                 {if $href neq ""}
             		<li id="button_projects" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
-                        	<i class="menu-icon fa fa-dashboard"></i>
+                        	<i class="menu-icon fa fa-folder"></i>
                         	<span class="menu-text-shown">{$labels.title_product_mgmt}</span>
                     	</a>
                     	<b class="arrow"></b>
@@ -147,7 +147,7 @@
                 {if $href neq ""}
             		<li id="button_req" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
-                        	<i class="menu-icon fa fa-dashboard"></i>
+                        	<i class="menu-icon fa fa-book"></i>
                         	<span class="menu-text-shown">{$labels.title_requirements}</span>
                     	</a>
                     	<b class="arrow"></b>
@@ -168,7 +168,7 @@
                 {if $href neq ""}
             		<li id="button_tc" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
-                        	<i class="menu-icon fa fa-dashboard"></i>
+                        	<i class="menu-icon fa fa-file"></i>
                         	<span class="menu-text-shown">{$labels.title_test_spec}</span>
                     	</a>
                     	<b class="arrow"></b>
@@ -177,7 +177,7 @@
             	
         	{/if}
         	
-        	<br>
+        	<div class="white-space"></div>
         	
         	<!-- BUTTON PLAN -->
         	{$href=""}
@@ -191,7 +191,7 @@
             {if $href neq ""}
         		<li id="button_plan" onClick="activeButton(id)"> 
                 	<a href="{$href}" target="mainframe">
-                    	<i class="menu-icon fa fa-dashboard"></i>
+                    	<i class="menu-icon fa fa-clipboard"></i>
                     	<span class="menu-text-shown">{$labels.title_test_plan_mgmt}</span>
                 	</a>
                 	<b class="arrow"></b>
@@ -212,7 +212,7 @@
                 {if $href neq ""}
             		<li id="button_exec" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
-                        	<i class="menu-icon fa fa-dashboard"></i>
+                        	<i class="menu-icon fa fa-play-circle"></i>
                         	<span class="menu-text-shown">{$labels.title_test_execution}</span>
                     	</a>
                     	<b class="arrow"></b>
@@ -231,7 +231,7 @@
                     {if $href neq ""}
                 		<li id="button_plan_content" onClick="activeButton(id)"> 
                         	<a href="{$href}" target="mainframe">
-                            	<i class="menu-icon fa fa-dashboard"></i>
+                            	<i class="menu-icon fa fa-database"></i>
                             	<span class="menu-text-shown">{$labels.title_test_case_suite}</span>
                         	</a>
                         	<b class="arrow"></b>
@@ -260,9 +260,7 @@
     		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
     	</div>
     </div>
-<!--     {lang_get var="lbl_f" s="poweredBy,system_descr"} -->
-<!--     <strong>{$lbl_f.poweredBy|escape} <a href="{$tlCfg->testlinkdotorg}" title="{$lbl_f.system_descr|escape}">TestLink {$tlVersion|escape}</a></strong> -->
-   	<iframe src="" name="mainframe" class="mainPage" ></iframe>
+   	<iframe id="mainframe" src="" name="mainframe" class="mainPage-small" ></iframe>
     </body>
     <script type="text/javascript" src="{$basehref}gui/javascript/main_menu.js"></script>
 </html>

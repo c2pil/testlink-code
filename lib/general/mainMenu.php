@@ -247,7 +247,7 @@ $gui_menu->tabsList = array(
     array(
         array(hasGrant($gui_menu->grants['mgt_testplan_create']), $basehref.$gui_menu->href["planView"], lang_get('href_plan_management')),
         array(hasGrant($gui_menu->grants['testplan_create_build']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["buildView"].$gui_menu->testplanID, lang_get('href_build_new')),
-        array((hasGrant($gui_menu->grants['mgt_testplan_create']) || hasGrant($gui_menu->grants['testplan_create_build'])) && hasGrant($gui_menu->grants['testplan_milestone_overview']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["mileView"], lang_get('href_plan_mstones'))
+        array(hasGrant($gui_menu->grants['testplan_milestone_overview']) && ($gui_menu->countPlans > 0), $basehref.$gui_menu->href["mileView"], lang_get('href_plan_mstones'))
     )
 );
 if($gui_menu->countPlans > 0){
@@ -295,9 +295,8 @@ function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
     $s = "";
     $s .= '<ul class="nav nav-tabs padding-18">';
         foreach( $gui_menu->tabsList[$tab_number] as $tab ) {
-            if(tab[0]){
-                if($is_frame){
-
+            if($tab[0]){
+                if($is_frame && $tab[3]){
                     $t_active = ($tab[3] === $active_page) ? 'active' : '';
                 }else{
                     $t_active =  strpos($tab[1], $active_page) ? 'active' : '';

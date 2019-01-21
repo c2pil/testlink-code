@@ -11,26 +11,7 @@ html, body {
 	height:100%;
 	width:100%;
 	margin: 0px;
-} 
-
-iframe {
- border:none;
 }
-
-.mainMenu {
-	width:100%;
-	height:100%;
-}
-
-.treeframe {
-	width: calc(99% - 70%);
-	height: 100%;
-}
-.workframe {
-	width: calc(100% - 30%);
-	height: 100%;
-}
-
 body, body.testlink {
 	background-color: white !important;
 	font-family: 	'Trebuchet MS', Arial, Verdana, sans-serif;
@@ -39,11 +20,33 @@ body, body.testlink {
 	padding:		0px;
 	height:100%;
 }
-.mainPage {
+iframe {
+ border:none;
+}
+.mainMenu {
+	width:100%;
+	height:calc(100% - 60px);
+}
+.mainPage-small {
 	border: none;
-	height:calc(99% - 80px);
+	height:99%;
 	width: calc(100% - 150px);
 	padding-left: 2px;
+}
+.mainPage-large {
+	border: none;
+	height:99%;
+	width: calc(100% - 50px);
+	padding-left: 2px;
+}
+.treeframe {
+	width:calc(99% - 70%);
+	height:100%;
+	float:left;
+}
+.workframe {
+	width:calc(100% - 29%);
+	height:calc(100% - 35px);
 }
 .sidebar.compact.sidebar-large {
 	width:150px !important;
@@ -56,6 +59,10 @@ span.menu-text-shown{
 }
 span.menu-text-hidden{
 	display:none;
+}
+div.white-space{
+	height:20px;
+	background-color:whitesmoke;
 }
 /** 
 use together with #header-wrap, to create a section on top of body
@@ -264,68 +271,6 @@ div.menu_bubble h3{
 	margin: 0px 0px 8px 8px;
 	line-height:1.4em;
 }
-
-/** Buttons
- * Give buttons, submit, reset a gradient 3d look and other components
- * text/password-input, textarea and select a flat appearance.
- */
-input[type="button"],
-input[type="password"],
-input[type="reset"],
-input[type="submit"],
-input[type="text"],
-select,
-textarea,
-button {
-   background: url(../images/navbar.gif);
-   background-position: 0 0;
-   border: 1px solid #888;
-   margin: 4px 0 0 0;
-   font-size: 9pt;
-   color: black;
-   -moz-border-radius: 3px;
-   -webkit-border-radius: 3px;
-   border-radius: 3px;
-}
-
-/* Reset to flat background */
-input[type="password"],
-input[type="text"],
-select,
-textarea {
-	background: #f8f8f8;
-}
-
-
-/* Animate */
-input[type="reset"]:hover,
-input[type="submit"]:hover,
-input[type="button"]:hover,
-button:hover {
-   background-position: 0 -3px;
-   border-color: #444;
-}
-
-input[type="reset"]:active,
-input[type="submit"]:active,
-input[type="button"]:active,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-input[type="button"]:focus,
-button:active,
-button:focus {
-   background-position: 0 -10px;
-   border: 1px solid #123;
-}
-
-input[type="password"]:focus,
-input[type="text"]:focus,
-select:focus,
-textarea:focus {
-	background: #fff;
-	border: 1px solid #123;
-}
-
 fieldset.groupBtn {
 	border: 0;
 	margin-left: 5px;
