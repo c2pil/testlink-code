@@ -148,8 +148,8 @@
       {if $control->settings.setting_platform}
         {$platformID=$control->settings.setting_platform.selected}
         <tr>
-          <td>{$labels.platform}</td>
-          <td class="category">
+          <td class="category">{$labels.platform}</td>
+          <td>
             <select name="setting_platform" class="form-control" onchange="this.form.submit()">
             {html_options options=$control->settings.setting_platform.items
                           selected=$control->settings.setting_platform.selected}

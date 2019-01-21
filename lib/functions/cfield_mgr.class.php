@@ -2480,11 +2480,11 @@ function getXMLRPCServerParams($nodeID,$tplanLinkID=null)
     $options = array_merge($options,(array)$opt);
     if($options['remove_required'])
     {
-      $required = ' class="" ';
+      $required = ' class="form-control" ';
     }  
     else
     {
-      $required = $p_field_def['required'] ? ' class="required" required ' : ' class="" ';
+      $required = $p_field_def['required'] ? ' class="form-control required" required ' : ' class="form-control" ';
     }  
 
     $str_out='';
