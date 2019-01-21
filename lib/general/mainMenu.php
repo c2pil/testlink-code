@@ -284,7 +284,6 @@ $gui_menu->tabsList = array(
         array((hasGrant($gui_menu->grants['mgt_testplan_create']) || hasGrant($gui_menu->grants['testplan_create_build'])) && hasGrant($gui_menu->grants['testplan_milestone_overview']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["mileView"], lang_get('href_plan_mstones'))   
     )
 );
-
 if($gui_menu->countPlans > 0){
     $gui_menu->tabsList[] = array(
         array(hasGrant($gui_menu->grants['testplan_execute']), $gui_menu->launcher."?feature=executeTest", lang_get('href_execute_test'), $gui_menu->href["execDashboard"].$gui_menu->testprojectID),
@@ -312,7 +311,6 @@ if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
   $tpl = $tplCfg->$tplKey;
 } 
 $smarty->assign('gui',$gui_menu);
-//$smarty->assign('is_sidebar_collapsed',is_collapsed('sidebar'));
 $smarty->display($tpl);
 
 /**

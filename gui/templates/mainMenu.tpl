@@ -47,14 +47,11 @@
   {$display_left_block_bottom=true}
 {/if}
 
-{$divStyle="width:300px;padding: 0px 0px 0px 10px;"}
-{$aStyle="padding: 3px 15px;font-size:16px"}
-
 <script src="{$basehref}gui/niftycube/niftycube.js" type="text/javascript"></script>
 </head>
 
 <body class="testlink skin-3">
-    <div id="sidebar" class="sidebar compact">
+    <div id="sidebar" class="sidebar compact sidebar-large">
         {if $gui->securityNotes}
     		{include file="inc_msg_from_array.tpl" array_of_msg=$gui->securityNotes arg_css_class="warning"}
         {/if}
@@ -66,7 +63,7 @@
                     	<li id="button_plugin_top" onClick="activeButton(id)"> 
                         	<a href="{$menu_item['href']}" target="mainframe">
                         		<i class="menu-icon fa fa-dashboard"></i>
-                        		<span class="menu-text">{$menu_item['label']}</span>
+                        		<span class="menu-text-shown">{$menu_item['label']}</span>
                         	</a>
                     		<b class="arrow"></b>
                 		</li>
@@ -87,7 +84,7 @@
             		<li id="button_admin" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
-                        	<span class="menu-text">{$labels.admin_button}</span>
+                        	<span class="menu-text-shown">{$labels.admin_button}</span>
                     	</a>
                     	<b class="arrow"></b>
                 	</li>
@@ -106,7 +103,7 @@
             		<li id="button_system" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
-                        	<span class="menu-text">{$labels.system_config}</span>
+                        	<span class="menu-text-shown">{$labels.system_config}</span>
                     	</a>
                     	<b class="arrow"></b>
                 	</li>
@@ -131,7 +128,7 @@
             		<li id="button_projects" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
-                        	<span class="menu-text">{$labels.title_product_mgmt}</span>
+                        	<span class="menu-text-shown">{$labels.title_product_mgmt}</span>
                     	</a>
                     	<b class="arrow"></b>
                 	</li>
@@ -150,7 +147,7 @@
             		<li id="button_req" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
-                        	<span class="menu-text">{$labels.title_requirements}</span>
+                        	<span class="menu-text-shown">{$labels.title_requirements}</span>
                     	</a>
                     	<b class="arrow"></b>
                 	</li>
@@ -171,7 +168,7 @@
             		<li id="button_tc" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
-                        	<span class="menu-text">{$labels.title_test_spec}</span>
+                        	<span class="menu-text-shown">{$labels.title_test_spec}</span>
                     	</a>
                     	<b class="arrow"></b>
                 	</li>
@@ -194,7 +191,7 @@
         		<li id="button_plan" onClick="activeButton(id)"> 
                 	<a href="{$href}" target="mainframe">
                     	<i class="menu-icon fa fa-dashboard"></i>
-                    	<span class="menu-text">{$labels.title_test_plan_mgmt}</span>
+                    	<span class="menu-text-shown">{$labels.title_test_plan_mgmt}</span>
                 	</a>
                 	<b class="arrow"></b>
             	</li>
@@ -215,7 +212,7 @@
             		<li id="button_exec" onClick="activeButton(id)"> 
                     	<a href="{$href}" target="mainframe">
                         	<i class="menu-icon fa fa-dashboard"></i>
-                        	<span class="menu-text">{$labels.title_test_execution}</span>
+                        	<span class="menu-text-shown">{$labels.title_test_execution}</span>
                     	</a>
                     	<b class="arrow"></b>
                 	</li>
@@ -234,7 +231,7 @@
                 		<li id="button_plan_content" onClick="activeButton(id)"> 
                         	<a href="{$href}" target="mainframe">
                             	<i class="menu-icon fa fa-dashboard"></i>
-                            	<span class="menu-text">{$labels.title_test_case_suite}</span>
+                            	<span class="menu-text-shown">{$labels.title_test_case_suite}</span>
                         	</a>
                         	<b class="arrow"></b>
                     	</li>
@@ -250,19 +247,21 @@
 						<li id="button_plugin_bottom" onClick="activeButton(id)"> 
                         	<a href="{$menu_item['href']}" target="mainframe">
                         		<i class="menu-icon fa fa-dashboard"></i>
-                        		<span class="menu-text">{$menu_item['label']}</span>
+                        		<span class="menu-text-shown">{$menu_item['label']}</span>
                         	</a>
                     		<b class="arrow"></b>
                 		</li>
                     {/foreach}
                 {/if}  
             {/if}
-        </div>
     	</ul>
-    </div>  
+    	<div id="sidebar-btn" class="sidebar-toggle sidebar-collapse">
+    		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
+    	</div>
+    </div>
 <!--     {lang_get var="lbl_f" s="poweredBy,system_descr"} -->
 <!--     <strong>{$lbl_f.poweredBy|escape} <a href="{$tlCfg->testlinkdotorg}" title="{$lbl_f.system_descr|escape}">TestLink {$tlVersion|escape}</a></strong> -->
    	<iframe src="" name="mainframe" class="mainPage" ></iframe>
     </body>
-    <script type="text/javascript" src="{$basehref}gui/javascript/menu_active.js"></script>
+    <script type="text/javascript" src="{$basehref}gui/javascript/main_menu.js"></script>
 </html>

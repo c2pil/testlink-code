@@ -18,16 +18,23 @@ body, body.testlink {
 	padding:		0px;
 	height:100%;
 }
-
 .mainPage {
 	border: none;
 	height:calc(99% - 80px);
 	width: calc(100% - 150px);
 	padding-left: 2px;
 }
-
-.sidebar.compact {
+.sidebar.compact.sidebar-large {
 	width:150px !important;
+}
+.sidebar.compact.sidebar-small{
+	width:50px !important;
+}
+span.menu-text-shown{
+	display:block;
+}
+span.menu-text-hidden{
+	display:none;
 }
 /** 
 use together with #header-wrap, to create a section on top of body

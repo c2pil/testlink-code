@@ -15,6 +15,20 @@
 
 var sidebar = document.getElementById("sidebar").getElementsByTagName("li");
 
+jQuery(document).ready( function() {
+	jQuery('#sidebar-btn.sidebar-toggle').on('click', function (event) {
+		if(jQuery('#sidebar').attr('class').match(/sidebar-large/)){
+			jQuery('#sidebar').addClass('sidebar-small').removeClass('sidebar-large');
+			jQuery('.menu-text-shown').addClass('menu-text-hidden').removeClass('menu-text-shown');
+			jQuery('#collapse_btn').addClass('fa-angle-double-right').removeClass('fa-angle-double-left');
+		}else{
+			jQuery('#sidebar').addClass('sidebar-large').removeClass('sidebar-small');
+			jQuery('.menu-text-hidden').addClass('menu-text-shown').removeClass('menu-text-hidden');
+			jQuery('#collapse_btn').addClass('fa-angle-double-left').removeClass('fa-angle-double-right');
+		}
+	});
+});
+
 function activeButton(button_id){
 	for(var i=0; i<sidebar.length; i++){
 		sidebar[i].setAttribute("class", "");
