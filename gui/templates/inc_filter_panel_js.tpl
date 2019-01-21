@@ -64,11 +64,11 @@
     var index = filter_method_combo.options.selectedIndex;  
     if(filter_method_combo[index].value == specific_build_value) 
     {
-      deactivatable.style.visibility = "visible";
+      deactivatable.style.display = "contents";
     } 
     else 
     {
-      deactivatable.style.visibility = "hidden";
+      deactivatable.style.display = "none";
     }
   }
     

@@ -14,14 +14,7 @@ Ext.onReady(function() {
   Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
 
   // collapsible panel for filters and settings
-  var settingsPanel = new Ext.ux.CollapsiblePanel({
-    id: 'tl_exec_filter',
-    applyTo: 'settings_panel'
-  });
-  var filtersPanel = new Ext.ux.CollapsiblePanel({
-    id: 'tl_exec_settings',
-    applyTo: 'filter_panel'
-  });
+
 });
 </script>
 
@@ -65,13 +58,12 @@ var req_manager_url = '{$gui->req_manager_url}';
 
 </head>
 <body>
-<h1 class="title">{$gui->tree_title}</h1>
+<h1 class="title">{$gui->panel_title}</h1>
 
 {* include file for filter panel *}
 {include file='inc_filter_panel.tpl'}
 
 {include file="inc_tree_control.tpl"}
 
-<div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>
 </body>
 </html>

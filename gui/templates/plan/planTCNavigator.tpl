@@ -24,22 +24,7 @@ Scope: show test plan tree for execution
   Ext.onReady(function() {
   Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
   
-  // Use a collapsible panel for filter settings
-  // and place a help icon in ther header
-  var settingsPanel = new Ext.ux.CollapsiblePanel({
-        id: 'tl_exec_filter',
-        applyTo: 'settings_panel',
-        tools: [{
-          id: 'help',
-          handler: function(event, toolEl, panel) {
-            show_help(help_localized_text);
-          }
-        }]
-      });
-      var filtersPanel = new Ext.ux.CollapsiblePanel({
-        id: 'tl_exec_settings',
-        applyTo: 'filter_panel'
-      });
+
   });
   </script>
 
@@ -93,7 +78,6 @@ function update2latest(id)
 
 {include file='inc_filter_panel.tpl'}
 {include file="inc_tree_control.tpl"}
-<div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>
 
 <script type="text/javascript">
 {if $gui->src_workframe != ''}

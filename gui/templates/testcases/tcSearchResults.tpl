@@ -3,7 +3,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 tcSearchResults.tpl
 *}
 
-{include file="inc_head.tpl" openHead='yes'}
+{include file="inc_head.tpl" openHead='yes' prototypeJs="false"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 {include file="bootstrap.inc.tpl"}
 
@@ -47,4 +47,15 @@ tcSearchResults.tpl
 {/if}    
 </div>
 </body>
+<script>
+jQuery(document).ready(function() {
+	
+	jQuery('.myDatepicker').datepicker({
+		autoclose : true,
+		orientation: "auto top",
+		todayBtn : "linked"
+	});
+});
+
+</script>
 </html>

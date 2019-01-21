@@ -1065,6 +1065,7 @@ th.testlink, td.testlink, tr.testlink td {
 }
 
 /* To adjust Bootstrap tables */
+/* I think it's not necesseray. Better view without font-size **/
 .table {
   font-size: 12px;
 }
@@ -1084,5 +1085,4 @@ th.testlink, td.testlink, tr.testlink td {
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
-
 /* ----- END ------------------------------------------------------------------------- */

@@ -37,7 +37,7 @@ $gui = new stdClass();
 
 $gui->tcasePrefix = $tproject_mgr->getTestCasePrefix($args->tprojectID);
 $gui->tcasePrefix .= $tcase_cfg->glue_character;
-$gui->mainCaption = lang_get('testproject') . " " . $args->tprojectName;
+$gui->mainCaption = lang_get('caption_search_form_req')." (".lang_get('testproject') . " " . $args->tprojectName.")";
 
 $enabled = 1;
 $no_filters = null;

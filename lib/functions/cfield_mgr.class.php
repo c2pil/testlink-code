@@ -617,7 +617,7 @@ class cfield_mgr extends tlObject
         }
         	
         $html_identity=$input_name . $t_name_suffix;
-  			$str_out .= '<select data-cfield="list" '  . 
+  			$str_out .= '<select class="form-control" data-cfield="list" '  . 
                     "{$required} name=\"{$html_identity}\" " .
                     "id=\"{$input_name}\" {$t_multiple}";
   			// $str_out .= ' size="' . $t_list_size . '">';
@@ -643,7 +643,7 @@ class cfield_mgr extends tlObject
       $t_checked_values = explode( '|', $cfValue);
 			foreach( $t_values as $t_option )
 			{
-				$str_out .= '<input ' . $required . ' type="checkbox" name="' . $input_name . '[]"' . 
+				$str_out .= '<input ' . $required . ' type="checkbox" class="form-check-input" name="' . $input_name . '[]"' . 
                     " id=\"{$input_name}\"";
 				
 				// added check $t_option != '' to make check box start NOT CHECKED
@@ -2480,16 +2480,16 @@ function getXMLRPCServerParams($nodeID,$tplanLinkID=null)
     $options = array_merge($options,(array)$opt);
     if($options['remove_required'])
     {
-      $required = ' class="" ';
+      $required = ' class="form-control" ';
     }  
     else
     {
-      $required = $p_field_def['required'] ? ' class="required" required ' : ' class="" ';
+      $required = $p_field_def['required'] ? ' class="form-control required" required ' : ' class="form-control" ';
     }  
 
     $str_out='';
     $size = intval($p_size) > 0 ? $p_size : self::DEFAULT_INPUT_SIZE;
-  	$str_out .= "<input type=\"text\" name=\"{$p_input_name}\" id=\"{$p_input_name}\" size=\"{$size}\" {$required} ";
+  	$str_out .= "<input class=\"form-control\" type=\"text\" name=\"{$p_input_name}\" id=\"{$p_input_name}\" size=\"{$size}\" {$required} ";
   	if( 0 < $p_field_def['length_max'] )
   	{
   	  $str_out .= ' maxlength="' . $p_field_def['length_max'] . '"';

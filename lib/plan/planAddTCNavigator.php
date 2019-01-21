@@ -67,6 +67,7 @@ function initializeGui($control)
 
   $gui->req_spec_manager_url = "lib/requirements/reqSpecView.php";
   $gui->req_manager_url = "lib/requirements/reqView.php";
+  $gui->tree_title = lang_get('title_navigator'). ' - ' . lang_get('test_suite');
   
   // This logic is managed from frmWorkArea.php and planAddTC.php
   $gui->loadRightPaneAddTC = isset($_REQUEST['loadRightPaneAddTC']) ? $_REQUEST['loadRightPaneAddTC'] : true;

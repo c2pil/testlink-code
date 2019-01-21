@@ -34,9 +34,8 @@ $charset = config_get('charset');
 $filter = null;
 list($args,$filter) = init_args($tproject_mgr);
 
-//Kint::dump($_REQUEST);die();
 
-$ga = initializeGui($args,$tproject_mgr);
+$ga = initializeGui($args);
 $gx = $tcase_mgr->getTcSearchSkeleton($args);
 $gui = (object)array_merge((array)$ga,(array)$gx);
 
@@ -89,13 +88,11 @@ if ($args->tprojectID && $args->doAction == 'doSearch') {
   }
     
 
-  $useOr = false;
   $filterSpecial = null;
   $feOp = " AND ";
   $filterSpecial['tricky'] = " 1=1 ";
   if($args->jolly != "") {
     // $filterSpecial['trick'] = " 1=1 ";
-    $useOr = true;
     $feOp = " OR ";
     $filterSpecial['tricky'] = " 1=0 ";
     $args->steps = $args->expected_results = $args->jolly;
@@ -446,10 +443,12 @@ function init_args(&$tprojectMgr)
 
 
 /**
+ * Initialize gui values from smarty
  * 
- *
+ * @param unknown $argsObj
+ * @return stdClass
  */
-function initializeGui(&$argsObj,&$tprojectMgr)
+function initializeGui(&$argsObj)
 {
   $gui = new stdClass();
 
@@ -483,7 +482,11 @@ function initializeGui(&$argsObj,&$tprojectMgr)
 }
 
 /**
- *
+ * Complete gui parameter for smarty for search init
+ * 
+ * @param stdClass $gui
+ * @param unknown $argsObj
+ * @param unknown $tprojectMgr
  */
 function initSearch(&$gui,&$argsObj,&$tprojectMgr)
 {

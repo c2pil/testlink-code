@@ -21,22 +21,7 @@ treeCfg = { tree_div_id:'tree_div',root_name:"",root_id:0,root_href:"",
 Ext.onReady(function() {
 Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
 	
-// Use a collapsible panel for filter settings
-// and place a help icon in ther header
-var settingsPanel = new Ext.ux.CollapsiblePanel({
-				id: 'tl_exec_filter',
-				applyTo: 'settings_panel',
-				tools: [{
-					id: 'help',
-					handler: function(event, toolEl, panel) {
-						show_help(help_localized_text);
-					}
-				}]
-			});
-var filtersPanel = new Ext.ux.CollapsiblePanel({
-				id: 'tl_exec_settings',
-				applyTo: 'filter_panel'
-			});
+
 });
 </script>
 	
