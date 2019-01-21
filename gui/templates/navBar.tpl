@@ -32,9 +32,8 @@ title bar + menu
   			</a>
 		</div>
 	
-		<div class="navbar-buttons navbar-header navbar-collapse collapse">
+		<div class="navbar-buttons navbar-header">
 			<ul class="nav ace-nav">
-				{$session.testprojectTopMenu}
 				<li id="dropdown_projet" class="grey">
 					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
 						{$labels.testproject} {$gui->TestProjects[$gui->tproject_id]}
@@ -43,9 +42,8 @@ title bar + menu
 						
 					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
 						{foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
-					        	<li>
-									<a {if $tproject_id == $gui->tprojectID} class="active" {/if}
-										href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
+					        	<li {if $tproject_id == $gui->tprojectID} class="active" {/if}>
+									<a href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
 										{$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
 									</a>
 								</li>
@@ -63,9 +61,8 @@ title bar + menu
     				
     					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
     						{foreach key=index item=tPlans from=$gui->arrPlans}
-					        	<li>
-									<a {if $tPlans.selected} class="active" {/if}
-										href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
+					        	<li {if $tPlans.selected} class="active" {/if}>
+									<a href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
 								</li>
 							{/foreach}
 							{if $gui->testplanRole neq null}
@@ -78,16 +75,38 @@ title bar + menu
 	            	</li>
 			    {/if}
 
-				<li>
-					<span class="info">{$gui->whoami|escape}</span>
-					<span class="navButton">
-						<a href='lib/usermanagement/userInfo.php' target="mainframe">
-							<img src="{$tlImages.account}" title="{$labels.title_edit_personal_data}"/>
-						</a>
-				        <a href="{$gui->logout}" target="_parent">
-			        		<img src="{$tlImages.logout}" title="{$labels.link_logout}"/>
-			        	</a>
-			          </span>
+				<li class="grey">
+					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+						<i class="ace-icon fa fa-user fa-2x white"></i>
+						<span>{$gui->whoami|escape}</span>
+						<i class="ace-icon fa fa-angle-down bigger-110"></i>
+					</a>
+					
+					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
+						<li>
+							<a href='lib/usermanagement/userInfo.php' target="mainframe">
+								<i class="ace-icon fa fa-user"></i>
+								{$labels.title_edit_personal_data}
+							</a>
+						</li>
+						<li>
+							<a href="{$gui->logout}" target="_parent">
+								<i class="ace-icon fa fa-sign-out"></i>	
+								{$labels.link_logout}
+							</a>
+						</li>
+					</ul>					
+				</li>
+				
+				<li class="grey">
+				
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+						<i class="ace-icon fa fa-align-justify fa-2x white"></i>
+					</a>
+					
+					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
+						{$session.testprojectTopMenu}
+					</ul>
 				</li>
 			</ul>			
 		</div>

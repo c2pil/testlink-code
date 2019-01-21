@@ -355,25 +355,25 @@ function initTopMenu(&$db)
 
         if( $addItem )
         {
-          $_SESSION['testprojectTopMenu'] .= "<li><span class='navButton'><a href='{$element['url']}' " .
+          $_SESSION['testprojectTopMenu'] .= "<li><a href='{$element['url']}' " .
           "target='{$element['target']}' accesskey='{$element['shortcut']}'" .
           "tabindex=''" . $idx++ . "''>";
 
+          $label = lang_get($element['label']);
           if( isset($element['imgKey']) )
           {
            $_SESSION['testprojectTopMenu'] .= '<img src="' . $imageSet[$element['imgKey']] . '"' .
-                                              ' title="' . lang_get($element['label']) . '">'; 
+               ' title="' . $label . '"/> '.$label; 
           }  
           else
           {
-           $_SESSION['testprojectTopMenu'] .= lang_get($element['label']); 
+              $_SESSION['testprojectTopMenu'] .= $label ; 
           }  
 
-          $_SESSION['testprojectTopMenu'] .= "</a></span></li>";
+          $_SESSION['testprojectTopMenu'] .= "</a></li>";
         }
       }
     }
-   // $_SESSION['testprojectTopMenu'] .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
   }
 }
 
