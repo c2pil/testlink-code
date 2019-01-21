@@ -14,7 +14,9 @@ body, body.testlink {
 	margin:			0px;
 	padding:		0px;
 }
-
+.x-tree-node{
+	font-size:13px!important;
+}
 /** 
 use together with #header-wrap, to create a section on top of body
 that remain always visible while rest of body content scrolls,
