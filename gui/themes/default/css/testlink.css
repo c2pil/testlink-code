@@ -415,7 +415,7 @@ span.unselected a, span.unselected a:visited {
 * "common" 		- often used for view arrays
 * "simple" 		- often used for forms
 * "smallGrey" 	- often used for options / filters
-* "invisible" 	- no borders
+* "no-border" 	- no border (former "invisible" but already used by bootstrap)
 * !!! Do not add new table kinds !!! (there is bunch of wild table definitions below)
 */
 
@@ -491,7 +491,7 @@ table.smallGrey {
 }
 
 
-table.invisible {
+table.no-border {
 	border: 		0px none;
 	font-size:		90%;
 	margin:			5px 0px;
@@ -582,6 +582,14 @@ div.blocked {
 
 div.not_run {
 	background:		black;
+}
+
+div.backup_exist {
+	color: 			black;
+	margin: 		8px;
+	padding: 		6px;
+	text-align: 	center;
+	background:		#EEE;
 }
 
 
@@ -842,7 +850,6 @@ div.login_form.medium {
 .clickable_icon
 {
   padding: 			2px;
-  width: 			5px;
   text-align: 		center;
   vertical-align: 	middle;
 }
@@ -1068,6 +1075,7 @@ th.testlink, td.testlink, tr.testlink td {
 /* I think it's not necesseray. Better view without font-size **/
 .table {
   font-size: 12px;
+  width: 100%;
 }
 
 .table th, .table tr, .table td {
@@ -1084,5 +1092,15 @@ th.testlink, td.testlink, tr.testlink td {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6;
+}
+p.text-border {
+	border: 1px solid black;
+	background: white;
+	padding : 10px;
+}
+div.form-border {
+	border: 1px solid black;
+	background: white;
+	padding : 10px;
 }
 /* ----- END ------------------------------------------------------------------------- */

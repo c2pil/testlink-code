@@ -42,7 +42,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {/if}
 
 {if $gui->cf_map != '' }
-  <table class="table table-bordered sortable">
+  <table class="table table-striped table-bordered sortable">
     <thead class="thead-dark">
     <tr>
       <th>{$tlImages.sort_hint}{$labels.name}</th>

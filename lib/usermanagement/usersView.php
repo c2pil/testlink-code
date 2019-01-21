@@ -163,7 +163,7 @@ function buildMatrix(&$guiObj,&$argsObj)
                    array('title_key' => 'th_first_name', 'width' => 150),
                    array('title_key' => 'th_last_name', 'width' => 150),
                    array('title_key' => 'th_email', 'width' => 150),
-                   array('title_key' => 'th_role', 'width' => 150),
+                   array('title_key' => 'th_role', 'width' => 150, 'color' => 'render_color'),
                    array('title_key' => 'th_locale', 'width' => 150),
                    array('title_key' => 'th_active', 'type' => 'oneZeroImage', 'width' => 50),
                    array('title_key' => 'expiration_date', 'width' => 50),
@@ -197,12 +197,7 @@ function buildMatrix(&$guiObj,&$argsObj)
   $matrix = new tlExtTable($columns, $guiObj->matrix, 'tl_users_list');
   
   // => addCustomBehaviour(columnType, );
-  $matrix->addCustomBehaviour('oneZeroImage', array('render' => 'oneZeroImageRenderer'));
-  $matrix->moreViewConfig = " ,getRowClass: function(record, index) {" .
-                            " var x = record.get('role_id');" .
-                            " return('roleCode'+x); " .
-                            " } " ;
-  
+  $matrix->addCustomBehaviour('oneZeroImage', array('render' => 'oneZeroImageRenderer'));  
   $matrix->setImages($guiObj->images);
   $matrix->allowMultiSort = false;
   $matrix->sortDirection = 'DESC';
