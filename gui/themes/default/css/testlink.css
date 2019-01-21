@@ -7,9 +7,30 @@ Purpose: Default TestLink CSS
 */
 
 /* ***** GLOBAL HTML ***************************************************************** */
-html{
-	height: 100%
+html, body {
+	height:100%;
+	width:100%;
+	margin: 0px;
+} 
+
+iframe {
+ border:none;
 }
+
+.mainMenu {
+	width:100%;
+	height:100%;
+}
+
+.treeframe {
+	width: calc(99% - 70%);
+	height: 100%;
+}
+.workframe {
+	width: calc(100% - 30%);
+	height: 100%;
+}
+
 body, body.testlink {
 	background-color: white !important;
 	font-family: 	'Trebuchet MS', Arial, Verdana, sans-serif;

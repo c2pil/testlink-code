@@ -23,26 +23,19 @@ $smarty = new TLSmarty();
 $tproject_mgr = new testproject($db);
 $user = $_SESSION['currentUser'];
 
-
 $testprojectID = isset($_SESSION['testprojectID']) ? intval($_SESSION['testprojectID']) : 0;
 
-if( isset($_REQUEST['testplan']) ) {
-  $testplanID = $_REQUEST['testplan'];
-
-} else {
-  $testplanID = isset($_SESSION['testplanID']) ? $_SESSION['testplanID'] : 0;
-}
-$testplanID = intval($testplanID);
+$testplanID = isset($_SESSION['testplanID']) ? intval($_SESSION['testplanID']) : 0;
 
 
 $accessibleItems = $tproject_mgr->get_accessible_for_user($user->dbID,array('output' => 'map_name_with_inactive_mark'));
 $tprojectQty = $tproject_mgr->getItemCount();
 $userIsBlindFolded = (is_null($accessibleItems) || count($accessibleItems) == 0) && $tprojectQty > 0;
 
-if($userIsBlindFolded) {
-  $testprojectID = $testplanID = 0;
-  $_SESSION['testprojectTopMenu'] = '';
-}
+// if($userIsBlindFolded) {
+//   $testprojectID = $testplanID = 0;
+//   $_SESSION['testprojectTopMenu'] = '';
+// }
 
 $tplan2check = null;
 $currentUser = $_SESSION['currentUser'];
@@ -73,32 +66,6 @@ $gui_menu->num_active_tplans = $tproject_mgr->getActiveTestPlansCount($testproje
 // get Test Plans available for the user 
 $arrPlans = (array)$currentUser->getAccessibleTestPlans($db,$testprojectID);
 
-if($testplanID > 0) {
-	// if this test plan is present on $arrPlans
-	//	  OK we will set it on $arrPlans as selected one.
-	// else 
-	//    need to set test plan on session
-	//
-	$index=0;
-	$found=0;
-	$loop2do=count($arrPlans);
-	for($idx=0; $idx < $loop2do; $idx++) {
-  	if( $arrPlans[$idx]['id'] == $testplanID ) {
-     	$found = 1;
-     	$index = $idx;
-     	break;
-    }
-  }
-  if( $found == 0 ) {
-    // update test plan id
-    $index = 0;
-    $testplanID = $arrPlans[$index]['id'];
-  } 
-
-  setSessionTestPlan($arrPlans[$index]);         
-  $arrPlans[$index]['selected']=1;
-}
-
 $gui_menu->testplanRole = null;
 if ($testplanID)  {
 
@@ -119,18 +86,18 @@ if ($testplanID)  {
   }
 }
 $rights2check = array('testplan_execute','testplan_create_build',
-                      'testplan_metrics','testplan_planning',
-                      'testplan_user_role_assignment',
-                      'mgt_testplan_create',
-                      'cfield_view', 'cfield_management',
-                      'testplan_milestone_overview',
-                      'exec_testcases_assigned_to_me',
-                      'exec_assign_testcases','exec_ro_access',
-                      'testplan_add_remove_platforms',
-                      'testplan_update_linked_testcase_versions',
-                      'testplan_set_urgent_testcases',
-                      'testplan_show_testcases_newest_versions',
-                      'events_mgt','mgt_view_events','mgt_plugins'
+    'testplan_metrics','testplan_planning',
+    'testplan_user_role_assignment',
+    'mgt_testplan_create',
+    'cfield_view', 'cfield_management',
+    'testplan_milestone_overview',
+    'exec_testcases_assigned_to_me',
+    'exec_assign_testcases','exec_ro_access',
+    'testplan_add_remove_platforms',
+    'testplan_update_linked_testcase_versions',
+    'testplan_set_urgent_testcases',
+    'testplan_show_testcases_newest_versions',
+    'events_mgt','mgt_view_events','mgt_plugins'
 );
 
 foreach($rights2check as $key => $the_right) {
@@ -148,8 +115,7 @@ if( $currentUser->hasRight($db,"testproject_user_role_assignment",$testprojectID
 $gui_menu->url = array('metrics_dashboard' => 'lib/results/metricsDashboard.php',
                   'testcase_assignments' => 'lib/testcases/tcAssignedToUser.php');
 $gui_menu->launcher = 'lib/general/frmWorkArea.php';
-$gui_menu->arrPlans = $arrPlans;                   
-$gui_menu->countPlans = count($gui_menu->arrPlans);
+$gui_menu->countPlans = count($arrPlans);
 
 
 $gui_menu->testprojectID = $testprojectID;
@@ -281,7 +247,7 @@ $gui_menu->tabsList = array(
     array(
         array(hasGrant($gui_menu->grants['mgt_testplan_create']), $basehref.$gui_menu->href["planView"], lang_get('href_plan_management')),
         array(hasGrant($gui_menu->grants['testplan_create_build']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["buildView"].$gui_menu->testplanID, lang_get('href_build_new')),
-        array((hasGrant($gui_menu->grants['mgt_testplan_create']) || hasGrant($gui_menu->grants['testplan_create_build'])) && hasGrant($gui_menu->grants['testplan_milestone_overview']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["mileView"], lang_get('href_plan_mstones'))   
+        array((hasGrant($gui_menu->grants['mgt_testplan_create']) || hasGrant($gui_menu->grants['testplan_create_build'])) && hasGrant($gui_menu->grants['testplan_milestone_overview']) && $gui_menu->countPlans > 0, $basehref.$gui_menu->href["mileView"], lang_get('href_plan_mstones'))
     )
 );
 if($gui_menu->countPlans > 0){
@@ -303,7 +269,6 @@ if($gui_menu->countPlans > 0){
         );
     }
 }
-
 $tplKey = 'mainMenu';
 $tpl = $tplKey . '.tpl';
 $tplCfg = config_get('tpl');
@@ -330,8 +295,9 @@ function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
     $s = "";
     $s .= '<ul class="nav nav-tabs padding-18">';
         foreach( $gui_menu->tabsList[$tab_number] as $tab ) {
-            if($tab[0]){
-                if($is_frame && $tab[3]){
+            if(tab[0]){
+                if($is_frame){
+
                     $t_active = ($tab[3] === $active_page) ? 'active' : '';
                 }else{
                     $t_active =  strpos($tab[1], $active_page) ? 'active' : '';

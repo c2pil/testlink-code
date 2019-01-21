@@ -6,23 +6,25 @@ title bar + menu
 @filesource navBar.tpl
 *}
 {lang_get var="labels"
-          s="title_events,event_viewer,home,testproject,title_specification,title_execute,
+          s="current_test_plan,title_events,event_viewer,home,testproject,title_specification,title_execute,
              title_edit_personal_data,th_tcid,link_logout,title_admin,
              search_testcase,title_results,title_user_mgmt,full_text_search"}
 {$cfg_section=$smarty.template|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
 
-<head>
-<base href="{$basehref}"/>
 
-{include file="inc_head.tpl"}
+
+{include file="inc_head.tpl" openHead="yes"}
+<base href="{$basehref}"/>
 {include file="bootstrap.inc.tpl"}
 
 <link rel="stylesheet" href="{$basehref}gui/themes/default/css/navbar.css" >
 </head>
+
+
 <body class="skin-3">
 
-<div id="navbar" class="navbar navbar-default navbar-collapse navbar-fixed-top noprint">
+<div id="navbar" class="navbar navbar-default navbar-collapse  noprint">
 	<div class="navbar-container">
 		<div class="navbar-header">
 			 <a class="navbar-brand" href="index.php" target="_parent">
@@ -33,21 +35,49 @@ title bar + menu
 		<div class="navbar-buttons navbar-header navbar-collapse collapse">
 			<ul class="nav ace-nav">
 				{$session.testprojectTopMenu}
-				<li>
-					<span class="info">{$labels.testproject}</span>
-				    <form style="display:inline;"name="productForm" action="lib/general/navBar.php?viewer={$gui->viewer}" method="get">
-				      <span class="navButton">
-					      <select name="testproject" onchange="this.form.submit();" class="input-sm">
-					          {foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
-					          <option value="{$tproject_id}" title="{$tproject_name|escape}"
-					            {if $tproject_id == $gui->tprojectID} selected="selected" {/if}>
-					            {$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
-					          </option>
-					        {/foreach}
-					      </select>
-				      </span>
-				    </form>
+				<li id="dropdown_projet" class="grey">
+					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+						{$labels.testproject} {$gui->TestProjects[$gui->tproject_id]}
+						<i class="ace-icon fa fa-angle-down bigger-110"></i>
+					</a>
+						
+					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
+						{foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
+					        	<li>
+									<a {if $tproject_id == $gui->tprojectID} class="active" {/if}
+										href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
+										{$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
+									</a>
+								</li>
+						{/foreach}
+					</ul>
 				</li>
+
+				{if $gui->num_active_tplans > 0}
+    				<li id="dropdown_plans" class="grey">
+    					{if $gui->TestPlanCount > 0}
+    					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+							{$labels.current_test_plan} {$gui->planSelectName}
+							<i class="ace-icon fa fa-angle-down bigger-110"></i>
+						</a>
+    				
+    					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
+    						{foreach key=index item=tPlans from=$gui->arrPlans}
+					        	<li>
+									<a {if $tPlans.selected} class="active" {/if}
+										href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
+								</li>
+							{/foreach}
+							{if $gui->testplanRole neq null}
+		                    	{$labels.testplan_role} {$gui->testplanRole|escape}
+		                    {/if}
+    					</ul>
+    					{else}
+		                	{if $gui->num_active_tplans > 0}{$labels.msg_no_rights_for_tp}{/if}
+    					{/if}		            	
+	            	</li>
+			    {/if}
+
 				<li>
 					<span class="info">{$gui->whoami|escape}</span>
 					<span class="navButton">
@@ -72,13 +102,18 @@ title bar + menu
 	{/foreach}
 	</div>
 {/if}
-  
+
+
+<iframe src="{$gui->menuframe}" name="mainMenu" class="mainMenu" ></iframe>  
+
 {if $gui->updateMainPage == 1}
   <script type="text/javascript">
-  parent.mainMenu.location.reload();
-  parent.mainframe.location.reload();
+  	  
+	  //window.mainMenu.location.reload();
+	  //window.mainframe.location.reload();
   </script>
 {/if}
 
 </body>
+
 </html>

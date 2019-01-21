@@ -18,6 +18,5 @@
     </head>
     <body>
         <iframe src="{$gui->titleframe}" name="titlebar" class="navBar" ></iframe>
-        <iframe src="{$gui->menuframe}" name="mainMenu" class="mainMenu" ></iframe>
     </body>
 </html>
