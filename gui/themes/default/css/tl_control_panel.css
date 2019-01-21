@@ -48,8 +48,6 @@ td.small-category {
 
 .table td input[type="text"] {
 	background: #fff;
-	border-color : #b5b5b5;
-	
 }
 
 .btn-toolbar {
@@ -66,39 +64,11 @@ td.small-category {
 	border-top : 1px solid #CCC;
 }
 
-.btn-group-left {
-	float : left;
-	position: relative;
-	vertical-align: middle;
-}
-
-input[type="submit"], input[type="button"] {
-	color : #23527c;
-	margin : 2px;
-}
-
-input[type="submit"].btn-white, input[type="button"].btn-white {
-	background-color : #fff;
-	background-image: none;
-}
-
-input[type="submit"].btn-round ,input[type="button"].btn-round {
-	border-radius: 4px;
-	border-bottom-width : 2px;
-}
-
-input[type="submit"].btn-white:hover, input[type="button"].btn-white:hover {
-	background-color : #eaf2f8;
-	border-color: #8aafce;
-	color: #537c9f;
-	background-image: none;
-}
-
 .widget-title span.glyphicon {
 	padding-right : 5px;
 }
 
-input.form-control {
+div.date > input {
 	margin: 0;
 }
 

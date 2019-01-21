@@ -501,32 +501,6 @@ class tlRequirementFilterControl extends tlFilterControl
     }   
   } // end of method
   
-  /**
-   *
-   */ 
-  private function init_filter_tc_id() 
-  {
-    $key = 'filter_tc_id';
-    $selection = $this->args->{$key};
-    
-    if (!$this->testproject_mgr) {
-      $this->testproject_mgr = new testproject($this->db);
-    }
-    
-    $tc_cfg = config_get('testcase_cfg');
-    $tc_prefix = $this->testproject_mgr->getTestCasePrefix($this->args->testproject_id);
-    $tc_prefix .= $tc_cfg->glue_character;
-    
-    if (!$selection || $selection == $tc_prefix || $this->args->reset_filters) {
-      $selection = null;
-    } else {
-      $this->do_filtering = true;
-    }
-    
-    $this->filters[$key] = array('selected' => $selection ? $selection : $tc_prefix);
-    $this->active_filters[$key] = $selection;
-  } // end of method
-
   
   /**
    *

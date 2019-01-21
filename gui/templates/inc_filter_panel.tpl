@@ -98,7 +98,7 @@
 	    </div>
     </div>
 
-    <div id="settings" class="widget-main collapse in">
+    <div id="settings" class="widget-main collapse">
       <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
       
       {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button}
@@ -228,7 +228,7 @@
   <div id="filter_panel" class="widget-body">
   	<div class="widget-header">
      	<h4 class="widget-title">
-     		<span class="glyphicon glyphicon-wrench"></span>
+     		<span class="glyphicon glyphicon-filter"></span>
      		{$labels.caption_nav_filters}
      	</h4>
     
@@ -239,7 +239,7 @@
 	    </div>
     </div>
 
-  <div id="filters" class="widget-main collapse in">
+  <div id="filters" class="widget-main collapse">
     <div class="btn-toolbar">
 		<div class="btn-group-left">
 		 	<input type="submit"
@@ -533,7 +533,7 @@
 	    </div>
     </div>
 	
-    <div id="settings" class="widget-main collapse in">
+    <div id="settings" class="widget-main collapse">
       <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
 
       <table class="table table-bordered">
@@ -577,7 +577,7 @@
 	    </div>
 	  </div>
 
-	  <div id="filters" class="widget-main collapse in" >
+	  <div id="filters" class="widget-main collapse" >
 		<div class="btn-toolbar">
 		  	<div class="btn-group-left">
 			    <input type="submit" class="btn btn-primary btn-white btn-round"
