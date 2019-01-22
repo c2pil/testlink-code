@@ -1085,4 +1085,7 @@ th.testlink, td.testlink, tr.testlink td {
   border-color: #dee2e6;
 }
 
+.yellow {
+	color : yellow;
+}
 /* ----- END ------------------------------------------------------------------------- */

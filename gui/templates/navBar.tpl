@@ -36,7 +36,7 @@ title bar + menu
 			<ul class="nav ace-nav">
 				<li id="dropdown_projet" class="grey">
 					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-						{$labels.testproject} {$gui->TestProjects[$gui->tproject_id]}
+						{$labels.testproject} <span class="yellow">{$gui->TestProjects[$gui->tproject_id]}</span>
 						<i class="ace-icon fa fa-angle-down bigger-110"></i>
 					</a>
 						
@@ -55,7 +55,7 @@ title bar + menu
     				<li id="dropdown_plans" class="grey">
     					{if $gui->TestPlanCount > 0}
     					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-							{$labels.current_test_plan} {$gui->planSelectName}
+							{$labels.current_test_plan} <span class="yellow" > {$gui->planSelectName}</span>
 							<i class="ace-icon fa fa-angle-down bigger-110"></i>
 						</a>
     				
