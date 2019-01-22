@@ -122,16 +122,7 @@ title bar + menu
 	</div>
 {/if}
 
-
-<iframe src="{$gui->menuframe}" name="mainMenu" class="mainMenu" ></iframe>  
-
-{if $gui->updateMainPage == 1}
-  <script type="text/javascript">
-  	  
-	  //window.mainMenu.location.reload();
-	  //window.mainframe.location.reload();
-  </script>
-{/if}
+<iframe src="{$gui->menuframe}" name="mainMenu" class="mainMenu" ></iframe>
 
 </body>
 
