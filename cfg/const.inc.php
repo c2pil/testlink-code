@@ -843,7 +843,7 @@ $tlCfg->review_types = array(1 => 'undefined',2 => 'typo',3 => 'recommendation',
  *          null => no right check needed
  * - condition: specific condition = ['','TestPlanAvailable','ReqMgmtEnabled']
  * - shortcut: keyboard HTML shortcut
- * - target: window/frame name (mainframe in the most of cases)
+ * - target: window/frame name (contentFrame in the most of cases)
  * - imgKey
  * 
  * @since TestLink version 1.9 
@@ -857,44 +857,44 @@ $tlCfg->guiTopMenu[2] = array('label' => 'title_requirements',
                               'url' => 'lib/general/frmWorkArea.php?feature=reqSpecMgmt',
                               'right' => array('mgt_view_req','mgt_modify_req'),
                               'condition'=>'ReqMgmtEnabled',
-                              'shortcut'=>'r','target'=>'mainframe'); 
+                              'shortcut'=>'r','target'=>'contentFrame'); 
 
 $tlCfg->guiTopMenu[3] = array('label' => 'title_specification',
                               'imgKey' => 'test_specification', 
                               'url' => 'lib/general/frmWorkArea.php?feature=editTc',
                               'right' => array('mgt_view_tc','mgt_modify_tc'),
                               'condition'=>'',
-                              'shortcut'=>'t','target'=>'mainframe'); 
+                              'shortcut'=>'t','target'=>'contentFrame'); 
 
 $tlCfg->guiTopMenu[4] = array('label' => 'title_execute',
                               'imgKey' => 'execution',
                               'url' => 'lib/general/frmWorkArea.php?feature=executeTest',
                               'right' => array('testplan_execute','exec_ro_access'),
                               'condition'=>'TestPlanAvailable',
-                              'shortcut'=>'e','target'=>'mainframe'); 
+                              'shortcut'=>'e','target'=>'contentFrame'); 
 
 $tlCfg->guiTopMenu[5] = array('label' => 'title_results',
                               'imgKey' => 'report',
                               'url' => 'lib/general/frmWorkArea.php?feature=showMetrics',
                               'right' => 'testplan_metrics','condition'=>'TestPlanAvailable',
-                              'shortcut'=>'r','target'=>'mainframe'); 
+                              'shortcut'=>'r','target'=>'contentFrame'); 
 
 $tlCfg->guiTopMenu[6] = array('label' => 'title_admin',
                               'imgKey' => 'user',
                               'url' => 'lib/usermanagement/usersView.php',
                               'right' => 'mgt_users','condition'=>'',
-                              'shortcut'=>'u','target'=>'mainframe'); 
+                              'shortcut'=>'u','target'=>'contentFrame'); 
 
 $tlCfg->guiTopMenu[7] = array('label' => 'title_events',
                               'imgKey' => 'events',
                               'url' => 'lib/events/eventviewer.php',
                               'right' => array('events_mgt', 'mgt_view_events'),'condition'=>'',
-                              'shortcut'=>'v','target'=>'mainframe'); 
+                              'shortcut'=>'v','target'=>'contentFrame'); 
 $tlCfg->guiTopMenu[8] = array('label' => 'title_plugins',
                               'imgKey' => 'plugins',
                               'url' => 'lib/plugins/pluginView.php',
                               'right' => array('mgt_plugins'),'condition'=>'',
-                              'shortcut'=>'p','target'=>'mainframe');
+                              'shortcut'=>'p','target'=>'contentFrame');
 
 
 define( 'PARTIAL_URL_TL_FILE_FORMATS_DOCUMENT',  'docs/tl-file-formats.pdf');

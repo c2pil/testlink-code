@@ -193,8 +193,8 @@ var del_action=fRoot+'{$deleteAction}';
   <script type="text/javascript">
   // remove query string to avoid reload of home page,
   // instead of reload only navbar
-  var href_pieces=parent.titlebar.location.href.split('?');
-  parent.titlebar.location=href_pieces[0];
+  var href_pieces=parent.mainFrame.location.href.split('?');
+  parent.mainFrame.location=href_pieces[0];
   </script>
   {/if}
 {/if}

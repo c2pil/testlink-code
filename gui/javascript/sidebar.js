@@ -4,7 +4,7 @@
  *
  * @package     TestLink
  * @author      C2pil
- * @filesource  menu_active.js
+ * @filesource  sideBar.js
  * @link        http://www.testlink.org
  * @since       1.9
  *
@@ -21,12 +21,12 @@ jQuery(document).ready( function() {
 			jQuery('#sidebar').addClass('sidebar-small').removeClass('sidebar-large');
 			jQuery('.menu-text-shown').addClass('menu-text-hidden').removeClass('menu-text-shown');
 			jQuery('#collapse_btn').addClass('fa-angle-double-right').removeClass('fa-angle-double-left');
-			jQuery('#mainframe').addClass('mainPage-large').removeClass('mainPage-small');
+			jQuery('#contentFrame').addClass('contentFrame-large').removeClass('contentFrame-small');
 		}else{
 			jQuery('#sidebar').addClass('sidebar-large').removeClass('sidebar-small');
 			jQuery('.menu-text-hidden').addClass('menu-text-shown').removeClass('menu-text-hidden');
 			jQuery('#collapse_btn').addClass('fa-angle-double-left').removeClass('fa-angle-double-right');
-			jQuery('#mainframe').addClass('mainPage-small').removeClass('mainPage-large');
+			jQuery('#contentFrame').addClass('contentFrame-small').removeClass('contentFrame-large');
 		}
 	});
 });

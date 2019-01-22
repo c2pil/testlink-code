@@ -448,7 +448,7 @@ function launchInsertStep(step_id)
     <table cellpadding="0" cellspacing="0" style="font-size:100%;">
              <tr>
                <td colspan="{$tableColspan}" style="vertical-align:text-top;"><span><a title="{$tcView_viewer_labels.requirement_spec}" href="{$hrefReqSpecMgmt}"
-               target="mainframe" class="bold">{$tcView_viewer_labels.Requirements}</a>
+               target="contentFrame" class="bold">{$tcView_viewer_labels.Requirements}</a>
 
               {if $reqLinkingEnabled && $args_testcase.isTheLatest == 1}
                 <img class="clickable" src="{$tlImages.item_link}"

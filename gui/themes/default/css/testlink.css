@@ -23,28 +23,28 @@ body, body.testlink {
 iframe {
  border:none;
 }
-.mainMenu {
+iframe.sideBarFrame {
 	width:100%;
 	height:calc(100% - 60px);
 }
-.mainPage-small {
+iframe.contentFrame-small {
 	border: none;
 	height:99%;
 	width: calc(100% - 150px);
 	padding-left: 2px;
 }
-.mainPage-large {
+iframe.contentFrame-large {
 	border: none;
 	height:99%;
 	width: calc(100% - 50px);
 	padding-left: 2px;
 }
-.treeframe {
+iframe.treeframe {
 	width:calc(99% - 70%);
 	height:100%;
 	float:left;
 }
-.workframe {
+iframe.workframe {
 	width:calc(100% - 29%);
 	height:calc(100% - 35px);
 }

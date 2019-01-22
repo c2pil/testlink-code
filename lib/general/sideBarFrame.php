@@ -3,7 +3,7 @@
  * TestLink Open Source Project - http://testlink.sourceforge.net/ 
  * This script is distributed under the GNU General Public License 2 or later. 
  *
- * @filesource	mainMenu.php
+ * @filesource	sideBarFrame.php
  * 
  * Page has two functions: navigation and select Test Plan
  *
@@ -269,7 +269,7 @@ if($gui_menu->countPlans > 0){
         );
     }
 }
-$tplKey = 'mainMenu';
+$tplKey = 'sideBarFrame';
 $tpl = $tplKey . '.tpl';
 $tplCfg = config_get('tpl');
 if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {

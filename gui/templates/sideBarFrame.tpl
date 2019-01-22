@@ -1,6 +1,6 @@
 {* 
  Testlink Open Source Project - http://testlink.sourceforge.net/ 
- @filesource  mainPageLeft.tpl
+ @filesource  sideBarFrame.tpl
  Purpose: smarty template - main page / site map                 
                                                                  
  @internal revisions
@@ -61,7 +61,7 @@
                 {if isset($gui->plugins.EVENT_LEFTMENU_TOP)}
                     {foreach from=$gui->plugins.EVENT_LEFTMENU_TOP item=menu_item}
                     	<li id="button_plugin_top" onClick="activeButton(id)"> 
-                        	<a href="{$menu_item['href']}" target="mainframe">
+                        	<a href="{$menu_item['href']}" target="contentFrame">
                         		<i class="menu-icon fa fa-dashboard"></i>
                         		<span class="menu-text-shown">{$menu_item['label']}</span>
                         	</a>
@@ -83,7 +83,7 @@
                 {/if}
                 {if $href neq ""}
             		<li id="button_admin" onClick="activeButton(id)"> 
-                    	<a href="{$href}" target="mainframe">
+                    	<a href="{$href}" target="contentFrame">
                         	<i class="menu-icon fa fa-gears"></i>
                         	<span class="menu-text-shown">{$labels.admin_button}</span>
                     	</a>
@@ -102,7 +102,7 @@
                 {/if}
                 {if $href neq ""}
             		<li id="button_system" onClick="activeButton(id)"> 
-                    	<a href="{$href}" target="mainframe">
+                    	<a href="{$href}" target="contentFrame">
                         	<i class="menu-icon fa fa-dashboard"></i>
                         	<span class="menu-text-shown">{$labels.system_config}</span>
                     	</a>
@@ -127,7 +127,7 @@
                 {/if}
                 {if $href neq ""}
             		<li id="button_projects" onClick="activeButton(id)"> 
-                    	<a href="{$href}" target="mainframe">
+                    	<a href="{$href}" target="contentFrame">
                         	<i class="menu-icon fa fa-folder"></i>
                         	<span class="menu-text-shown">{$labels.title_product_mgmt}</span>
                     	</a>
@@ -146,7 +146,7 @@
                 {/if}
                 {if $href neq ""}
             		<li id="button_req" onClick="activeButton(id)"> 
-                    	<a href="{$href}" target="mainframe">
+                    	<a href="{$href}" target="contentFrame">
                         	<i class="menu-icon fa fa-book"></i>
                         	<span class="menu-text-shown">{$labels.title_requirements}</span>
                     	</a>
@@ -167,7 +167,7 @@
                 {/if}
                 {if $href neq ""}
             		<li id="button_tc" onClick="activeButton(id)"> 
-                    	<a href="{$href}" target="mainframe">
+                    	<a href="{$href}" target="contentFrame">
                         	<i class="menu-icon fa fa-file"></i>
                         	<span class="menu-text-shown">{$labels.title_test_spec}</span>
                     	</a>
@@ -190,7 +190,7 @@
             {/if}
             {if $href neq ""}
         		<li id="button_plan" onClick="activeButton(id)"> 
-                	<a href="{$href}" target="mainframe">
+                	<a href="{$href}" target="contentFrame">
                     	<i class="menu-icon fa fa-clipboard"></i>
                     	<span class="menu-text-shown">{$labels.title_test_plan_mgmt}</span>
                 	</a>
@@ -211,7 +211,7 @@
                 {/if}
                 {if $href neq ""}
             		<li id="button_exec" onClick="activeButton(id)"> 
-                    	<a href="{$href}" target="mainframe">
+                    	<a href="{$href}" target="contentFrame">
                         	<i class="menu-icon fa fa-play-circle"></i>
                         	<span class="menu-text-shown">{$labels.title_test_execution}</span>
                     	</a>
@@ -230,7 +230,7 @@
                     {/if}
                     {if $href neq ""}
                 		<li id="button_plan_content" onClick="activeButton(id)"> 
-                        	<a href="{$href}" target="mainframe">
+                        	<a href="{$href}" target="contentFrame">
                             	<i class="menu-icon fa fa-database"></i>
                             	<span class="menu-text-shown">{$labels.title_test_case_suite}</span>
                         	</a>
@@ -246,7 +246,7 @@
 					<br/>
                     {foreach from=$gui->plugins.EVENT_LEFTMENU_BOTTOM item=menu_item}
 						<li id="button_plugin_bottom" onClick="activeButton(id)"> 
-                        	<a href="{$menu_item['href']}" target="mainframe">
+                        	<a href="{$menu_item['href']}" target="contentFrame">
                         		<i class="menu-icon fa fa-dashboard"></i>
                         		<span class="menu-text-shown">{$menu_item['label']}</span>
                         	</a>
@@ -260,7 +260,7 @@
     		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
     	</div>
     </div>
-   	<iframe id="mainframe" src="" name="mainframe" class="mainPage-small" ></iframe>
+   	<iframe id="contentFrame" src="" name="contentFrame" class="contentFrame-small" ></iframe>
     </body>
-    <script type="text/javascript" src="{$basehref}gui/javascript/main_menu.js"></script>
+    <script type="text/javascript" src="{$basehref}gui/javascript/sideBar.js"></script>
 </html>

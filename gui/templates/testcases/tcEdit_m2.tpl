@@ -28,7 +28,7 @@
 	<tr><td>{$steps}</td><td>{$exresult}</td></tr>
 	</table>
 	
-	<p><a href="lib/keywords/viewKeywords.php" target="mainframe">{lang_get s='tc_keywords'}</a><br />
+	<p><a href="lib/keywords/viewKeywords.php" target="contentFrame">{lang_get s='tc_keywords'}</a><br />
 		<select name="keywords[]" style="width: 30%" size="{$keySize}" multiple="multiple">
 		{section name=oneKey loop=$keys}
 				{if $keys[oneKey].selected == "yes"}

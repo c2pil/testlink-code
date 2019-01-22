@@ -97,7 +97,7 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
   
   {if $gui->update_title_bar == 1}
   <script type="text/javascript">
-    parent.titlebar.location.reload();
+    parent.mainFrame.location.reload();
   </script>
   {/if}
 
