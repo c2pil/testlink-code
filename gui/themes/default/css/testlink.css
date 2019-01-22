@@ -1095,6 +1095,7 @@ th.testlink, td.testlink, tr.testlink td {
 	position: absolute;
 	bottom: 0;
 	padding-top:5px;
+	font-style: normal;
 }
 
 #footerIMG{
