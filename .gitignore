@@ -6,3 +6,7 @@ config_db.inc.php
 **/._*
 upload_area/**
 config.inc.php
+/.buildpath
+/.settings
+/config.inc.php
+/.project
