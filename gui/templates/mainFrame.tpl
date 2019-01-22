@@ -122,17 +122,7 @@ header / menu / content
 	</div>
 {/if}
 
-
 <iframe src="{$gui->sideBarFrame}" name="sideBarFrame" class="sideBarFrame" ></iframe>  
-
-{if $gui->updateMainPage == 1}
-  <script type="text/javascript">
-  	  
-	  //window.mainMenu.location.reload();
-	  //window.mainframe.location.reload();
-  </script>
-{/if}
-
 </body>
 
 </html>

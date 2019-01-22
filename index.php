@@ -73,8 +73,8 @@ $tplEngine->assign('gui', $gui);
 $tplEngine->display('main.tpl');
 
 /**
- *
- *
+ * Init smarty var
+ * @return stdClass[]
  */
 function initEnv()
 {

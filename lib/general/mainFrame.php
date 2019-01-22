@@ -10,7 +10,7 @@
 **/
 require_once('../../config.inc.php');
 require_once("common.php");
-testlinkInitPage($db,('initProject' == 'initProject'));
+testlinkInitPage($db, true);
 
 $testplanID = 0;
 if( isset($_REQUEST['testplan']) ) {
@@ -29,7 +29,10 @@ $smarty->display('mainFrame.tpl');
 
 
 /**
- * 
+ * Getter grants
+ * @param Object $db database
+ * @param Object $userObj the user
+ * @return stdClass
  */
 function getGrants(&$db,&$userObj)
 {
@@ -39,7 +42,9 @@ function getGrants(&$db,&$userObj)
 }
 
 /**
- * 
+ * Init arguments smarty
+ * @param unknown $dbH
+ * @return stdClass
  */
 function init_args(&$dbH)
 {
@@ -77,7 +82,11 @@ function init_args(&$dbH)
 }
 
 /**
- *
+ * Initialize Gui var
+ * @param unknown $db
+ * @param unknown $args
+ * @throws Exception
+ * @return stdClass
  */
 function initializeGui(&$db,&$args)
 {
@@ -178,7 +187,7 @@ function initializeGui(&$db,&$args)
   // using the onload HTML body attribute
   if ($args->testproject) {
 
-    $ckCfg = config_get('cookie');    
+    $ckCfg = config_get('cookie');
     $ckObj = new stdClass();
     $ckObj->name = $ckObj->prefix . 'TL_lastTestProjectForUserID_'. 
                    $args->user->dbID;
