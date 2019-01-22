@@ -1537,3 +1537,20 @@ function tlSetCookie($ckObj) {
             $stdCk->domain,$stdCk->secure,$stdCk->httponly);
 }
 
+function printFooter($url){
+
+    $s = '<address><div id="footer">';
+    $s .= '<div id="footerIMG">';
+    $s .= '<img alt="Company logo" title="logo" src="gui/themes/default/images/tl-logo-transparent-12.5.png"></div>';
+    $s .= '<div id="footerTXT"><strong>';
+    $s .= lang_get('poweredBy');
+    $s .= ' <a href="'.$url.'" title="';
+    $s .= lang_get('system_descr');
+    $s .= '"> TestLink ';
+    $s .= TL_VERSION;
+    $s .= '</a></strong></div></div></address>';
+    
+    return $s;
+
+}
+
