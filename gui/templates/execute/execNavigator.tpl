@@ -12,7 +12,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
              include_unassigned_testcases,priority,caption_nav_filters,caption_nav_settings,
              block_filter_not_run_latest_exec"}       
 
-{include file="inc_head.tpl" openHead="yes"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="false"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 
 {* includes Ext.ux.CollapsiblePanel *}
