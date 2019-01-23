@@ -414,56 +414,14 @@ function launchInsertStep(step_id)
             args_tcase_id=$tcase_id
             args_tcversion_id=$tcversion_id} 
 </div>
-  
-  {if $gui->requirementsEnabled == TRUE && 
-     ($gui->view_req_rights == "yes" || $gui->req_tcase_link_management) }
-
-     {$reqLinkingEnabled = 0}
-     {if $gui->req_tcase_link_management && $args_frozen_version=="no" &&
-         $edit_enabled == 1 }
-        {$reqLinkingEnabled = 1}
-     {/if}    
-
-     {if $tlCfg->testcase_cfg->reqLinkingDisabledAfterExec == 1 && 
-         $has_been_executed == 1 && $args_tcase_cfg->can_edit_executed == 0}
-        {$reqLinkingEnabled = 0}
-     {/if}
-     
-
-  <div {$addInfoDivStyle}>
-    <table cellpadding="0" cellspacing="0" style="font-size:100%;">
-             <tr>
-               <td colspan="{$tableColspan}" style="vertical-align:text-top;"><span><a title="{$tcView_viewer_labels.requirement_spec}" href="{$hrefReqSpecMgmt}"
-               target="contentFrame" class="bold">{$tcView_viewer_labels.Requirements}</a>
-
-              {if $reqLinkingEnabled && $args_testcase.isTheLatest == 1}
-                <img class="clickable" src="{$tlImages.item_link}"
-                     onclick="javascript:openReqWindow({$args_testcase.testcase_id},'a');"
-                     title="{$tcView_viewer_labels.link_unlink_requirements}" />
-              {/if}
-              : &nbsp;</span>
-             </td>
-              <td>
-              {section name=item loop=$args_reqs}
-                {$reqID=$args_reqs[item].id}
-                {$reqVersionID=$args_reqs[item].req_version_id}
-                {$reqVersionNum=$args_reqs[item].version}
-                
-                
-                <img class="clickable" src="{$tlImages.edit}"
-                     onclick="javascript:openLinkedReqVersionWindow({$reqID},{$reqVersionID});"
-                     title="{$tcView_viewer_labels.requirement}" />
-                {$openC}{$args_reqs[item].req_spec_title|escape}{$closeC}
-                {$args_reqs[item].req_doc_id|escape}&nbsp{$openC}{$tcView_viewer_labels.version_short}{$reqVersionNum}{$closeC}{$sepC}{$args_reqs[item].title|escape}
-                {if !$smarty.section.item.last}<br />{/if}
-              {sectionelse}
-                {$tcView_viewer_labels.none}
-              {/section}
-              </td>
-            </tr>
-    </table>
-  </div>
-  {/if}
+{if $gui->requirementsEnabled == TRUE && ($gui->view_req_rights == "yes" || $gui->req_tcase_link_management) }
+	{$reqLinkingEnabled = 0}
+	{if $gui->req_tcase_link_management && $args_frozen_version=="no" && $edit_enabled == 1 }
+    	{$reqLinkingEnabled = 1}
+ 	{/if}
+ 	{if $tlCfg->testcase_cfg->reqLinkingDisabledAfterExec == 1 && $has_been_executed == 1 && $args_tcase_cfg->can_edit_executed == 0}
+    	{$reqLinkingEnabled = 0}
+	{/if}
 
 	<div>		
 		<table class="table table-striped table-bordered">
