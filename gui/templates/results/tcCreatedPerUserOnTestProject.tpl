@@ -18,7 +18,6 @@ Purpose: smarty template - Report of Test Cases created per tester
   {$tableID="table_$idx"}
   {if $smarty.foreach.initializer.first}
     {$matrix->renderCommonGlobals()}
-    {include file="inc_ext_js.tpl" bResetEXTCss=1}
     {include file="inc_ext_table.tpl"}
   {/if}
   {$matrix->renderHeadSection($tableID)}
