@@ -13,7 +13,6 @@ Purpose: smarty template - assign platforms to testplans
 
 {include file="inc_head.tpl" openHead='yes'}
 {include file="inc_ext_js.tpl"}
-{include file="bootstrap.inc.tpl"}
 <script language="JavaScript" src="gui/javascript/OptionTransfer.js" type="text/javascript"></script>
 <script language="JavaScript" src="gui/javascript/expandAndCollapseFunctions.js" type="text/javascript"></script>
 

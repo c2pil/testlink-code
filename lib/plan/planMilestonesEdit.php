@@ -13,6 +13,10 @@
  */
 require_once("../../config.inc.php");
 require_once("common.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 $date_format_cfg = config_get('date_format');
 
@@ -28,7 +32,7 @@ if(method_exists($commandMgr,$pFn))
 	$op = $commandMgr->$pFn($args,$_SESSION['basehref']);
 }
 
-renderGui($args,$gui,$op,$templateCfg);
+renderGui($args,$gui,$op,$templateCfg,$gui_menu);
 
 
 /*
@@ -104,7 +108,7 @@ function init_args(&$dbHandler,$dateFormat)
   returns:
 
 */
-function renderGui(&$argsObj,$guiObj,$opObj,$templateCfg)
+function renderGui(&$argsObj,$guiObj,$opObj,$templateCfg,$gui_menu)
 {
     $smartyObj = new TLSmarty();
     //
@@ -155,6 +159,7 @@ function renderGui(&$argsObj,$guiObj,$opObj,$templateCfg)
     {
         case 'template':
         	$smartyObj->assign('gui',$guiObj);
+        	$smartyObj->assign('print_tabs',print_tabs('planMilestonesEdit.php', $gui_menu, TAB_PLAN));
 		    $smartyObj->display($tpl);
         break;  
  

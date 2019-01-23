@@ -18,15 +18,12 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {$cfExportAction="lib/cfields/cfieldsExport.php?goback_url="}
 {$exportCfieldsAction="$basehref$cfExportAction$basehref$cfViewAction"}
 
-
 {lang_get var="labels"
           s="name,label,type,title_cfields_mgmt,manage_cfield,btn_cfields_create,
              btn_export,btn_import,btn_goback,sort_table_by_column,enabled_on_context,
              display_on_exec,available_on"}
 
 {include file="inc_head.tpl" enableTableSorting="yes" openHead="yes"}
-{include file="bootstrap.inc.tpl"}
-
 </head>
 
 <body class="testlink">

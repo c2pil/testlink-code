@@ -31,8 +31,10 @@ function validateForm(f)
 {/literal}
 </head>
 
-
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$gui->page_title|escape}</h1>
 <div class="workBack">
 {if $gui->do_it eq 1}

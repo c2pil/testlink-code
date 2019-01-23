@@ -15,6 +15,9 @@
 require_once('../../config.inc.php');
 require_once('common.php');
 require_once("web_editor.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
 $editorCfg = getWebEditorCfg('testproject');
 require_once(require_web_editor($editorCfg['type']));
 
@@ -185,6 +188,7 @@ switch($args->doAction) {
         
     $gui->editorType = $editorCfg['type'];    
     $smarty->assign('gui',$gui);
+    $smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB_PROJECTS));
     $smarty->display($templateCfg->template_dir . $template);
   break;
 
@@ -205,6 +209,7 @@ switch($args->doAction) {
     $smarty->assign('notes', $of->CreateHTML());
     $smarty->assign('user_feedback', $user_feedback);
     $smarty->assign('feedback_type', $feedback_type);
+    $smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB_PROJECTS));
     $smarty->display($templateCfg->template_dir . $template);
   break;
 }

@@ -12,6 +12,9 @@ Purpose: smarty template - keyword import initial page
 {include file="inc_head.tpl"}
 
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$gui->main_descr|escape}</h1>
 
 <div class="workBack">

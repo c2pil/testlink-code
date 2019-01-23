@@ -112,6 +112,8 @@ function validateForm(f)
 
 <body class="testlink">
 
+{$print_tabs}
+
 <div class="workBack">
   {include file="inc_update.tpl" user_feedback=$gui->user_feedback}
 	<h2>

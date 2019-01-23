@@ -9,6 +9,10 @@
 **/
 require_once("../../config.inc.php");
 require_once("common.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 $templateCfg = templateConfiguration();
 
@@ -21,14 +25,14 @@ if(method_exists($commandMgr,$pFn))
   $op = $commandMgr->$pFn($args,$_REQUEST);
 }
 
-renderGui($db,$args,$gui,$op,$templateCfg);
+renderGui($db,$args,$gui,$op,$templateCfg,$gui_menu);
 
 
 
 
 /**
  */
-function renderGui(&$dbHandler,&$argsObj,$guiObj,$opObj,$templateCfg)
+function renderGui(&$dbHandler,&$argsObj,$guiObj,$opObj,$templateCfg,$gui_menu)
 {
     $smartyObj = new TLSmarty();
     $renderType = 'none';
@@ -73,24 +77,18 @@ function renderGui(&$dbHandler,&$argsObj,$guiObj,$opObj,$templateCfg)
         break;
     }
 
-  // execute rendering
-  // new dBug($tpl);
-  // new dBug($guiObj);
-	
-    switch($renderType)
-    {
+    switch($renderType){
         case 'template':
-       	  $smartyObj->assign('gui',$guiObj);
-	  $smartyObj->display($tpl);
-          break;  
- 
+       	    $smartyObj->assign('gui',$guiObj);
+       	    $smartyObj->assign('print_tabs',print_tabs('codeTrackerView.php', $gui_menu, TAB_SYSTEM));
+            $smartyObj->display($tpl);
+            break;
         case 'redirect':
-	  header("Location: {$tpl}");
-	  exit();
-        break;
-
+            header("Location: {$tpl}");
+            exit();
+            break;
         default:
-       	  break;
+       	    break;
     }
 }
 

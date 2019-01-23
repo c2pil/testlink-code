@@ -5,9 +5,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 @internal revisions
 *}
 {include file="inc_head.tpl" enableTableSorting="yes" openHead="yes"}
-{include file="bootstrap.inc.tpl"}
 {include file="inc_del_onclick.tpl"}
-
 
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}

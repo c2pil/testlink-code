@@ -46,11 +46,12 @@ function validateForm(f)
 </script>
 </head>
 
-
 <body>
+
+{$print_tabs}
+
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
-
 
 <h1 class="title">{$gui->main_title}</h1>
 {include file="inc_update.tpl" user_feedback=$gui->userFeedback}

@@ -4,7 +4,6 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 *}
 {include file="inc_head.tpl" enableTableSorting="yes" openHead="yes"}
-{include file="bootstrap.inc.tpl"}
 {include file="inc_del_onclick.tpl"}
 
 

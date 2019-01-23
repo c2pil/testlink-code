@@ -35,7 +35,6 @@ some variables smarty and javascript are created on the inc_*.tpl files.
 
 {include file="inc_head.tpl" openHead="yes" enableTableSorting="yes"}
 {include file="inc_del_onclick.tpl"}
-{include file="bootstrap.inc.tpl"}
 
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */

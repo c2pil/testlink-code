@@ -133,7 +133,11 @@ function managePasswordInputs(oid,targetSetOID)
 </head>
 
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$gui->main_title} </h1>
+
 {include file="inc_update.tpl" result=$result item="user" action="$action" user_feedback=$user_feedback}
 
 {if $gui->op->status > 0}

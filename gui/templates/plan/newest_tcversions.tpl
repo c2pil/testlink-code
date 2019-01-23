@@ -8,7 +8,6 @@ rev:
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_jsCheckboxes.tpl"}
-{include file="bootstrap.inc.tpl"}
 
 {lang_get var='labels' 
           s='testproject,test_plan,th_id,th_test_case,title_newest_tcversions,

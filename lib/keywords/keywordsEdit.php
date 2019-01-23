@@ -17,6 +17,9 @@ require_once("common.php");
 require_once("csv.inc.php");
 require_once("xml.inc.php");
 require_once("keywordsEnv.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
 
 
 testlinkInitPage($db);
@@ -62,6 +65,7 @@ if ($tpl != $tplCfg->default_template) {
 }
 
 $tplEngine->assign('gui',$gui);
+$tplEngine->assign('print_tabs',print_tabs('keywordsView.php', $gui_menu, TAB_PROJECTS));
 $tplEngine->display($tplCfg->template_dir . $tpl);
 
 

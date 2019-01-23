@@ -37,6 +37,9 @@ function validateForm(f)
 </head>
 
 <body>
+
+{$print_tabs}
+
 {assign var="cfg_section" value=$smarty.template|basename|replace:".tpl":"" }
 {config_load file="input_dimensions.conf" section=$cfg_section}
 

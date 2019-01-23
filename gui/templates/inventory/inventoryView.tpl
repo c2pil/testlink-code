@@ -38,8 +38,6 @@
 {include file="inc_head.tpl" openHead="yes"}
 {config_load file="input_dimensions.conf" section="inventory"}
 
-{include file="bootstrap.inc.tpl"}
-
   	<style type="text/css">
 		.icon_device_copy {ldelim}background-image:url({$basehref}{$smarty.const.TL_THEME_IMG_DIR}data_copy_16.png) !important;{rdelim}
 		.icon_device_create {ldelim}background-image:url({$basehref}{$smarty.const.TL_THEME_IMG_DIR}data_new_16.png) !important;{rdelim}

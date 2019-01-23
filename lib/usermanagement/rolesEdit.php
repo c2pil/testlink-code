@@ -15,6 +15,9 @@ require_once("../../config.inc.php");
 require_once("common.php");
 require_once("users.inc.php");
 require_once("web_editor.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
 
 $editorCfg = getWebEditorCfg('role');
 require_once(require_web_editor($editorCfg['type']));
@@ -59,12 +62,9 @@ switch($args->doAction)
 $gui = complete_gui($db,$gui,$args,$op->role,$owebeditor);
 $gui->userFeedback = $op->userFeedback;
 
-// Kint::dump($gui);
-
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
-// $smarty->assign('highlight',$gui->highlight);
-renderGui($smarty,$args,$templateCfg);
+renderGui($smarty,$args,$templateCfg,$gui_menu);
 
 /**
  *
@@ -148,7 +148,7 @@ function doOperation(&$dbHandler,$argsObj,$operation)
 }
 
 
-function renderGui(&$smartyObj,&$argsObj,$templateCfg)
+function renderGui(&$smartyObj,&$argsObj,$templateCfg,$gui_menu)
 {
     $doRender = false;
     switch($argsObj->doAction)
@@ -181,7 +181,8 @@ function renderGui(&$smartyObj,&$argsObj,$templateCfg)
 
     if($doRender)
     {
-      $smartyObj->display($templateCfg->template_dir . $tpl);
+        $smartyObj->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB_PROJECTS));
+        $smartyObj->display($templateCfg->template_dir . $tpl);
     }
 }
 

@@ -8,6 +8,10 @@
  */
 require_once(dirname(__FILE__) . "/../../config.inc.php");
 require_once("common.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $cfield_mgr = new cfield_mgr($db);
@@ -106,7 +110,7 @@ $smarty = new TLSmarty();
 $smarty->assign('operation_descr',$operation_descr);
 $smarty->assign('user_feedback',$user_feedback);
 $smarty->assign('user_action',$args->do_action);
-renderGui($smarty,$args,$gui,$cfield_mgr,$templateCfg);
+renderGui($smarty,$args,$gui,$cfield_mgr,$templateCfg,$gui_menu);
 
 /**
  *
@@ -474,7 +478,7 @@ function cfieldCfgInit($cfieldMgr)
   
 
 */
-function renderGui(&$smartyObj,&$argsObj,&$guiObj,&$cfieldMgr,$templateCfg)
+function renderGui(&$smartyObj,&$argsObj,&$guiObj,&$cfieldMgr,$templateCfg,$gui_menu)
 {
   $doRender=false;
   switch($argsObj->do_action)
@@ -499,6 +503,7 @@ function renderGui(&$smartyObj,&$argsObj,&$guiObj,&$cfieldMgr,$templateCfg)
    $guiObj->cf_map = $cfieldMgr->get_all(null,'transform');
    $guiObj->cf_types=$cfieldMgr->get_available_types();
    $smartyObj->assign('gui',$guiObj);
+   $smartyObj->assign('print_tabs',print_tabs('cfieldsView.php', $gui_menu, TAB_SYSTEM));
    $smartyObj->display($templateCfg->template_dir . $tpl);
   }
 }

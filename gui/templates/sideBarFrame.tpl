@@ -8,9 +8,7 @@
 {$cfg_section=$smarty.template|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
 {include file="inc_head.tpl" popup="yes" openHead="yes"}
-
 {include file="inc_ext_js.tpl"}
-{include file="bootstrap.inc.tpl"}
 
 {lang_get var='labels' s='title_product_mgmt,href_tproject_management,href_admin_modules,
     href_assign_user_roles,href_cfields_management,system_config,

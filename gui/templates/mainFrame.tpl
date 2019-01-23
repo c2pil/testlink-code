@@ -16,7 +16,6 @@ header / menu / content
 
 {include file="inc_head.tpl" openHead="yes"}
 <base href="{$basehref}"/>
-{include file="bootstrap.inc.tpl"}
 
 <link rel="stylesheet" href="{$basehref}gui/themes/default/css/navbar.css" >
 </head>
