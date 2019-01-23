@@ -12,7 +12,7 @@ require_once("common.php");
 require_once("users.inc.php");
 require_once("roles.inc.php");
 ob_start();
-require_once( '../general/mainMenu.php' );
+require_once( '../general/sideBarFrame.php' );
 ob_end_clean();
 
 testlinkInitPage($db,false,false,"checkRights");

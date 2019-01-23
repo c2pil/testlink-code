@@ -2,9 +2,9 @@
 /**
  * TestLink Open Source Project - http://testlink.sourceforge.net/ 
  *
- * @filesource  navBar.php
+ * @filesource  mainFrame.php
  *
- * Manages the navigation bar. 
+ * Manages the main frame. 
  *
  *
 **/
@@ -25,7 +25,7 @@ $gui = initializeGui($db,$args);
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
-$smarty->display('navBar.tpl');
+$smarty->display('mainFrame.tpl');
 
 
 /**
@@ -172,14 +172,11 @@ function initializeGui(&$db,&$args)
                  $guiCfg->role_separator_open . 
                  $testprojectRole . $guiCfg->role_separator_close;
                    
-  $gui->menuframe = "lib/general/mainMenu.php";
+  $gui->sideBarFrame = "lib/general/sideBarFrame.php";
   // only when the user has changed project using the combo the _GET has this key.
   // Use this clue to launch a refresh of other frames present on the screen
   // using the onload HTML body attribute
-  $gui->updateMainPage = 0;
   if ($args->testproject) {
-    // set test project ID for the next session
-    $gui->updateMainPage = is_null($args->caller);
 
     $ckCfg = config_get('cookie');    
     $ckObj = new stdClass();

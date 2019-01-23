@@ -253,7 +253,7 @@ function refreshLastUpdate (last_update)
 {if $update_title_bar == 1}
 {literal}
 <script type="text/javascript">
-  parent.titlebar.location.reload();
+  parent.mainFrame.location.reload();
 </script>
 {/literal}
 {/if}

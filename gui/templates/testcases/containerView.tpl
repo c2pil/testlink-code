@@ -141,7 +141,7 @@ function jsCallDeleteFile(btn, text, o_id)
     <tr>
       <td>
       {if $gui->mgt_modify_product == 'yes'}
-        <a href="lib/project/projectView.php"  target="mainframe"
+        <a href="lib/project/projectView.php"  target="contentFrame"
                 title="{$labels.edit_testproject_basic_data}">{$gui->container_data.name|escape}</a>
       {else}
          {$gui->container_data.name|escape}

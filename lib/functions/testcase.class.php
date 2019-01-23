@@ -6913,7 +6913,7 @@ class testcase extends tlObjectWithAttachments
 
 
     $gui->keywordsViewHREF = "lib/keywords/keywordsView.php?tproject_id={$gui->tproject_id} " .
-                             ' target="mainframe" class="bold" title="' . lang_get('menu_manage_keywords') . '"';
+                             ' target="contentFrame" class="bold" title="' . lang_get('menu_manage_keywords') . '"';
 
 
     $gui->reqSpecMgmtHREF = "lib/general/frmWorkArea.php?tproject_id={$gui->tproject_id}&feature=reqSpecMgmt";

@@ -27,7 +27,7 @@ require_once('users.inc.php');
 require_once('displayMgr.php');
 require_once('exttable.class.php');
 ob_start();
-require_once( '../general/mainMenu.php' );
+require_once( '../general/sideBarFrame.php' );
 ob_end_clean();
 
 $smarty = new TLSmarty();

@@ -17,6 +17,6 @@
     	<link rel="stylesheet" type="text/css" href="{$basehref}gui/themes/default/css/frame.css">
     </head>
     <body>
-        <iframe src="{$gui->titleframe}" name="titlebar" class="navBar" ></iframe>
+        <iframe src="{$gui->mainFrame}" name="mainFrame" class="mainFrame" ></iframe>
     </body>
 </html>

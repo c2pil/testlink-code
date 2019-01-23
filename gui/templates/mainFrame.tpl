@@ -1,9 +1,9 @@
 {*
 Testlink Open Source Project - http://testlink.sourceforge.net/
 
-title bar + menu
+header / menu / content
 
-@filesource navBar.tpl
+@filesource mainFrame.tpl
 *}
 {lang_get var="labels"
           s="current_test_plan,title_events,event_viewer,home,testproject,title_specification,title_execute,
@@ -36,14 +36,14 @@ title bar + menu
 			<ul class="nav ace-nav">
 				<li id="dropdown_projet" class="grey">
 					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-						{$labels.testproject} {$gui->TestProjects[$gui->tproject_id]}
+						{$labels.testproject} <span class="yellow">{$gui->TestProjects[$gui->tproject_id]}</span>
 						<i class="ace-icon fa fa-angle-down bigger-110"></i>
 					</a>
 						
 					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
 						{foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
 					        	<li {if $tproject_id == $gui->tprojectID} class="active" {/if}>
-									<a href="lib/general/navBar.php?viewer={$gui->viewer}&testproject={$tproject_id}">
+									<a href="lib/general/mainFrame.php?viewer={$gui->viewer}&testproject={$tproject_id}">
 										{$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
 									</a>
 								</li>
@@ -55,14 +55,14 @@ title bar + menu
     				<li id="dropdown_plans" class="grey">
     					{if $gui->TestPlanCount > 0}
     					<a  class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-							{$labels.current_test_plan} {$gui->planSelectName}
+							{$labels.current_test_plan} <span class="yellow" > {$gui->planSelectName}</span>
 							<i class="ace-icon fa fa-angle-down bigger-110"></i>
 						</a>
     				
     					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
     						{foreach key=index item=tPlans from=$gui->arrPlans}
 					        	<li {if $tPlans.selected} class="active" {/if}>
-									<a href="lib/general/navBar.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
+									<a href="lib/general/mainFrame.php?testplan={$tPlans.id}">{$tPlans.name|escape}</a>
 								</li>
 							{/foreach}
 							{if $gui->testplanRole neq null}
@@ -84,7 +84,7 @@ title bar + menu
 					
 					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
 						<li>
-							<a href='lib/usermanagement/userInfo.php' target="mainframe">
+							<a href='lib/usermanagement/userInfo.php' target="contentFrame">
 								<i class="ace-icon fa fa-user"></i>
 								{$labels.title_edit_personal_data}
 							</a>
@@ -122,7 +122,7 @@ title bar + menu
 	</div>
 {/if}
 
-<iframe src="{$gui->menuframe}" name="mainMenu" class="mainMenu" ></iframe>
+<iframe src="{$gui->sideBarFrame}" name="sideBarFrame" class="sideBarFrame" ></iframe>
 
 </body>
 

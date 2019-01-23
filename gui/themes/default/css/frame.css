@@ -4,7 +4,7 @@ html, body {
 	overflow:hidden;
 	margin:0px;
 } 
-iframe.navBar {
+iframe.mainFrame {
 	width:100%;
 	height:100%;
 }
