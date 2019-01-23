@@ -312,9 +312,22 @@ abstract class tlFilterControl extends tlObjectWithDB
 
     // was a filter reset requested?
     $this->args->reset_filters = false;
+    //mark click button reset filter
+    $this->args->doResetFilters = false; 
     if (isset($_REQUEST['btn_reset_filters'])) {
+      $this->args->doResetFilters = true;
       $this->args->reset_filters = true; // mark filter reset in args
       $this->do_filtering = false; // mark that no filtering has to be done after reset
+    }
+    
+    // was apply filter requested ?
+    $this->args->doUpdateTree = false;
+    if (isset($_REQUEST['doUpdateTree'])) {
+        $this->args->doUpdateTree = true; // mark update click
+    }
+    $this->args->btn_toggle_cf = false;
+    if (isset($_REQUEST['btn_toggle_cf'])) {
+        $this->args->btn_toggle_cf = true; // mark btn_toggle_cf click
     }
     
     // what filter mode has been chosen?
@@ -322,6 +335,8 @@ abstract class tlFilterControl extends tlObjectWithDB
       isset($_REQUEST[self::SIMPLE_FILTER_BUTTON_LABEL]) ? true : false;
     $this->args->advanced_filter_mode = 
       isset($_REQUEST[self::ADVANCED_FILTER_BUTTON_LABEL]) ? true : false;  
+    //mark click on filter mode
+    $this->args->changeFilterMode = isset($_REQUEST[self::SIMPLE_FILTER_BUTTON_LABEL]) || isset($_REQUEST[self::ADVANCED_FILTER_BUTTON_LABEL]);
 
     $this->args->loadExecDashboard = true;
     if( isset($_REQUEST['loadExecDashboard']) )

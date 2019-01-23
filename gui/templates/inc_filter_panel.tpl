@@ -225,6 +225,9 @@
 
 {if $control->display_filters}
 
+	{$collapse = ($control->args->doResetFilters || $control->args->doUpdateTree || $control->args->btn_toggle_cf || $control->args->changeFilterMode) }
+
+
   <div id="filter_panel" class="widget-body">
   	<div class="widget-header">
      	<h4 class="widget-title">
@@ -234,12 +237,17 @@
     
 		<div class="widget-toolbar">
 	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
-	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    		<span class="serviceCollapse glyphicon 
+	    			{if $collapse} 
+	    				glyphicon-chevron-down	
+	    			{else}
+	    				 glyphicon-chevron-up
+	    			{/if}">
+	    		</span>
 	    	</a> 
 	    </div>
     </div>
-
-  <div id="filters" class="collapse">
+  <div id="filters" class="widget-main collapse {if $collapse} in	{/if} ">
     <div class="btn-toolbar">
 		<div class="btn-group-left">
 		 	<input type="submit"
@@ -271,7 +279,7 @@
 		        <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
 		             value="{$control->filter_mode_button_label}"
 		             class="btn btn-primary btn-round btn-white" />
-		          {/if}
+		     {/if}
 		</div>
 	</div>
     

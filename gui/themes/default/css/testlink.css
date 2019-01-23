@@ -70,6 +70,9 @@ table.table{
 ul.nav.nav-tabs.padding-18{
 	padding-top:5px;
 }
+.x-tree-node{
+	font-size:13px!important;
+}
 /** 
 use together with #header-wrap, to create a section on top of body
 that remain always visible while rest of body content scrolls,
