@@ -41,7 +41,7 @@ Purpose: show form for search through test cases in test specification
   
    <div class="btn-toolbar">
    		<div class="btn-group-left">
-			<input type="submit" name="doSearch" class="btn btn-primary bn-round btn-white" value="{$labels.btn_find}" />
+			<input type="submit" name="doSearch" class="btn btn-primary btn-round btn-white" value="{$labels.btn_find}" />
 		</div>
 	</div>
   

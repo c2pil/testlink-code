@@ -247,7 +247,7 @@
 	    	</a> 
 	    </div>
     </div>
-  <div id="filters" class="widget-main collapse {if $collapse} in	{/if} ">
+  <div id="filters" class="collapse {if $collapse} in	{/if} ">
     <div class="btn-toolbar">
 		<div class="btn-group-left">
 		 	<input type="submit"
