@@ -93,7 +93,7 @@
     
 		<div class="widget-toolbar">
 	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#settings">
-	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
 	    	</a> 
 	    </div>
     </div>
@@ -239,9 +239,9 @@
 	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
 	    		<span class="serviceCollapse glyphicon 
 	    			{if $collapse} 
-	    				glyphicon-chevron-down	
+	    				glyphicon-chevron-up	
 	    			{else}
-	    				 glyphicon-chevron-up
+	    				 glyphicon-chevron-down
 	    			{/if}">
 	    		</span>
 	    	</a> 
@@ -537,7 +537,7 @@
     
 		<div class="widget-toolbar">
 	    	<a id="settings-toogle" data-toggle="collapse" class="chevron-toogle" href="#settings">
-	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
 	    	</a> 
 	    </div>
     </div>
@@ -581,7 +581,7 @@
 	    </h4>
 	    <div class="widget-toolbar">
 	    	<a id="filter-toogle" data-toggle="collapse" class="chevron-toogle" href="#filters">
-	    		<span class="serviceCollapse glyphicon glyphicon-chevron-up"></span>
+	    		<span class="serviceCollapse glyphicon glyphicon-chevron-down"></span>
 	    	</a> 
 	    </div>
 	  </div>
