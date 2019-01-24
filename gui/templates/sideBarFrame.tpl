@@ -50,9 +50,6 @@
 
 <body class="testlink skin-3">
     <div id="sidebar" class="sidebar compact sidebar-large">
-        {if $gui->securityNotes}
-    		{include file="inc_msg_from_array.tpl" array_of_msg=$gui->securityNotes arg_css_class="warning"}
-        {/if}
     	<ul class="nav nav-list">
 			{* PLUGIN MANAGEMENT *}
             {if $display_left_block_top}

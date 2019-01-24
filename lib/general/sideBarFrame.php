@@ -123,15 +123,6 @@ $gui_menu->testplanID = $testplanID;
 
 $gui_menu->docs = config_get('userDocOnDesktop') ? getUserDocumentation() : null;
 
-$secCfg = config_get('config_check_warning_frequence');
-$gui_menu->securityNotes = '';
-if( (strcmp($secCfg, 'ALWAYS') == 0) || 
-      (strcmp($secCfg, 'ONCE_FOR_SESSION') == 0 && !isset($_SESSION['getSecurityNotesOnMainPageDone'])) )
-{
-  $_SESSION['getSecurityNotesOnMainPageDone'] = 1;
-  $gui_menu->securityNotes = getSecurityNotes($db);
-}  
-
 $gui_menu->opt_requirements = isset($_SESSION['testprojectOptions']->requirementsEnabled) ? 
                          $_SESSION['testprojectOptions']->requirementsEnabled : null; 
 
