@@ -22,7 +22,6 @@ section=$cfg_section} {$cfViewAction="lib/cfields/cfieldsView.php"}
 
 <body class="testlink">
 
-<<<<<<< HEAD
 {$print_tabs}
 
 <h1 class="title">{$labels.title_cfields_mgmt}</h1>
