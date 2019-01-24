@@ -183,19 +183,10 @@ var del_action=fRoot+'{$deleteAction}';
 
 </div>
 
-{if $gui->doAction == "reloadAll"}
-  <script type="text/javascript">
-  top.location = top.location;
-  </script>
-{else}
-  {if $gui->doAction == "reloadNavBar"}
-  <script type="text/javascript">
-  // remove query string to avoid reload of home page,
-  // instead of reload only navbar
-  var href_pieces=parent.mainFrame.location.href.split('?');
-  parent.mainFrame.location=href_pieces[0];
-  </script>
-  {/if}
+{if $gui->doAction == "reloadAll" || $gui->doAction == "reloadNavBar"}
+    <script type="text/javascript">
+    	window.parent.parent.location.href = 'index.php';
+    </script>
 {/if}
 
 </body>
