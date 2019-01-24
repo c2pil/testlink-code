@@ -13,7 +13,7 @@ Scope: show test plan tree for execution
              filter_owner,TestPlan,test_plan,caption_nav_filters,
              build,filter_tcID,filter_on,filter_result,platform, include_unassigned_testcases'}
 
-{include file="inc_head.tpl" openHead="yes"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="no"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 
 {* includes Ext.ux.CollapsiblePanel *}

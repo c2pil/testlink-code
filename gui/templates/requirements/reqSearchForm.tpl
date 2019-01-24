@@ -19,7 +19,7 @@ Form for requirement search.
              show_calender,clear_date,log_message,'}
 
 {* not include prototypeJs because bootstrap doesn't work with this *}
-{include file="inc_head.tpl" openHead="yes" jsValidate="yes" prototypeJs="false"}
+{include file="inc_head.tpl" openHead="yes" jsValidate="yes" prototypeJs="no"}
 
 {include file='bootstrap.inc.tpl'}
 {include file='bootstrap-datepicker.inc.tpl'}

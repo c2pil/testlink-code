@@ -58,7 +58,7 @@ editorType: used to understand if code for tinymce need to be loaded
 
   	
 	<script type="text/javascript" src="{$basehref}third_party/jquery/{$smarty.const.TL_JQUERY}"></script>
-	{if !$prototypeJs}
+	{if $prototypeJs != "no"}
 		<link rel="stylesheet" href="{$basehref}third_party/chosen/chosen.css">
 		<script type="text/javascript" src="{$basehref}third_party/chosen/chosen.jquery.js"></script>
 		<script type="text/javascript" src="{$basehref}third_party/prototype/prototype.js"></script>
