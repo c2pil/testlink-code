@@ -5,14 +5,14 @@ tcSearchResults.tpl
 
 {include file="inc_head.tpl" openHead='yes'}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
+{include file="bootstrap.inc.tpl"}
 
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {$tableID="$matrix->tableID"}
   {if $smarty.foreach.initializer.first}
     {$matrix->renderCommonGlobals()}
     {if $matrix instanceof tlExtTable}
-        {include file="inc_ext_js.tpl" bResetEXTCss=1}
-        {include file="inc_ext_table.tpl"}
+		{include file="inc_ext_table.tpl"}
     {/if}
   {/if}
   {$matrix->renderHeadSection()}

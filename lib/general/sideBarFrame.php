@@ -254,7 +254,7 @@ if($gui_menu->countPlans > 0){
     $gui_menu->tabsList[] = array(
         array(hasGrant($gui_menu->grants['testplan_execute']), $gui_menu->launcher."?feature=executeTest", lang_get('href_execute_test'), $gui_menu->href["execDashboard"].$gui_menu->testprojectID),
         array(hasGrant($gui_menu->grants['exec_ro_access']), $gui_menu->launcher."?feature=executeTest", lang_get('href_exec_ro_access'), $gui_menu->href["execDashboard"].$gui_menu->testprojectID),
-        array(hasGrant($gui_menu->grants['testplan_execute']) || hasGrant($gui_menu->grants['exec_ro_access']), $gui_menu->url['testcase_assignments'], lang_get('href_my_testcase_assignments')),
+        array((hasGrant($gui_menu->grants['testplan_execute']) || hasGrant($gui_menu->grants['exec_ro_access'])) && hasGrant($gui_menu->grants['exec_testcases_assigned_to_me']), $gui_menu->url['testcase_assignments'], lang_get('href_my_testcase_assignments')),
         array(hasGrant($gui_menu->grants['testplan_metrics']), $gui_menu->launcher."?feature=showMetrics", lang_get('href_rep_and_metrics'), $gui_menu->href["showMetrics"]),
         array(hasGrant($gui_menu->grants['testplan_metrics']), $gui_menu->url['metrics_dashboard'], lang_get('href_metrics_dashboard'))
     );
