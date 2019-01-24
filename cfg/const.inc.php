@@ -852,21 +852,21 @@ $tlCfg->guiTopMenu[1] = array('label' => 'home','url' => 'index.php','right' => 
                               'imgKey' => 'home',
                               'condition'=>'','shortcut'=>'h','target'=>'_parent');
 
-$tlCfg->guiTopMenu[2] = array('label' => 'title_requirements',
+$tlCfg->guiTopMenu[2] = array('label' => 'href_req_spec',
                               'imgKey' => 'requirements',
                               'url' => 'lib/general/frmWorkArea.php?feature=reqSpecMgmt',
                               'right' => array('mgt_view_req','mgt_modify_req'),
                               'condition'=>'ReqMgmtEnabled',
                               'shortcut'=>'r','target'=>'contentFrame'); 
 
-$tlCfg->guiTopMenu[3] = array('label' => 'title_specification',
+$tlCfg->guiTopMenu[3] = array('label' => 'href_edit_tc',
                               'imgKey' => 'test_specification', 
                               'url' => 'lib/general/frmWorkArea.php?feature=editTc',
                               'right' => array('mgt_view_tc','mgt_modify_tc'),
                               'condition'=>'',
                               'shortcut'=>'t','target'=>'contentFrame'); 
 
-$tlCfg->guiTopMenu[4] = array('label' => 'title_execute',
+$tlCfg->guiTopMenu[4] = array('label' => 'href_execute_test',
                               'imgKey' => 'execution',
                               'url' => 'lib/general/frmWorkArea.php?feature=executeTest',
                               'right' => array('testplan_execute','exec_ro_access'),
@@ -879,7 +879,7 @@ $tlCfg->guiTopMenu[5] = array('label' => 'title_results',
                               'right' => 'testplan_metrics','condition'=>'TestPlanAvailable',
                               'shortcut'=>'r','target'=>'contentFrame'); 
 
-$tlCfg->guiTopMenu[6] = array('label' => 'title_admin',
+$tlCfg->guiTopMenu[6] = array('label' => 'href_assign_user_roles',
                               'imgKey' => 'user',
                               'url' => 'lib/usermanagement/usersView.php',
                               'right' => 'mgt_users','condition'=>'',

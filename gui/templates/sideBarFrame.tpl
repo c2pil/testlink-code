@@ -258,7 +258,7 @@
     		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
     	</div>
     </div>
-   	<iframe id="contentFrame" src="" name="contentFrame" class="contentFrame-small" ></iframe>
+   	<iframe id="contentFrame" src="lib/general/welcome.php" name="contentFrame" class="contentFrame-small" ></iframe>
     </body>
     <script type="text/javascript" src="{$basehref}gui/javascript/sideBar.js"></script>
 </html>
