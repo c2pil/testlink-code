@@ -14,7 +14,6 @@
              dont_show_all_versions_btn'}
 
 {include file="inc_head.tpl" openHead="yes"}
-{include file="bootstrap.inc.tpl"}
 
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {$tableID="table_$idx"}

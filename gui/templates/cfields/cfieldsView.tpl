@@ -1,14 +1,8 @@
-{* 
-TestLink Open Source Project - http://testlink.sourceforge.net/
-@filesource cfieldsView.tpl
-
-@internal revisions
-*}
+{* TestLink Open Source Project - http://testlink.sourceforge.net/
+@filesource cfieldsView.tpl @internal revisions *}
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
-{$tplBN=$cfg_section}
-{config_load file="input_dimensions.conf" section=$cfg_section}
-
-{$cfViewAction="lib/cfields/cfieldsView.php"}
+{$tplBN=$cfg_section} {config_load file="input_dimensions.conf"
+section=$cfg_section} {$cfViewAction="lib/cfields/cfieldsView.php"}
 
 {$cfCreateAction="lib/cfields/cfieldsEdit.php?do_action=create"}
 
@@ -18,19 +12,17 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {$cfExportAction="lib/cfields/cfieldsExport.php?goback_url="}
 {$exportCfieldsAction="$basehref$cfExportAction$basehref$cfViewAction"}
 
-
 {lang_get var="labels"
           s="name,label,type,title_cfields_mgmt,manage_cfield,btn_cfields_create,
              btn_export,btn_import,btn_goback,sort_table_by_column,enabled_on_context,
              display_on_exec,available_on"}
 
 {include file="inc_head.tpl" enableTableSorting="yes" openHead="yes"}
-{include file="bootstrap.inc.tpl"}
-
 </head>
 
 <body class="testlink">
 
+<<<<<<< HEAD
 {$print_tabs}
 
 <h1 class="title">{$labels.title_cfields_mgmt}</h1>
@@ -70,7 +62,11 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {/if}  
 
 {include file="cfields/{$tplBN}Controls.inc.tpl" suffix="Bottom"}
-
 </div>
 </body>
+
+<footer>
+	{$printFooter}
+</footer>
+
 </html>

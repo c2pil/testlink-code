@@ -12,8 +12,7 @@ tcSearchResults.tpl
   {if $smarty.foreach.initializer.first}
     {$matrix->renderCommonGlobals()}
     {if $matrix instanceof tlExtTable}
-        {include file="inc_ext_js.tpl" bResetEXTCss=1}
-        {include file="inc_ext_table.tpl"}
+		{include file="inc_ext_table.tpl"}
     {/if}
   {/if}
   {$matrix->renderHeadSection()}
@@ -56,6 +55,5 @@ jQuery(document).ready(function() {
 		todayBtn : "linked"
 	});
 });
-
 </script>
 </html>

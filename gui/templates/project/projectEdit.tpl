@@ -81,8 +81,10 @@ function manageTracker(selectOID,targetOID)
 </script>
 </head>
 
-<body onload="manageTracker('issue_tracker_id','issue_tracker_enabled');
-manageTracker('code_tracker_id','code_tracker_enabled');">
+<body onload="manageTracker('issue_tracker_id','issue_tracker_enabled');manageTracker('code_tracker_id','code_tracker_enabled');">
+
+{$print_tabs}
+
 <h1 class="title">
   {$main_descr|escape}  {$tlCfg->gui_title_separator_1}
   {$caption|escape}

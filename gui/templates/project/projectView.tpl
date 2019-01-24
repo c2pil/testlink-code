@@ -35,7 +35,6 @@ some variables smarty and javascript are created on the inc_*.tpl files.
 
 {include file="inc_head.tpl" openHead="yes" enableTableSorting="yes"}
 {include file="inc_del_onclick.tpl"}
-{include file="bootstrap.inc.tpl"}
 
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
@@ -188,19 +187,10 @@ var del_action=fRoot+'{$deleteAction}';
     </div>
 </div>
 
-{if $gui->doAction == "reloadAll"}
-  <script type="text/javascript">
-  top.location = top.location;
-  </script>
-{else}
-  {if $gui->doAction == "reloadNavBar"}
-  <script type="text/javascript">
-  // remove query string to avoid reload of home page,
-  // instead of reload only navbar
-  var href_pieces=parent.mainFrame.location.href.split('?');
-  parent.mainFrame.location=href_pieces[0];
-  </script>
-  {/if}
+{if $gui->doAction == "reloadAll" || $gui->doAction == "reloadNavBar"}
+    <script type="text/javascript">
+    	window.parent.parent.location.href = 'index.php';
+    </script>
 {/if}
 
 </body>

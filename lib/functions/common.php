@@ -17,7 +17,6 @@
  * @link        http://www.testlink.org
  *
  */
-
 /** core and parenthal classes */
 require_once('object.class.php');
 require_once('metastring.class.php');
@@ -64,7 +63,7 @@ require_once("treeMenu.inc.php");
 
 
 // 20130526 checks need to be done in order to understand if this class is really needed
-require_once("exec_cfield_mgr.class.php");   
+require_once("exec_cfield_mgr.class.php");
 
 /**
  * Automatic loader for PHP classes
@@ -1535,5 +1534,22 @@ function tlSetCookie($ckObj) {
   
   setcookie($stdCk->name, $stdCk->value, $stdCk->expire,$stdCk->path,
             $stdCk->domain,$stdCk->secure,$stdCk->httponly);
+}
+
+function printFooter($url){
+
+    $s = '<address><div id="footer">';
+    $s .= '<div id="footerIMG">';
+    $s .= '<img alt="Company logo" title="logo" src="gui/themes/default/images/tl-logo-transparent-12.5.png"></div>';
+    $s .= '<div id="footerTXT"><strong>';
+    $s .= lang_get('poweredBy');
+    $s .= ' <a href="'.$url.'" title="';
+    $s .= lang_get('system_descr');
+    $s .= '"> TestLink ';
+    $s .= TL_VERSION;
+    $s .= '</a></strong></div></div></address>';
+    
+    return $s;
+
 }
 

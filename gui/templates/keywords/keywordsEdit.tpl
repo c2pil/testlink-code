@@ -6,6 +6,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {$keyword_edit_url = "$basehref$url_args"}
 
 {include file="inc_head.tpl" jsValidate="yes" openHead="yes"}
+
 {lang_get var='labels' s='th_keyword,show_event_history,th_notes,btn_cancel'}
 
 
@@ -23,6 +24,8 @@ function validateForm(f)
 }
 </script>
 </head>
+
+{$print_tabs}
 
 <body>
 {$cfg_section = $smarty.template|basename|replace:".tpl":""}

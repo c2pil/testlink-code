@@ -9,7 +9,6 @@ users overview
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_del_onclick.tpl"}
-{include file="bootstrap.inc.tpl"}
 
 <script type="text/javascript">
 var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
@@ -42,8 +41,6 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
 </style>
 </head>
 
-{$print_tabs}
-
 {$userActionMgr="lib/usermanagement/usersEdit.php"}
 {$createUserAction="$userActionMgr?doAction=create"}
 {$editUserAction="$userActionMgr?doAction=edit"}
@@ -57,6 +54,8 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
              order_by_login_dir,alt_active_user,demo_special_user,btn_export"}
 
 <body>
+{$print_tabs}
+
 {if $gui->grants->user_mgmt == "yes"}
 
   <h1 class="title">{$gui->main_title}</h1>

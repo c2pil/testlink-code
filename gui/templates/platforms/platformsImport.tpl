@@ -39,6 +39,9 @@ function validateForm(f)
 </head>
 
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$gui->page_title|escape}</h1>
 <div class="workBack">
 {if $gui->file_check.show_results}

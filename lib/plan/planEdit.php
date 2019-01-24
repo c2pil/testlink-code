@@ -20,6 +20,9 @@ require_once("common.php");
 require_once("web_editor.php");
 $editorCfg = getWebEditorCfg('testplan');
 require_once(require_web_editor($editorCfg['type']));
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
 
 testlinkInitPage($db,false,false,"checkRights");
 
@@ -35,6 +38,7 @@ if (!$args->tproject_id)
 {
   $smarty->assign('title', lang_get('fatal_page_title'));
   $smarty->assign('content', lang_get('error_no_testprojects_present'));
+  $smarty->assign('print_tabs',print_tabs('planView.php', $gui_menu, TAB_PLAN));
   $smarty->display('workAreaSimple.tpl');
   exit();
 }
@@ -306,6 +310,7 @@ switch($args->do_action)
 if($do_display)
 {
   $smarty->assign('gui',$gui);
+  $smarty->assign('print_tabs',print_tabs('planView.php', $gui_menu, TAB_PLAN));
   $smarty->display($templateCfg->template_dir . $template);
 }
 

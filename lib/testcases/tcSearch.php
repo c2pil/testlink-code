@@ -91,8 +91,6 @@ if ($args->tprojectID && $args->doAction == 'doSearch') {
   $filterSpecial = null;
   $feOp = " AND ";
   $filterSpecial['tricky'] = " 1=1 ";
-  if($args->jolly != "") {
-    // $filterSpecial['trick'] = " 1=1 ";
     $feOp = " OR ";
     $filterSpecial['tricky'] = " 1=0 ";
     $args->steps = $args->expected_results = $args->jolly;
@@ -286,7 +284,6 @@ if (!is_null($table))
 {
   $gui->tableSet[] = $table;
 }
-
 
 $smarty->assign('gui',$gui);
 $smarty->assign('print_tabs',print_tabs('tcSearch.php', $gui_menu, TAB_TC));

@@ -16,7 +16,6 @@ header / menu / content
 
 {include file="inc_head.tpl" openHead="yes" prototypeJs="false"}
 <base href="{$basehref}"/>
-{include file="bootstrap.inc.tpl"}
 
 <link rel="stylesheet" href="{$basehref}gui/themes/default/css/navbar.css" >
 </head>
@@ -122,7 +121,7 @@ header / menu / content
 	</div>
 {/if}
 
-<iframe src="{$gui->sideBarFrame}" name="sideBarFrame" class="sideBarFrame" ></iframe>
+<iframe src="{$gui->sideBarFrame}" name="sideBarFrame" class="sideBarFrame" ></iframe> 
 
 </body>
 

@@ -10,6 +10,9 @@
 require('../../config.inc.php');
 require_once("common.php");
 require_once("web_editor.php");
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
 $editorCfg = getWebEditorCfg('build');
 require_once(require_web_editor($editorCfg['type']));
 
@@ -101,7 +104,7 @@ $gui->buttonCfg = $op->buttonCfg;
 $gui->mgt_view_events = $args->user->hasRight($db,"mgt_view_events");
 $gui->editorType = $editorCfg['type'];
 
-renderGui($smarty,$args,$tplan_mgr,$templateCfg,$of,$gui);
+renderGui($smarty,$args,$tplan_mgr,$templateCfg,$of,$gui,$gui_menu);
 
 /*
  * INITialize page ARGuments, using the $_REQUEST and $_SESSION
@@ -315,7 +318,7 @@ function doDelete(&$dbHandler,&$argsObj,&$buildMgr,&$tplanMgr)
   returns:
 
 */
-function renderGui(&$smartyObj,&$argsObj,&$tplanMgr,$templateCfg,$owebeditor,&$guiObj)
+function renderGui(&$smartyObj,&$argsObj,&$tplanMgr,$templateCfg,$owebeditor,&$guiObj,$gui_menu)
 {
     $doRender = false;
     switch($argsObj->do_action)
@@ -357,6 +360,7 @@ function renderGui(&$smartyObj,&$argsObj,&$tplanMgr,$templateCfg,$owebeditor,&$g
 
       
       $smartyObj->assign('gui',$guiObj);
+      $smartyObj->assign('print_tabs',print_tabs('buildView.php', $gui_menu, TAB_PLAN));
       $smartyObj->display($templateCfg->template_dir . $tpl);
     }
 

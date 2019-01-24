@@ -28,8 +28,10 @@ function validateForm(f)
 </script>
 </head>
 
-
 <body>
+
+{$print_tabs}
+
 <h1 class="title">{$gui->main_descr|escape}</h1>
 
 <div class="workBack">

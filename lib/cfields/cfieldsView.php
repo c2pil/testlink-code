@@ -26,6 +26,7 @@ $gui->drawControlsOnTop = (null != $gui->cf_map && count($gui->cf_map) > 10);
 $smarty = new TLSmarty();
 $smarty->assign('print_tabs',print_tabs('cfieldsView.php', $gui_menu, TAB_SYSTEM));
 $smarty->assign('gui',$gui);
+$smarty->assign('printFooter', printFooter($tlCfg->testlinkdotorg));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 function checkRights(&$db,&$user) {

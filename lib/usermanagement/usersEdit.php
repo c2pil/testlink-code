@@ -15,6 +15,9 @@ require_once('../../config.inc.php');
 require_once('users.inc.php');
 require_once('email_api.php');
 require_once('Zend/Validate/Hostname.php');
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
 
 testlinkInitPage($db,false,false,"checkRights");
 
@@ -85,7 +88,7 @@ $smarty->assign('operation',$gui->op->operation);
 $smarty->assign('user_feedback',$gui->op->user_feedback);
 $smarty->assign('external_password_mgmt', tlUser::isPasswordMgtExternal($gui->user->authentication));
 $smarty->assign('optRights',$roles);
-renderGui($smarty,$args,$templateCfg);
+renderGui($smarty,$args,$templateCfg,$gui_menu);
 
 
 /**
@@ -354,7 +357,7 @@ function decodeRoleId(&$dbHandler,$roleID)
     return $roleInfo->name;
 }
 
-function renderGui(&$smartyObj,&$argsObj,$templateCfg)
+function renderGui(&$smartyObj,&$argsObj,$templateCfg,$gui_menu)
 {
   $doRender = false;
   switch($argsObj->doAction)
@@ -382,11 +385,10 @@ function renderGui(&$smartyObj,&$argsObj,$templateCfg)
     break;
 
   }
-
-  if($doRender)
-  {
-    $smartyObj->display($templateCfg->template_dir . $tpl);
-  }    
+    if($doRender){
+        $smartyObj->assign('print_tabs',print_tabs('usersAssign.php', $gui_menu, TAB_PROJECTS));
+        $smartyObj->display($templateCfg->template_dir . $tpl);
+    }    
 }
 
 

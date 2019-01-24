@@ -72,12 +72,15 @@ $tplEngine = new TLSmarty();
 $tplEngine->assign('gui', $gui);
 $tplEngine->display('main.tpl');
 
+
+
 /**
- *
- *
+ * Init smarty var
+ * @return stdClass[]
  */
 function initEnv()
 {
+   
   $iParams = array("reqURI" => array(tlInputParameter::STRING_N,0,4000));
   $pParams = G_PARAMS($iParams);
   
@@ -94,6 +97,6 @@ function initEnv()
                      "tproject_id={$args->tproject_id}&" .
                      "tplan_id={$args->tplan_id}&" . $sso;
   $gui->logout = 'logout.php?viewer=' . $sso;
-
+  $gui->menuframe = "lib/general/mainMenu.php";
   return array($args,$gui);
 }

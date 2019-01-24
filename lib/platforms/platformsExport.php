@@ -19,6 +19,10 @@
 require_once("../../config.inc.php");
 require_once("common.php");
 require_once('../../third_party/adodb_xml/class.ADODB_XML.php');
+ob_start();
+require_once( '../general/sideBarFrame.php' );
+ob_end_clean();
+
 testlinkInitPage($db,false,false,"checkRights");
 
 $templateCfg = templateConfiguration();
@@ -38,6 +42,7 @@ switch($args->doAction)
 
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('print_tabs',print_tabs('platformsView.php', $gui_menu, TAB_PROJECTS));
 $smarty->display($templateCfg->template_dir . $templateCfg->default_template);
 
 

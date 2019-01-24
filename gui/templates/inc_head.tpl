@@ -63,6 +63,9 @@ editorType: used to understand if code for tinymce need to be loaded
 	{/if}
 	<link rel="stylesheet" href="{$basehref}third_party/chosen/chosen.css">
 	<script type="text/javascript" src="{$basehref}third_party/chosen/chosen.jquery.js"></script>
+
+	{include file="bootstrap.inc.tpl"}
+	
 	<script type="text/javascript" language="javascript">
 
 	var fRoot = '{$basehref}';

@@ -11,7 +11,6 @@ Testlink: smarty template -
 
 {include file="inc_head.tpl" jsValidate="yes" openHead="yes" enableTableSorting="yes"}
 {include file="inc_ext_js.tpl" css_only=1}
-{include file="bootstrap.inc.tpl"}
 
 <script language="JavaScript" type="text/javascript">
 /*

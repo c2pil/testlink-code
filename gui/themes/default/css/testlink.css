@@ -1115,4 +1115,21 @@ div.form-border {
 .yellow {
 	color : yellow;
 }
+#footer{
+	width:100%;
+	border-top : 3px double #e3e3e3;
+	position: absolute;
+	bottom: 0;
+	padding-top:5px;
+	font-style: normal;
+}
+
+#footerIMG{
+	float :right;
+	padding-right: 20px;
+}
+
+#footerTXT{
+	float :left;
+}
 /* ----- END ------------------------------------------------------------------------- */

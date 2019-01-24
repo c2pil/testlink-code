@@ -8,9 +8,7 @@
 {$cfg_section=$smarty.template|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
 {include file="inc_head.tpl" popup="yes" openHead="yes"}
-
 {include file="inc_ext_js.tpl"}
-{include file="bootstrap.inc.tpl"}
 
 {lang_get var='labels' s='title_product_mgmt,href_tproject_management,href_admin_modules,
     href_assign_user_roles,href_cfields_management,system_config,
@@ -260,7 +258,7 @@
     		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
     	</div>
     </div>
-   	<iframe id="contentFrame" src="" name="contentFrame" class="contentFrame-small" ></iframe>
+   	<iframe id="contentFrame" src="lib/general/welcome.php" name="contentFrame" class="contentFrame-small" ></iframe>
     </body>
     <script type="text/javascript" src="{$basehref}gui/javascript/sideBar.js"></script>
 </html>

@@ -91,6 +91,9 @@ function jsCallDeleteFile(btn, text, o_id)
 </head>
 
 <body>
+
+{$print_tabs}
+
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
 {$planID=$gui->tplan_id}

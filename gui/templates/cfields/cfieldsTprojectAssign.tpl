@@ -6,7 +6,6 @@ Purpose: management Custom fields assignment to a test project
 *}
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_jsCheckboxes.tpl"}
-{include file="bootstrap.inc.tpl"}
 </head>
 
 {$print_tabs}

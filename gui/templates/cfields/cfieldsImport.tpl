@@ -40,6 +40,8 @@ function validateForm(f)
 
 <body>
 
+{$print_tabs}
+
 <h1 class="title">{$gui->page_title|escape}</h1>
 
 <div class="workBack">
