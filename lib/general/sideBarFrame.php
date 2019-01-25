@@ -264,8 +264,9 @@ $tplKey = 'sideBarFrame';
 $tpl = $tplKey . '.tpl';
 $tplCfg = config_get('tpl');
 if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
-  $tpl = $tplCfg->$tplKey;
-} 
+    $tpl = $tplCfg->$tplKey;
+}
+$smarty->assign('showMenu',($user->hasRight($db,'mgt_modify_product') && !isset($_SESSION['testprojectID'])));
 $smarty->assign('gui',$gui_menu);
 $smarty->display($tpl);
 
@@ -381,14 +382,7 @@ function getGrants($dbHandler,$user,$forceToNo=false)
  }  
   
   
- $grants['project_edit'] = $user->hasRight($dbHandler,$right2check['project_edit']); 
-
-  /** redirect admin to create testproject if not found */
-  if ($grants['project_edit'] && !isset($_SESSION['testprojectID']))
-  {
-	  redirect($_SESSION['basehref'] . 'lib/project/projectEdit.php?doAction=create');
-	  exit();
-  }
+ $grants['project_edit'] = $user->hasRight($dbHandler,$right2check['project_edit']);
   
   foreach($right2check as $humankey => $right)
   {

@@ -49,6 +49,7 @@
 </head>
 
 <body class="testlink skin-3">
+	{if $showMenu neq 'no' }
     <div id="sidebar" class="sidebar compact sidebar-large">
     	<ul class="nav nav-list">
 			{* PLUGIN MANAGEMENT *}
@@ -255,6 +256,7 @@
     		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
     	</div>
     </div>
+    {/if}
    	<iframe id="contentFrame" src="lib/general/welcome.php" name="contentFrame" class="contentFrame-small" ></iframe>
     </body>
     <script type="text/javascript" src="{$basehref}gui/javascript/sideBar.js"></script>
