@@ -49,10 +49,8 @@
 </head>
 
 <body class="testlink skin-3">
+	{if $showMenu neq 'no' }
     <div id="sidebar" class="sidebar compact sidebar-large">
-        {if $gui->securityNotes}
-    		{include file="inc_msg_from_array.tpl" array_of_msg=$gui->securityNotes arg_css_class="warning"}
-        {/if}
     	<ul class="nav nav-list">
 			{* PLUGIN MANAGEMENT *}
             {if $display_left_block_top}
@@ -258,6 +256,7 @@
     		<i id="collapse_btn" class="ace-icon fa fa-angle-double-left"></i>
     	</div>
     </div>
+    {/if}
    	<iframe id="contentFrame" src="lib/general/welcome.php" name="contentFrame" class="contentFrame-small" ></iframe>
     </body>
     <script type="text/javascript" src="{$basehref}gui/javascript/sideBar.js"></script>

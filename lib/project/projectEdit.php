@@ -204,11 +204,11 @@ switch($args->doAction) {
     foreach($ui as $prop => $value) {
       $smarty->assign($prop,$value);
     }
-
     $smarty->assign('gui', $args);
     $smarty->assign('notes', $of->CreateHTML());
     $smarty->assign('user_feedback', $user_feedback);
     $smarty->assign('feedback_type', $feedback_type);
+    $smarty->assign('showTabs', $_GET['showTabs']);
     $smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB_PROJECTS));
     $smarty->display($templateCfg->template_dir . $template);
   break;

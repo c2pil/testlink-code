@@ -83,7 +83,9 @@ function manageTracker(selectOID,targetOID)
 
 <body onload="manageTracker('issue_tracker_id','issue_tracker_enabled');manageTracker('code_tracker_id','code_tracker_enabled');">
 
-{$print_tabs}
+{if $showTabs neq 'no'}
+	{$print_tabs}
+{/if}
 
 <h1 class="title">
   {$main_descr|escape}  {$tlCfg->gui_title_separator_1}
