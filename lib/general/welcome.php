@@ -10,15 +10,14 @@ $secCfg = config_get('config_check_warning_frequence');
 
 $gui = new stdClass();
 $gui->securityNotes = '';
-if((strcmp($secCfg, 'ALWAYS') == 0) || ((strcmp($secCfg, 'ONCE_FOR_SESSION') == 0) && !isset($_SESSION['getSecurityNotesOnMainPageDone']))){
+if((strcmp($secCfg, 'ALWAYS') == 0) || ((strcmp($secCfg, 'ONCE_FOR_SESSION') == 0) && filter_var($_SESSION['getSecurityNotesOnMainPageDone']) === "")){
     $_SESSION['getSecurityNotesOnMainPageDone'] = 1;
     $gui->securityNotes = getSecurityNotes($db);
 }
 
 /** redirect admin to create testproject if not found */
-if ($user->hasRight($db,'mgt_modify_product') && !isset($_SESSION['testprojectID'])){
-    redirect($_SESSION['basehref'] . 'lib/project/projectEdit.php?doAction=create&showTabs=no');
-    exit();
+if ($user->hasRight($db,'mgt_modify_product') && filter_var($_SESSION['testprojectID']) === ""){
+    redirect(filter_var($_SESSION['basehref']) . 'lib/project/projectEdit.php?doAction=create&showTabs=no');
 }
 
 $smarty = new TLSmarty();
