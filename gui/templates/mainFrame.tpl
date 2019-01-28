@@ -41,7 +41,7 @@ header / menu / content
 						
 					<ul class="dropdown-menu dropdown-menu-right dropdown-caret dropdown-close scrollable-menu">
 						{foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
-					        	<li {if $tproject_id == $gui->tprojectID} class="active" {/if}>
+					        	<li {if $tproject_id == $gui->tproject_id} class="active" {/if}>
 									<a href="lib/general/mainFrame.php?viewer={$gui->viewer}&testproject={$tproject_id}">
 										{$tproject_name|truncate:#TESTPROJECT_TRUNCATE_SIZE#|escape}
 									</a>

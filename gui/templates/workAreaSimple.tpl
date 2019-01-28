@@ -7,6 +7,8 @@ Purpose: show workarea with simple structure title + content + link
 
 <body>
 
+{$print_tabs}
+
 {if isset($title) && $title ne ''}
 	<h1 class="title">{$title|escape}</h1>
 {/if}

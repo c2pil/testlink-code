@@ -29,7 +29,7 @@ function activeButton(button_id){
 }
 
 /**
- * Highlight the menu section corresponding to the shortcup used 
+ * Highlight the menu section corresponding to the shortcut used 
  */
 jQuery('#contentFrame').bind('load', function(){
 	if(processActiveButton){

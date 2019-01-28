@@ -95,8 +95,7 @@ function initializeGui(&$db,&$args)
 
   $gui = new stdClass();  
 
-  $gui->tprojectID = intval(isset($_SESSION['testprojectID']) ? $_SESSION['testprojectID'] : 0);
-  $gui->tproject_id = $gui->tprojectID;
+  $gui->tproject_id = intval(isset($_SESSION['testprojectID']) ? $_SESSION['testprojectID'] : 0);
 
   if($gui->tproject_id <= 0 && !$args->newInstallation)
   {
@@ -171,7 +170,7 @@ function initializeGui(&$db,&$args)
 
   if ($gui->tproject_id && isset($args->user->tprojectRoles[$gui->tproject_id])) {
     // test project specific role applied
-    $role = $args->user->tprojectRoles[$gui->tprojectID];
+      $role = $args->user->tprojectRoles[$gui->tproject_id];
     $testprojectRole = $role->getDisplayName();
   } else {
     // general role applied

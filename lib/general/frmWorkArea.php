@@ -122,8 +122,9 @@ if (in_array($showFeature,array('executeTest','showMetrics','tc_exec_assignment'
     $ctx = new stdClass();
     $ctx->tplanIDCard = $tplanIDCard;
     $ctx->featureTitle = $featureHint;
-
-    validateBuildAvailability($db,$tplanMgr,$ctx,$hasToBe);
+    $ctx->showFeature = $showFeature;
+    
+    validateBuildAvailability($db,$tplanMgr,$ctx,$hasToBe,$gui_menu);
   }
   else
   {
@@ -197,22 +198,28 @@ function getTab($feature){
         case 'searchReq':
         case 'searchReqSpec':
         case 'assignReqs':
-            return TAB_REQ;
+            $tab_number = TAB_REQ;
+            break;
         case 'editTc':
         case 'keywordsAssign':
-            return TAB_TC;
+            $tab_number = TAB_TC;
+            break;
         case 'executeTest':
         case 'showMetrics':
-            return TAB_EXEC;
+            $tab_number = TAB_EXEC;
+            break;
         case 'planAddTC':
         case 'tc_exec_assignment':
         case 'test_urgency':
         case 'planUpdateTC':
         case 'newest_tcversions':
-            return TAB_PLAN_CONTENT;
+            $tab_number = TAB_PLAN_CONTENT;
+            break;
         default:
-            return -1;
+            $tab_number = -1;
+            break;
     }
+    return $tab_number;
 }
 /** 
  *  validate that some build exists (for Test Plan related features).
@@ -225,7 +232,7 @@ function getTab($feature){
  * 
  *
  **/
-function validateBuildAvailability(&$db,&$tplanMgr,$context,$attrFilter)
+function validateBuildAvailability(&$db,&$tplanMgr,$context,$attrFilter,$gui_menu)
 {
   $tpID = $context->tplanIDCard->id;
   $tpName = $context->tplanIDCard->name;
@@ -273,6 +280,7 @@ function validateBuildAvailability(&$db,&$tplanMgr,$context,$attrFilter)
     $smarty->assign('content', $message);
     $smarty->assign('link_to_op', $link_to_op);
     $smarty->assign('hint_text', $hint_text);
+    $smarty->assign('print_tabs', print_tabs("frmWorkArea.php?feature=".$context->showFeature, $gui_menu, getTab($context->showFeature)));
     $smarty->display('workAreaSimple.tpl');
     exit();
   }
