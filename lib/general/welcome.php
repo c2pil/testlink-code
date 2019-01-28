@@ -20,8 +20,19 @@ if ($user->hasRight($db,'mgt_modify_product') && filter_var($_SESSION['testproje
     redirect(filter_var($_SESSION['basehref']) . 'lib/project/projectEdit.php?doAction=create&showTabs=no');
 }
 
+$tproject_mgr = new testproject($db);
+
+// $_SESSION['testprojectID']
+// testprojectName
+// testprojectPrefix
+// testplanName
+
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
+$smarty->assign('testprojectName', $_SESSION['testprojectName']);
+$smarty->assign('testprojectPrefix', $_SESSION['testprojectPrefix']);
+$smarty->assign('testprojectNotes', $tproject_mgr->get_by_id($_SESSION['testprojectID'])['notes']);
+$smarty->assign('testplanName', $_SESSION['testplanName']);
 $smarty->assign('printFooter', printFooter($tlCfg->testlinkdotorg));
 $smarty->display("welcome.tpl");
 ?>
