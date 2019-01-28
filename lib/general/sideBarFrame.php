@@ -285,7 +285,7 @@ function print_tabs($active_page, $gui_menu, $tab_number, $is_frame=false){
         return "";
     }
     $s = "";
-    $s .= '<ul class="nav nav-tabs padding-18">';
+    $s .= '<ul id='.$tab_number.' class="nav nav-tabs padding-18">';
         foreach( $gui_menu->tabsList[$tab_number] as $tab ) {
             if($tab[0]){
                 if($is_frame && $tab[3]){

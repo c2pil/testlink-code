@@ -8,13 +8,46 @@
  * @link        http://www.testlink.org
  * @since       1.9
  *
- * Function to activate menu buttons.
+ * Functions related to the sidebar.
  *
  *
  */
 
 var sidebar = document.getElementById("sidebar").getElementsByTagName("li");
+let processActiveButton=true;
 
+/**
+ * Highlight the menu section clicked
+ * @param button_id 
+ */
+function activeButton(button_id){
+	for(var i=0; i<sidebar.length; i++){
+		sidebar[i].setAttribute("class", "");
+	}
+	document.getElementById(button_id).setAttribute("class", "active");
+	processActiveButton=false;
+}
+
+/**
+ * Highlight the menu section corresponding to the shortcup used 
+ */
+jQuery('#contentFrame').bind('load', function(){
+	if(processActiveButton){
+		for(var i=0; i<sidebar.length; i++){		
+			if(jQuery('#contentFrame').contents().find('.nav.nav-tabs.padding-18').attr('id') == i){
+				sidebar[i].setAttribute("class", "active");
+			}else{
+				sidebar[i].setAttribute("class", "");
+			}
+		}
+	}else{
+		processActiveButton=true;
+	}
+});
+
+/**
+ * Manage the menu collapse
+ */
 jQuery(document).ready( function() {
 	jQuery('#sidebar-btn.sidebar-toggle').on('click', function (event) {
 		if(jQuery('#sidebar').attr('class').match(/sidebar-large/)){
@@ -30,10 +63,3 @@ jQuery(document).ready( function() {
 		}
 	});
 });
-
-function activeButton(button_id){
-	for(var i=0; i<sidebar.length; i++){
-		sidebar[i].setAttribute("class", "");
-	}	
-	document.getElementById(button_id).setAttribute("class", "active");
-}
