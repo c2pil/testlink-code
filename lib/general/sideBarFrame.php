@@ -266,7 +266,7 @@ $tplCfg = config_get('tpl');
 if( null !== $tplCfg && isset($tplCfg[$tplKey]) ) {
     $tpl = $tplCfg->$tplKey;
 }
-$smarty->assign('showMenu',($user->hasRight($db,'mgt_modify_product') && !isset($_SESSION['testprojectID'])));
+$smarty->assign('showMenu',($user->hasRight($db,'mgt_modify_product') && !isset(filter_var($_SESSION['testprojectID']))));
 $smarty->assign('gui',$gui_menu);
 $smarty->display($tpl);
 
