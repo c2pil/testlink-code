@@ -13,7 +13,7 @@ Scope: show test specification tree for Test Plan related features
           s='keywords_filter_help,btn_apply_filter,execution_type,importance,
              btn_update_menu,title_navigator,keyword,test_plan,keyword,caption_nav_filter_settings'}
 
-{include file="inc_head.tpl" openHead="yes"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="no"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 
 {* includes Ext.ux.CollapsiblePanel *}

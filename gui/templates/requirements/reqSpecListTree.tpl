@@ -4,7 +4,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 show requirement specifications tree menu
 *}
 
-{include file="inc_head.tpl" openHead="yes"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="no"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 
 {* Ext Collapsible Panel *}

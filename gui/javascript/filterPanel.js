@@ -20,7 +20,7 @@ jQuery('.chevron-toogle').on('click', function (event) {
 	// Div class targeted 
 	let div_class = jQuery(jQuery(this).attr('href')).attr('class');
 	// Chevron class
-	let chil = jQuery(this).children(".serviceCollapse");
+	let child = jQuery(this).children(".serviceCollapse");
 	
 	if(div_class.match(/collapse in/)){
 		child.removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");

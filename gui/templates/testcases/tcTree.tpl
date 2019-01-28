@@ -10,7 +10,7 @@ Purpose: smarty template - show test specification tree menu
              button_update_tree,no_tc_spec_av,keyword,execution_type"}
 
 
-{include file="inc_head.tpl" openHead="yes" prototypeJs="false"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="no"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 
 {* Ext Collapsible Panel *}

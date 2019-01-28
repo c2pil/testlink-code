@@ -3,7 +3,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 tcSearchResults.tpl
 *}
 
-{include file="inc_head.tpl" openHead='yes' prototypeJs="false"}
+{include file="inc_head.tpl" openHead='yes' prototypeJs="no"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
 {include file="bootstrap.inc.tpl"}
 
