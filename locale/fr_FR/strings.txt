@@ -1497,7 +1497,7 @@ $TLS_keywords_filter_help = "Vous pouvez utiliser les filtres Ou/Et";
 
 
 // ----- gui/templates/planTCNavigator.tpl -----
-$TLS_btn_bulk_update_to_latest_version = "Sélectionner la dernière version disponible de chaque fiche de test";
+$TLS_btn_bulk_update_to_latest_version = "Appliquer toutes les dernières versions";
 
 // ----- gui/templates/planPriority.tpl -----
 
@@ -2287,13 +2287,13 @@ $TLS_href_build_new = "Gestion des versions du produit";
 $TLS_href_execute_test = "Gestion des exécutions";
 $TLS_href_exec_ro_access = "Visualisation des exécutions";
 $TLS_href_metrics_dashboard = "Tableau de bord des métriques";
-$TLS_href_newest_tcversions = "Affichage nouvelles versions des fiches de test disponibles";
+$TLS_href_newest_tcversions = "Versions des fiches de tests disponibles";
 $TLS_href_plan_assign_urgency = "Définition de l’urgence des tests";
 $TLS_href_plan_management = "Gestion des campagnes de test";
 $TLS_href_plan_mstones = "Gestion des indicateurs d'avancement";
 $TLS_href_rep_and_metrics = "Rapports et métriques";
 $TLS_href_tc_exec_assignment = "Assignation d’exécution de fiches de test";
-$TLS_href_update_tplan = "Mise à jour des versions de fiches de test à exécuter";
+$TLS_href_update_tplan = "Mise à jour des fiches de tests";
 $TLS_href_platform_assign = "Affectation des plateformes";
 $TLS_current_test_plan = "Plan";
 $TLS_href_upd_mod_tc = "Mise à jour des fiches de test modifiées";

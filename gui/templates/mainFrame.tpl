@@ -14,7 +14,7 @@ header / menu / content
 
 
 
-{include file="inc_head.tpl" openHead="yes" prototypeJs="false"}
+{include file="inc_head.tpl" openHead="yes" prototypeJs="no"}
 <base href="{$basehref}"/>
 
 <link rel="stylesheet" href="{$basehref}gui/themes/default/css/navbar.css" >

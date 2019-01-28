@@ -25,17 +25,17 @@ iframe {
 }
 iframe.sideBarFrame {
 	width:100%;
-	height:calc(100% - 60px);
+	height:calc(100% - 57px);
 }
 iframe.contentFrame-small {
 	border: none;
-	height:99%;
+	height:calc(100% - 5px);
 	width: calc(100% - 150px);
 	padding-left: 2px;
 }
 iframe.contentFrame-large {
 	border: none;
-	height:99%;
+	height:calc(100% - 5px);
 	width: calc(100% - 50px);
 	padding-left: 2px;
 }
