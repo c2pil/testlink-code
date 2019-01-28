@@ -147,7 +147,7 @@ function showtr() {
 </form>
 </div>
 
-<div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>
+<div id="tree_div"></div>
 
 </body>
 </html>
