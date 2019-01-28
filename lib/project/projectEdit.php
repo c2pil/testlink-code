@@ -29,6 +29,7 @@ $templateCfg = templateConfiguration();
 $session_tproject_id = intval(isset($_SESSION['testprojectID']) ? $_SESSION['testprojectID'] : 0);
 $template = null;
 
+const SHOW_TABS = 'showTabs';
 
 $ui = new stdClass();
 $ui->doActionValue = '';
@@ -208,7 +209,9 @@ switch($args->doAction) {
     $smarty->assign('notes', $of->CreateHTML());
     $smarty->assign('user_feedback', $user_feedback);
     $smarty->assign('feedback_type', $feedback_type);
-    $smarty->assign('showTabs', $_GET['showTabs']);
+    if(filter_input(INPUT_GET, SHOW_TABS)){
+        $smarty->assign(SHOW_TABS, filter_input(INPUT_GET, SHOW_TABS));
+    }
     $smarty->assign('print_tabs',print_tabs('projectView.php', $gui_menu, TAB_PROJECTS));
     $smarty->display($templateCfg->template_dir . $template);
   break;
