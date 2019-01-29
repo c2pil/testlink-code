@@ -22,11 +22,6 @@ if ($user->hasRight($db,'mgt_modify_product') && filter_var($_SESSION['testproje
 
 $tproject_mgr = new testproject($db);
 
-// $_SESSION['testprojectID']
-// testprojectName
-// testprojectPrefix
-// testplanName
-
 $smarty = new TLSmarty();
 $smarty->assign('gui',$gui);
 $smarty->assign('testprojectName', $_SESSION['testprojectName']);
